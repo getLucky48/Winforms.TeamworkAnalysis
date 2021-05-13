@@ -122,6 +122,30 @@
     <Compile Include="Window\Auth\Auth.Designer.cs">
       <DependentUpon>Auth.cs</DependentUpon>
     </Compile>
+    <Compile Include="Window\Menu\Student\StudentSurveyLayouts\Layout3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Menu\Student\StudentSurveyLayouts\Layout3.Designer.cs">
+      <DependentUpon>Layout3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\Menu\Student\StudentSurveyLayouts\Layout2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Menu\Student\StudentSurveyLayouts\Layout2.Designer.cs">
+      <DependentUpon>Layout2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\Menu\Student\StudentSurveyLayouts\Layout1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Menu\Student\StudentSurveyLayouts\Layout1.Designer.cs">
+      <DependentUpon>Layout1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\Menu\Student\StudentSurveys.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Menu\Student\StudentSurveys.Designer.cs">
+      <DependentUpon>StudentSurveys.cs</DependentUpon>
+    </Compile>
     <Compile Include="Window\Menu\Teacher\TeacherTeamAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,6 +237,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Window\Auth\Auth.resx">
       <DependentUpon>Auth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Menu\Student\StudentSurveyLayouts\Layout3.resx">
+      <DependentUpon>Layout3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Menu\Student\StudentSurveyLayouts\Layout2.resx">
+      <DependentUpon>Layout2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Menu\Student\StudentSurveyLayouts\Layout1.resx">
+      <DependentUpon>Layout1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Menu\Student\StudentSurveys.resx">
+      <DependentUpon>StudentSurveys.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Window\Menu\Teacher\TeacherTeamAdd.resx">
       <DependentUpon>TeacherTeamAdd.cs</DependentUpon>

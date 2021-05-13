@@ -45,7 +45,7 @@ namespace WinFormInfSys
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)                       { Application.Exit(); }
         private void тестБелбинаToolStripMenuItem_Click(object sender, EventArgs e)                 { Utils.switchWindow(this, new StudentBelbin(role)); }
         private void таблицаПроектовToolStripMenuItem_Click(object sender, EventArgs e)             { Utils.switchWindow(this, new StudentProjects(role)); }
-        private void опросыToolStripMenuItem_Click(object sender, EventArgs e)                      { /*todo*/ }
+        private void опросыToolStripMenuItem_Click(object sender, EventArgs e)                      { Utils.switchWindow(this, new StudentSurveys(role)); }
         private void руководствоПользователяToolStripMenuItem_Click(object sender, EventArgs e)     { /*todo*/ }
         private void добавитьЗаданиеToolStripMenuItem_Click(object sender, EventArgs e)             { Utils.switchWindow(this, new TeacherTaskAdd(role)); }
         private void таблицаПроектовToolStripMenuItem1_Click(object sender, EventArgs e)            { Utils.switchWindow(this, new TeacherProjects(role)); }
@@ -58,7 +58,7 @@ namespace WinFormInfSys
         private void списокГруппToolStripMenuItem_Click(object sender, EventArgs e)                 { Utils.switchWindow(this, new AdminGroupsList()); }
         private void списокСтудентовToolStripMenuItem_Click(object sender, EventArgs e)             { Utils.switchWindow(this, new AdminStudentsList()); }
         private void списокДисциплинToolStripMenuItem_Click(object sender, EventArgs e)             { Utils.switchWindow(this, new AdminDisciplinesList()); }
-
+       
     }
 
 }
