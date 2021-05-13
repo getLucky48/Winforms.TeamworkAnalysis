@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using WinFormInfSys.Class;
 using static WinFormInfSys.Auth;
@@ -30,9 +31,15 @@ namespace WinFormInfSys.Window
             Utils.bind(GroupList, "is_group", "name");
             Utils.bind(DisciplinesList, "is_discipline", "name");
 
+            studAll = new List<Tuple<int, string, string>>();
+            groupNew = new List<Tuple<int, string, string>>();
+
         }
 
         private int currentNum { get; set; }
+
+        private List<Tuple<int, string, string>> studAll { get; set; }
+        private List<Tuple<int, string, string>> groupNew { get; set; }
 
         private void buildLists()
         {
@@ -43,11 +50,14 @@ namespace WinFormInfSys.Window
 
             this.currentNum = -1;
 
-            Utils.initTable(Table, new string[] { "ФИО", "Роль", "Бригада"});
+            Utils.initTable(Table, new string[] { "ФИО", "Роль", "Бригада" });
+
+            studAll.Clear();
+            groupNew.Clear();
 
             AllStudents.Items.Clear();
             NewTeam.Items.Clear();
-           
+
             string groupName = GroupList.SelectedItem.ToString();
 
             string query = $@"
@@ -99,7 +109,7 @@ namespace WinFormInfSys.Window
                     int tNum = -1;
                     int.TryParse(num, out tNum);
 
-                    if(tNum > this.currentNum) { this.currentNum = tNum; }
+                    if (tNum > this.currentNum) { this.currentNum = tNum; }
 
                     Utils.fillRow(Table, new Control[] { lblName, lblRole, lblNum }, row + 1);
 
@@ -109,15 +119,22 @@ namespace WinFormInfSys.Window
 
                 }
 
-                AllStudents.Items.Add($"{reader["id"]} | {name}, {roleByBelbin}");
+                studAll.Add(new Tuple<int, string, string>( int.Parse(reader["id"].ToString()), name, roleByBelbin) );
 
             }
 
             connection.Close();
 
+            for(int i = 0; i < studAll.Count; i++)
+            {
+
+                AllStudents.Items.Add($"{studAll[i].Item2} {studAll[i].Item3}");
+
+            }
+
             Table.ResumeLayout();
 
-            StudentsCount.Text = $"Число нераспределенных студентов: {AllStudents.Items.Count}";
+            StudentsCount.Text = $"Число нераспределенных студентов: {studAll.Count}";
 
         }
 
@@ -133,12 +150,19 @@ namespace WinFormInfSys.Window
 
             object sel = AllStudents.SelectedItem;
 
-            if(sel == null) { return; }
+            if (sel == null) { return; }
+
+            int indx = AllStudents.Items.IndexOf(sel);
+
+            Tuple<int, string, string> target = studAll[indx];
+            studAll.RemoveAt(indx);
+            groupNew.Add(target);
+
 
             AllStudents.Items.Remove(sel);
             NewTeam.Items.Add(sel);
 
-            StudentsCount.Text = $"Число нераспределенных студентов: {AllStudents.Items.Count}";
+            StudentsCount.Text = $"Число нераспределенных студентов: {studAll.Count}";
 
         }
 
@@ -149,17 +173,23 @@ namespace WinFormInfSys.Window
 
             if (sel == null) { return; }
 
+            int indx = NewTeam.Items.IndexOf(sel);
+
+            Tuple<int, string, string> target = groupNew[indx];
+            groupNew.RemoveAt(indx);
+            studAll.Add(target);
+
             NewTeam.Items.Remove(sel);
             AllStudents.Items.Add(sel);
 
-            StudentsCount.Text = $"Число нераспределенных студентов: {AllStudents.Items.Count}";
+            StudentsCount.Text = $"Число нераспределенных студентов: {studAll.Count}";
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if (DisciplinesList.SelectedIndex == -1 || GroupList.SelectedIndex == -1)
+            if (DisciplinesList.SelectedIndex == -1 || GroupList.SelectedIndex == -1 || NewTeam.Items.Count < 1)
             {
 
                 MessageBox.Show("Проверьте правильность данных");
@@ -167,9 +197,6 @@ namespace WinFormInfSys.Window
                 return;
 
             }
-
-
-
 
             string select = $@"
 
@@ -218,7 +245,7 @@ namespace WinFormInfSys.Window
                         '{reader["discipline_id"]}',
                         '{reader["teacher_id"]}',
                         '@studentId',
-                        { (string.IsNullOrEmpty(reader["deadline"].ToString()) ? "null" : $"CAST('{(DateTime)reader["deadline"]:yyyyMMdd}' as date)" ) }
+                        { (string.IsNullOrEmpty(reader["deadline"].ToString()) ? "null" : $"CAST('{(DateTime)reader["deadline"]:yyyyMMdd}' as date)") }
                         ,
                         '{reader["descr"]}',
                         0,
@@ -239,11 +266,10 @@ namespace WinFormInfSys.Window
 
             string query = string.Empty;
 
-            for(int i = 0; i < NewTeam.Items.Count; i++)
+            for (int i = 0; i < groupNew.Count; i++)
             {
 
-                int indx = NewTeam.Items[i].ToString().IndexOf('|');
-                int userId = int.Parse(NewTeam.Items[i].ToString().Substring(0, indx));
+                int userId = groupNew[i].Item1;
 
                 query += insert.Replace("@studentId", userId.ToString());
 

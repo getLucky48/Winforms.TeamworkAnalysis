@@ -1,5 +1,6 @@
 ﻿
-namespace WinFormInfSys.Window { 
+namespace WinFormInfSys.Window
+{
     partial class TeacherTeamAdd
     {
         /// <summary>
