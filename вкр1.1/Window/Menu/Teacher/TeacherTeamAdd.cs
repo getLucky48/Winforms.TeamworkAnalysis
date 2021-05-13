@@ -7,7 +7,7 @@ using static WinFormInfSys.Auth;
 
 namespace WinFormInfSys.Window
 {
-    //todo: выбор лидера
+
     //todo: рекомендации
 
     public partial class TeacherTeamAdd : Form
@@ -50,13 +50,15 @@ namespace WinFormInfSys.Window
 
             this.currentNum = -1;
 
-            Utils.initTable(Table, new string[] { "ФИО", "Роль", "Бригада" });
+            Utils.initTable(Table, new string[] { "ФИО", "Роль", "Бригада", " " });
 
             studAll.Clear();
             groupNew.Clear();
 
             AllStudents.Items.Clear();
             NewTeam.Items.Clear();
+            Leader.Items.Clear();
+
 
             string groupName = GroupList.SelectedItem.ToString();
 
@@ -67,7 +69,8 @@ namespace WinFormInfSys.Window
                 isu.id as id,
                 isu.name as name,
                 istr.rolebybelbin as role,
-                (select num from is_team where user_id = isu.id limit 1) as num
+                (select num from is_team where user_id = isu.id limit 1) as num,
+                (select leader from is_team where user_id = isu.id limit 1) as leader
       
                 from is_user isu
 
@@ -96,8 +99,11 @@ namespace WinFormInfSys.Window
                 string name = reader["name"].ToString();
                 string roleByBelbin = reader["role"].ToString();
                 string num = reader["num"].ToString();
+                string leader = reader["leader"].ToString();
 
                 if (string.IsNullOrEmpty(roleByBelbin)) { roleByBelbin = "*Тест не пройден*"; }
+                if (string.IsNullOrEmpty(leader)) { leader = " "; }
+
 
                 if (!string.IsNullOrEmpty(num))
                 {
@@ -105,13 +111,14 @@ namespace WinFormInfSys.Window
                     Label lblName = Utils.buildLabel(name, row.ToString());
                     Label lblRole = Utils.buildLabel(roleByBelbin, row.ToString());
                     Label lblNum = Utils.buildLabel(num, row.ToString());
+                    Label lblLeader = Utils.buildLabel(leader.Equals("1") ? "Лидер" : " ", row.ToString());
 
                     int tNum = -1;
                     int.TryParse(num, out tNum);
 
                     if (tNum > this.currentNum) { this.currentNum = tNum; }
 
-                    Utils.fillRow(Table, new Control[] { lblName, lblRole, lblNum }, row + 1);
+                    Utils.fillRow(Table, new Control[] { lblName, lblRole, lblNum, lblLeader }, row + 1);
 
                     row++;
 
@@ -158,9 +165,9 @@ namespace WinFormInfSys.Window
             studAll.RemoveAt(indx);
             groupNew.Add(target);
 
-
             AllStudents.Items.Remove(sel);
             NewTeam.Items.Add(sel);
+            Leader.Items.Add(sel);
 
             StudentsCount.Text = $"Число нераспределенных студентов: {studAll.Count}";
 
@@ -181,6 +188,7 @@ namespace WinFormInfSys.Window
 
             NewTeam.Items.Remove(sel);
             AllStudents.Items.Add(sel);
+            Leader.Items.Remove(sel);
 
             StudentsCount.Text = $"Число нераспределенных студентов: {studAll.Count}";
 
@@ -189,7 +197,7 @@ namespace WinFormInfSys.Window
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if (DisciplinesList.SelectedIndex == -1 || GroupList.SelectedIndex == -1 || NewTeam.Items.Count < 1)
+            if (DisciplinesList.SelectedIndex == -1 || GroupList.SelectedIndex == -1 || NewTeam.Items.Count < 1 || Leader.SelectedIndex == -1)
             {
 
                 MessageBox.Show("Проверьте правильность данных");
@@ -255,7 +263,7 @@ namespace WinFormInfSys.Window
                     );
 
                     insert into is_team(designation, num, leader, user_id, project_id)
-                    values('{guid}', '{(this.currentNum > 0 ? this.currentNum + 1 : 1)}', 0, '@studentId', '{reader["id"]}');
+                    values('{guid}', '{(this.currentNum > 0 ? this.currentNum + 1 : 1)}', @isLeader, '@studentId', '{reader["id"]}');
 
 
                 ";
@@ -266,12 +274,14 @@ namespace WinFormInfSys.Window
 
             string query = string.Empty;
 
+            int leadIndx = Leader.SelectedIndex;
+
             for (int i = 0; i < groupNew.Count; i++)
             {
 
                 int userId = groupNew[i].Item1;
 
-                query += insert.Replace("@studentId", userId.ToString());
+                query += insert.Replace("@studentId", userId.ToString()).Replace("@isLeader", i == leadIndx ? "1" : "0");
 
             }
 

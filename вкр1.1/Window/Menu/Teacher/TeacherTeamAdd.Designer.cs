@@ -44,6 +44,8 @@ namespace WinFormInfSys.Window
             this.button1 = new System.Windows.Forms.Button();
             this.Table = new System.Windows.Forms.TableLayoutPanel();
             this.StudentsCount = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.Leader = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // DisciplinesList
@@ -112,7 +114,7 @@ namespace WinFormInfSys.Window
             this.NewTeam.FormattingEnabled = true;
             this.NewTeam.Location = new System.Drawing.Point(323, 278);
             this.NewTeam.Name = "NewTeam";
-            this.NewTeam.Size = new System.Drawing.Size(230, 238);
+            this.NewTeam.Size = new System.Drawing.Size(230, 147);
             this.NewTeam.TabIndex = 7;
             // 
             // label4
@@ -155,7 +157,7 @@ namespace WinFormInfSys.Window
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(407, 522);
+            this.button1.Location = new System.Drawing.Point(402, 493);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 13;
@@ -186,11 +188,30 @@ namespace WinFormInfSys.Window
             this.StudentsCount.TabIndex = 15;
             this.StudentsCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(321, 440);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(233, 23);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Назначить лидером";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Leader
+            // 
+            this.Leader.FormattingEnabled = true;
+            this.Leader.Location = new System.Drawing.Point(323, 466);
+            this.Leader.Name = "Leader";
+            this.Leader.Size = new System.Drawing.Size(230, 21);
+            this.Leader.TabIndex = 17;
+            // 
             // TeacherTeamAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1146, 563);
+            this.Controls.Add(this.Leader);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.StudentsCount);
             this.Controls.Add(this.Table);
             this.Controls.Add(this.button1);
@@ -230,5 +251,7 @@ namespace WinFormInfSys.Window
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TableLayoutPanel Table;
         private System.Windows.Forms.Label StudentsCount;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox Leader;
     }
 }
