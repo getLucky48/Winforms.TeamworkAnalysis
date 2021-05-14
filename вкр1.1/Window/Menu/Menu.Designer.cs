@@ -51,6 +51,7 @@ namespace WinFormInfSys
             this.списокГруппToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокСтудентовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокДисциплинToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UserInfo = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -234,11 +235,20 @@ namespace WinFormInfSys
             this.списокДисциплинToolStripMenuItem.Text = "Список дисциплин";
             this.списокДисциплинToolStripMenuItem.Click += new System.EventHandler(this.списокДисциплинToolStripMenuItem_Click);
             // 
+            // UserInfo
+            // 
+            this.UserInfo.AutoSize = true;
+            this.UserInfo.Location = new System.Drawing.Point(12, 24);
+            this.UserInfo.Name = "UserInfo";
+            this.UserInfo.Size = new System.Drawing.Size(0, 13);
+            this.UserInfo.TabIndex = 1;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 348);
+            this.Controls.Add(this.UserInfo);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Menu";
@@ -273,6 +283,7 @@ namespace WinFormInfSys
         private System.Windows.Forms.ToolStripMenuItem списокГруппToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem списокСтудентовToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem списокДисциплинToolStripMenuItem;
+        private System.Windows.Forms.Label UserInfo;
     }
 }
 

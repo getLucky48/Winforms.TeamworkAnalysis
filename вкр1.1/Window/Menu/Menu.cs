@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Windows.Forms;
 using WinFormInfSys.Class;
 using WinFormInfSys.Window;
@@ -37,9 +38,40 @@ namespace WinFormInfSys
 
             this.role = role;
 
+            infoUser();
+
         }
 
         private Tuple<Role, int> role;
+
+        private void infoUser()
+        {
+
+            string query = $"select * from is_user where id = {this.role.Item2}";
+
+            MySqlConnection connection = DBUtils.getConnection();
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            string userName = string.Empty;
+
+            while (reader.Read())
+            {
+
+                userName = reader["name"].ToString();
+
+                break;
+
+            }
+
+            connection.Close();
+
+            UserInfo.Text = $"Вы авторизованы как {userName}";
+
+        }
 
         private void сменитьПользователяToolStripMenuItem_Click_1(object sender, EventArgs e)       { this.Close(); }
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)                       { Application.Exit(); }
