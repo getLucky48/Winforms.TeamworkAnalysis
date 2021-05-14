@@ -21,52 +21,13 @@ namespace WinFormInfSys.Window
 
             Utils.bind(GroupList, "is_group", "name");
 
-            completed = new List<Label>();
-            uncompleted = new List<Label>();
-
-        }
-
-        private List<Label> completed { get; set; }
-        private List<Label> uncompleted { get; set; }
-
-        private void refreshLists()
-        {
-
-            for (int i = 0; i < completed.Count; i++)
-            {
-
-                Label l = completed[i];
-                l.Parent = Complete;
-                l.Location = new Point(0, i * 25);
-
-            }
-
-            for (int i = 0; i < uncompleted.Count; i++)
-            {
-
-                Label l = uncompleted[i];
-                l.Parent = Uncomplete;
-                l.Location = new Point(0, i * 25);
-
-            }
-
-        }
-
-        private Label buildLabel(int parentWidth, string text)
-        {
-
-            Label res = new Label();
-            res.Width = parentWidth - res.Width - 10 - 20;
-            res.Text = text;
-
-            return res;
-
         }
 
         private void formLists(string groupName)
         {
 
-            clearLists();
+            Complete.Items.Clear();
+            Uncomplete.Items.Clear();
 
             string query = $@"
 
@@ -74,7 +35,7 @@ namespace WinFormInfSys.Window
 
                         isu.name,
                         isu.id,
-                        istr.rolebybelbin as role
+                        concat(istr.rolebybelbin, ' ', istr.rolebybelbin_s, ' ', istr.rolebybelbin_t ) as role
 
                         from is_user isu 
 
@@ -97,16 +58,8 @@ namespace WinFormInfSys.Window
             while (reader.Read())
             {
 
-                Label l = buildLabel((int)(Complete.Width * 0.85), reader["name"].ToString());
-
-                if (string.IsNullOrEmpty(reader["role"].ToString())) { uncompleted.Add(l);  }
-                else {
-
-                    l.Text += $" [{reader["role"]}]";
-
-                    completed.Add(l);
-                
-                }
+                if (string.IsNullOrEmpty(reader["role"].ToString())) { Uncomplete.Items.Add(reader["name"].ToString());  }
+                else { Complete.Items.Add($"{reader["name"]} [{reader["role"]}]"); }
 
             }
 
@@ -114,22 +67,10 @@ namespace WinFormInfSys.Window
 
         }
 
-        private void clearLists()
-        {
-
-            Complete.Controls.Clear();
-            Uncomplete.Controls.Clear();
-
-            completed = new List<Label>();
-            uncompleted = new List<Label>();
-
-        }
-
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             formLists(GroupList.SelectedItem.ToString());
-            refreshLists();
 
         }
     }

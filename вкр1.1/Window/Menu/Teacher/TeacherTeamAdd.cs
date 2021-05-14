@@ -68,7 +68,7 @@ namespace WinFormInfSys.Window
 
                 isu.id as id,
                 isu.name as name,
-                istr.rolebybelbin as role,
+                concat(istr.rolebybelbin, ' ', istr.rolebybelbin_s, ' ', istr.rolebybelbin_t ) as role,
                 (select num from is_team where user_id = isu.id limit 1) as num,
                 (select leader from is_team where user_id = isu.id limit 1) as leader
       
