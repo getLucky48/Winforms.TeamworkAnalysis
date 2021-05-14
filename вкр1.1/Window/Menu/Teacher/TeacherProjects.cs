@@ -1,13 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormInfSys.Class;
 using static WinFormInfSys.Auth;
@@ -30,42 +22,48 @@ namespace WinFormInfSys
             this.role = role;
 
             Utils.bind(CurrentDiscipline, "is_discipline", "name");
+            Utils.bind(CurrentGroup, "is_group", "name");
 
+            Utils.fillRow(Table, new Control[] {
+                new Label(){Text = "Дисциплина", AutoSize = true },
+                new Label(){Text = "Номер \nбригады", AutoSize = true},
+                new Label(){Text = "Студент", AutoSize = true},
+                new Label(){Text = "Этап 1\nпостановка задачи" , AutoSize = true},
+                new Label(){Text = "Этап 2\nтестовые данные", AutoSize = true},
+                new Label(){Text = "Этап 3\nструктура и алгоритмы", AutoSize = true},
+                new Label(){Text = "Этап 4\nинтерфейс", AutoSize = true},
+                new Label(){Text = "Этап 5\nотладка", AutoSize = true},
+                new Label(){Text = "Этап 6\nзащита", AutoSize = true},
+                new Label(){Text = "Оценка", AutoSize = true}
+            }, 0);
         }
 
         private Tuple<Role, int> role { get; set; }
 
-        private enum GroupingRule
-        {
-
-
-            Bottom,
-            Middle,
-            Top,
-            Completed
-
-        }
-
-        private void CurrentDiscipline_SelectedIndexChanged(object sender, EventArgs e)
+        private void fillTable()
         {
 
             Table.SuspendLayout();
 
-            Utils.initTable(Table, new string[] {
-                "Проект",
-                "Группа",
-                "Номер \nбригады",
-                "Студент",
-                "Этап 1\nпостановка задачи",
-                "Этап 2\nтестовые данные",
-                "Этап 3\nструктура и алгоритмы",
-                "Этап 4\nинтерфейс",
-                "Этап 5\nотладка",
-                "Этап 6\nзащита",
-                "Оценка"
-            });
+            Table.Controls.Clear();
+            Utils.fillRow(Table, new Control[] {
+                new Label(){Text = "Проект", AutoSize = true },
+                new Label(){Text = "Номер \nбригады", AutoSize = true},
+                new Label(){Text = "Студент", AutoSize = true},
+                new Label(){Text = "Этап 1\nпостановка задачи" , AutoSize = true},
+                new Label(){Text = "Этап 2\nтестовые данные", AutoSize = true},
+                new Label(){Text = "Этап 3\nструктура и алгоритмы", AutoSize = true},
+                new Label(){Text = "Этап 4\nинтерфейс", AutoSize = true},
+                new Label(){Text = "Этап 5\nотладка", AutoSize = true},
+                new Label(){Text = "Этап 6\nзащита", AutoSize = true},
+                new Label(){Text = "Оценка", AutoSize = true}
+            }, 0);
+
+            if (CurrentDiscipline.SelectedIndex == -1 || CurrentGroup.SelectedIndex == -1) { Table.ResumeLayout(); return; }
 
             string discipline = CurrentDiscipline.SelectedItem.ToString();
+            string gr = CurrentGroup.SelectedItem.ToString();
+
 
             string query = $@"
 
@@ -79,7 +77,7 @@ namespace WinFormInfSys
                 from is_project isp 
 
 				join is_user isu on isu.id = isp.student_Id
-                join is_group isg on isg.id = isu.group_id
+                join is_group isg on isg.id = (select id from is_group where name = '{gr}' limit 1)
                	join is_team ist on ist.user_id = isp.student_Id
 
                 where 
@@ -105,7 +103,6 @@ namespace WinFormInfSys
             while (reader.Read())
             {
 
-                string g = reader["groupname"].ToString();
                 string t = reader["teamnum"].ToString();
                 string p = reader["name"].ToString();
                 string u = reader["student"].ToString();
@@ -117,7 +114,6 @@ namespace WinFormInfSys
                 string s6 = reader["step6"].ToString();
                 string s = reader["score"].ToString();
 
-                Label group = Utils.buildLabel(g, row.ToString());
                 Label team = Utils.buildLabel(t, row.ToString());
                 Label proj = Utils.buildLabel(p, row.ToString());
                 Label student = Utils.buildLabel(u, row.ToString());
@@ -131,7 +127,6 @@ namespace WinFormInfSys
 
                 Utils.fillRow(Table, new Control[] {
                     proj,
-                    group,
                     team,
                     student,
                     step1,
@@ -150,6 +145,20 @@ namespace WinFormInfSys
             connection.Close();
 
             Table.ResumeLayout();
+
+        }
+
+        private void CurrentDiscipline_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            fillTable();
+
+        }
+
+        private void CurrentGroup_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            fillTable();
 
         }
 

@@ -32,6 +32,8 @@ namespace WinFormInfSys
             this.CurrentDiscipline = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Table = new System.Windows.Forms.TableLayoutPanel();
+            this.CurrentGroup = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // CurrentDiscipline
@@ -57,23 +59,52 @@ namespace WinFormInfSys
             this.Table.AutoScroll = true;
             this.Table.AutoSize = true;
             this.Table.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.Table.ColumnCount = 1;
-            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.Table.ColumnCount = 10;
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.Table.Location = new System.Drawing.Point(3, 50);
             this.Table.Name = "Table";
             this.Table.RowCount = 1;
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.Table.Size = new System.Drawing.Size(1264, 681);
+            this.Table.Size = new System.Drawing.Size(1082, 681);
             this.Table.TabIndex = 10;
+            // 
+            // CurrentGroup
+            // 
+            this.CurrentGroup.FormattingEnabled = true;
+            this.CurrentGroup.Location = new System.Drawing.Point(236, 23);
+            this.CurrentGroup.Name = "CurrentGroup";
+            this.CurrentGroup.Size = new System.Drawing.Size(227, 21);
+            this.CurrentGroup.TabIndex = 11;
+            this.CurrentGroup.SelectedIndexChanged += new System.EventHandler(this.CurrentGroup_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(236, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Группа";
             // 
             // TeacherProjects
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1088, 681);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.Table);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CurrentDiscipline);
+            this.Controls.Add(this.CurrentGroup);
             this.Name = "TeacherProjects";
             this.Text = "Таблица проектов";
             this.ResumeLayout(false);
@@ -85,5 +116,7 @@ namespace WinFormInfSys
         private System.Windows.Forms.ComboBox CurrentDiscipline;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel Table;
+        private System.Windows.Forms.ComboBox CurrentGroup;
+        private System.Windows.Forms.Label label2;
     }
 }
