@@ -33,7 +33,6 @@ namespace WinFormInfSys.Window
             this.GroupList = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.Recommendation = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.AllStudents = new System.Windows.Forms.ListBox();
             this.NewTeam = new System.Windows.Forms.ListBox();
@@ -46,6 +45,7 @@ namespace WinFormInfSys.Window
             this.StudentsCount = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.Leader = new System.Windows.Forms.ComboBox();
+            this.Recommendation = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // DisciplinesList
@@ -82,15 +82,6 @@ namespace WinFormInfSys.Window
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Группа";
-            // 
-            // Recommendation
-            // 
-            this.Recommendation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Recommendation.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Recommendation.Location = new System.Drawing.Point(12, 106);
-            this.Recommendation.Name = "Recommendation";
-            this.Recommendation.Size = new System.Drawing.Size(542, 117);
-            this.Recommendation.TabIndex = 4;
             // 
             // label3
             // 
@@ -205,11 +196,21 @@ namespace WinFormInfSys.Window
             this.Leader.Size = new System.Drawing.Size(230, 21);
             this.Leader.TabIndex = 17;
             // 
+            // Recommendation
+            // 
+            this.Recommendation.Location = new System.Drawing.Point(12, 106);
+            this.Recommendation.Name = "Recommendation";
+            this.Recommendation.ReadOnly = true;
+            this.Recommendation.Size = new System.Drawing.Size(540, 116);
+            this.Recommendation.TabIndex = 18;
+            this.Recommendation.Text = "";
+            // 
             // TeacherTeamAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1146, 563);
+            this.Controls.Add(this.Recommendation);
             this.Controls.Add(this.Leader);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.StudentsCount);
@@ -223,7 +224,6 @@ namespace WinFormInfSys.Window
             this.Controls.Add(this.AllStudents);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.Recommendation);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.GroupList);
             this.Controls.Add(this.DisciplinesList);
@@ -241,7 +241,6 @@ namespace WinFormInfSys.Window
         private System.Windows.Forms.ComboBox GroupList;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label Recommendation;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox AllStudents;
         private System.Windows.Forms.ListBox NewTeam;
@@ -254,5 +253,6 @@ namespace WinFormInfSys.Window
         private System.Windows.Forms.Label StudentsCount;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox Leader;
+        private System.Windows.Forms.RichTextBox Recommendation;
     }
 }

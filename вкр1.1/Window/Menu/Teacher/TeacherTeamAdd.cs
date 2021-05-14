@@ -41,6 +41,152 @@ namespace WinFormInfSys.Window
         private List<Tuple<int, string, string>> studAll { get; set; }
         private List<Tuple<int, string, string>> groupNew { get; set; }
 
+        private List<Tuple<string, string, string, string>> _getFirst(List<Tuple<string, string, string, string>> list)
+        {
+
+            List<Tuple<string, string, string, string>> result = new List<Tuple<string, string, string, string>>();
+
+            for(int i = 0; i < list.Count; i++)
+            {
+
+                if (list[i].Item2.Contains("Исследователь")) { result.Add(list[i]); }
+                if (list[i].Item2.Contains("Координатор")) { result.Add(list[i]); }
+                if (list[i].Item2.Contains("Творец")) { result.Add(list[i]); }
+
+            }
+
+            if (result.Count != 0) { return result; }
+
+            for (int i = 0; i < list.Count; i++)
+            {
+
+                if (list[i].Item3.Contains("Исследователь")) { result.Add(list[i]); }
+                if (list[i].Item3.Contains("Координатор")) { result.Add(list[i]); }
+                if (list[i].Item3.Contains("Творец")) { result.Add(list[i]); }
+
+            }
+
+            if (result.Count != 0) { return result; }
+
+            for (int i = 0; i < list.Count; i++)
+            {
+
+                if (list[i].Item4.Contains("Исследователь")) { result.Add(list[i]); }
+                if (list[i].Item4.Contains("Координатор")) { result.Add(list[i]); }
+                if (list[i].Item4.Contains("Творец")) { result.Add(list[i]); }
+
+            }
+
+            return result;
+
+        }
+
+        private List<Tuple<string, string, string, string>> _getSecond(List<Tuple<string, string, string, string>> all, Tuple<string, string, string, string> leader)
+        {
+
+            List<Tuple<string, string, string, string>> result = new List<Tuple<string, string, string, string>>();
+
+            for (int i = 0; i < all.Count; i++)
+            {
+
+                if (!leader.Item2.Contains(all[i].Item2)
+                && !leader.Item3.Contains(all[i].Item3)
+                && !leader.Item4.Contains(all[i].Item4)) { result.Add(all[i]); }
+
+            }
+
+            //if (result.Count != 0) { return result; }
+
+            //for (int i = 0; i < all.Count; i++)
+            //{
+
+            //    if (!leader.Item2.Contains(all[i].Item2)
+            //    && !leader.Item3.Contains(all[i].Item3)) { result.Add(all[i]); }
+
+            //}
+
+            //if (result.Count != 0) { return result; }
+            //for (int i = 0; i < all.Count; i++)
+            //{
+
+            //    if (!leader.Item2.Contains(all[i].Item2)
+            //    && !leader.Item4.Contains(all[i].Item4)) { result.Add(all[i]); }
+
+            //}
+
+            //if (result.Count != 0) { return result; }
+
+            //for (int i = 0; i < all.Count; i++)
+            //{
+
+            //    if (!leader.Item3.Contains(all[i].Item3)
+            //    && !leader.Item4.Contains(all[i].Item4)) { result.Add(all[i]); }
+
+            //}
+
+            //if (result.Count != 0) { return result; }
+
+
+            return result;
+
+        }
+
+        private void buildRecommend()
+        {
+
+            //name  role1   role2   role3
+            List<Tuple<string, string, string, string>> list = new List<Tuple<string, string, string, string>>();
+          
+            for(int i = 0; i < studAll.Count; i++)
+            {
+
+                if(studAll[i].Item3.Contains("*Тест не пройден*")) { continue; }
+
+                string name = studAll[i].Item2;
+                string[] roles = studAll[i].Item3.Split(new char[] { ',' });
+
+                list.Add(new Tuple<string, string, string, string>(name, roles[0], roles[1], roles[2]));
+
+            }
+
+            if(list.Count < 3) { return; }
+
+            List<Tuple<string, string, string, string>> first = _getFirst(list);
+
+            if(first.Count == 0) { return; }
+
+            string res = "";
+            for(int i = 0; i < first.Count; i++)
+            {
+
+                List<Tuple<string, string, string, string>> second = _getSecond(list, first[i]);
+
+                for(int j = 0; j < second.Count; j++)
+                {
+
+                    List<Tuple<string, string, string, string>> third = _getSecond(list, second[j]);
+
+                    for(int k = 0; k < third.Count; k++)
+                    {
+
+                        if(first[i].Item2 == third[k].Item2 && first[i].Item3 == third[k].Item3 && first[i].Item4 == third[k].Item4) { continue; }
+
+                        res += $"{first[i].Item1} | {first[i].Item2} {first[i].Item3} {first[i].Item4} \n";
+                        res += $"{second[j].Item1} | {second[j].Item2} {second[j].Item3} {second[j].Item4} \n";
+                        res += $"{third[k].Item1} | {third[k].Item2} {third[k].Item3} {third[k].Item4} \n";
+
+                        res += "\n\n";
+
+                    }
+
+                }
+
+            }
+
+            Recommendation.Text = res;
+
+        }
+
         private void buildLists()
         {
 
@@ -68,7 +214,7 @@ namespace WinFormInfSys.Window
 
                 isu.id as id,
                 isu.name as name,
-                concat(istr.rolebybelbin, ' ', istr.rolebybelbin_s, ' ', istr.rolebybelbin_t ) as role,
+                concat(istr.rolebybelbin, ', ', istr.rolebybelbin_s, ', ', istr.rolebybelbin_t ) as role,
                 (select num from is_team where user_id = isu.id limit 1) as num,
                 (select leader from is_team where user_id = isu.id limit 1) as leader
       
@@ -142,6 +288,8 @@ namespace WinFormInfSys.Window
             Table.ResumeLayout();
 
             StudentsCount.Text = $"Число нераспределенных студентов: {studAll.Count}";
+
+            buildRecommend();
 
         }
 

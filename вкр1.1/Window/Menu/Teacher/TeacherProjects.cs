@@ -18,7 +18,7 @@ namespace WinFormInfSys
         {
 
             InitializeComponent();
-
+            
             this.role = role;
 
             Utils.bind(CurrentDiscipline, "is_discipline", "name");
