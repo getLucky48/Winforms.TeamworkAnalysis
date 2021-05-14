@@ -23,10 +23,11 @@ namespace WinFormInfSys.Class
 
             table.ColumnCount = columns.Length;
 
-            for(int i = 0; i < columns.Length; i++)
+            for (int i = 0; i < columns.Length; i++)
             {
 
                 table.Controls.Add(new Label() { Text = columns[i], AutoSize = true }, i, 0);
+                
 
             }
 
@@ -40,6 +41,7 @@ namespace WinFormInfSys.Class
             Label res = new Label();
             res.Text = text;
             res.Name = $"LabelNum{data}";
+            res.AutoSize = true;
 
             return res;
 

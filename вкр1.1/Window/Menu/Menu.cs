@@ -52,7 +52,7 @@ namespace WinFormInfSys
         private void результатыТестаToolStripMenuItem_Click_1(object sender, EventArgs e)           { Utils.switchWindow(this, new TeacherBelbinResults()); }
         private void создатьБригадыToolStripMenuItem_Click_1(object sender, EventArgs e)            { Utils.switchWindow(this, new TeacherTeamAdd(role)); }
         private void графикиУспеваемостиToolStripMenuItem_Click(object sender, EventArgs e)         { /*todo*/ }
-        private void результатыОпросовToolStripMenuItem_Click(object sender, EventArgs e)           { /*todo*/ }
+        private void результатыОпросовToolStripMenuItem_Click(object sender, EventArgs e)           { Utils.switchWindow(this, new TeacherSurveyResults()); }
         private void руководствоПользователяToolStripMenuItem1_Click(object sender, EventArgs e)    { /*todo*/ }
         private void списокПреподавателейToolStripMenuItem_Click(object sender, EventArgs e)        { Utils.switchWindow(this, new AdminTeachersList()); }
         private void списокГруппToolStripMenuItem_Click(object sender, EventArgs e)                 { Utils.switchWindow(this, new AdminGroupsList()); }

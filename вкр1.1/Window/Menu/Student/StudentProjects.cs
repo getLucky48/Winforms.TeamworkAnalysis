@@ -9,6 +9,8 @@ using static WinFormInfSys.Auth;
 
 namespace WinFormInfSys
 {
+
+    //todo: open proj
     public partial class StudentProjects : Form
     {
         public StudentProjects()
@@ -134,41 +136,6 @@ namespace WinFormInfSys
 
         }
 
-        private void Res_Click(object sender, EventArgs e)
-        {
-
-            int id = int.Parse(((Button)sender).Name.Replace("ButtonOpenProj_", string.Empty));
-
-            string query = $"select * from is_discipline where id = {id}";
-
-            MySqlConnection conn = DBUtils.getConnection();
-            conn.Open();
-
-            MySqlCommand cmd = new MySqlCommand(query, conn);
-
-            MySqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-
-                //todo: open step
-                break;
-
-            }
-
-            conn.Close();
-
-        }
-
-        private enum GroupingRule
-        {
-
-            Bottom,
-            Middle,
-            Top,
-            Completed
-
-        }
 
     }
 
