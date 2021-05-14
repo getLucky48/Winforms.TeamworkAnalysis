@@ -341,7 +341,7 @@ namespace WinFormInfSys
 
         }
 
-        private string showResults()
+        private IOrderedEnumerable<KeyValuePair<string,int>> showResults()
         {
 
             var sorted = from t in this.currentSum orderby t.Value descending select t;
@@ -350,11 +350,11 @@ namespace WinFormInfSys
 
             MessageBox.Show($"{rolesByBelbin[title]} \n\n1. {sorted.ElementAt(0).Key}\n2. {sorted.ElementAt(1).Key}\n3. {sorted.ElementAt(2).Key}", $"Ваша роль: {title}");
 
-            return title;
+            return sorted;
 
         }
 
-        private void setRoleByBelbin(string role)
+        private void setRoleByBelbin(string role, string role1, string role2)
         {
 
             string query = $"select * from is_testresult where user_id = '{this.role.Item2}'";
@@ -377,7 +377,7 @@ namespace WinFormInfSys
 
             connection.Close();
 
-            string insert = $"insert into is_testresult(rolebybelbin, user_id) values('{role}', '{this.role.Item2}') ";
+            string insert = $"insert into is_testresult(rolebybelbin, rolebybelbin_s, rolebybelbin_t, user_id) values('{role}','{role1}','{role2}', '{this.role.Item2}') ";
 
             DBUtils.execQuery(insert);
 
@@ -453,7 +453,9 @@ namespace WinFormInfSys
             if (!buildUnits(currentPage))
             {
 
-                setRoleByBelbin(showResults());
+                var sorted = showResults();
+
+                setRoleByBelbin(sorted.ElementAt(0).Key, sorted.ElementAt(1).Key, sorted.ElementAt(2).Key);
 
                 this.Close();
 
