@@ -146,6 +146,12 @@
     <Compile Include="Window\Menu\Student\StudentSurveys.Designer.cs">
       <DependentUpon>StudentSurveys.cs</DependentUpon>
     </Compile>
+    <Compile Include="Window\Menu\Teacher\TeacherPerfomance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Menu\Teacher\TeacherPerfomance.Designer.cs">
+      <DependentUpon>TeacherPerfomance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Window\Menu\Teacher\TeacherSurveyResults.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,6 +261,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Window\Menu\Student\StudentSurveys.resx">
       <DependentUpon>StudentSurveys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Menu\Teacher\TeacherPerfomance.resx">
+      <DependentUpon>TeacherPerfomance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Window\Menu\Teacher\TeacherSurveyResults.resx">
       <DependentUpon>TeacherSurveyResults.cs</DependentUpon>

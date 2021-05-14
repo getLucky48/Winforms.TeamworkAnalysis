@@ -123,3 +123,4 @@ D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.Window.L
 D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.Window.Layout1.resources
 D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.csprojAssemblyReference.cache
 D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.Window.TeacherSurveyResults.resources
+D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.Window.TeacherPerfomance.resources
