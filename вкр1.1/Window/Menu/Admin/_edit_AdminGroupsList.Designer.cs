@@ -98,7 +98,7 @@ namespace WinFormInfSys.Window
             this.CourseList.Size = new System.Drawing.Size(175, 21);
             this.CourseList.TabIndex = 15;
             // 
-            // _edit_Group
+            // _edit_AdminGroupsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -110,7 +110,8 @@ namespace WinFormInfSys.Window
             this.Controls.Add(this.label1);
             this.Controls.Add(this.GroupName);
             this.Controls.Add(this.Create);
-            this.Name = "_edit_Group";
+            this.Name = "_edit_AdminGroupsList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редактирование";
             this.ResumeLayout(false);
             this.PerformLayout();

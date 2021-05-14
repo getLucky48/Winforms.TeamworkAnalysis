@@ -39,6 +39,8 @@ namespace WinFormInfSys.Window
             this.Table3 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.Table4 = new System.Windows.Forms.TableLayoutPanel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.Disciplines = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // Groups
@@ -153,11 +155,31 @@ namespace WinFormInfSys.Window
             this.Table4.Size = new System.Drawing.Size(584, 160);
             this.Table4.TabIndex = 8;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(201, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(70, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Дисциплина";
+            // 
+            // Disciplines
+            // 
+            this.Disciplines.FormattingEnabled = true;
+            this.Disciplines.Location = new System.Drawing.Point(204, 25);
+            this.Disciplines.Name = "Disciplines";
+            this.Disciplines.Size = new System.Drawing.Size(172, 21);
+            this.Disciplines.TabIndex = 10;
+            this.Disciplines.SelectedIndexChanged += new System.EventHandler(this.Disciplines_SelectedIndexChanged);
+            // 
             // TeacherSurveyResults
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1215, 512);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.Disciplines);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Table4);
             this.Controls.Add(this.label4);
@@ -169,6 +191,7 @@ namespace WinFormInfSys.Window
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Groups);
             this.Name = "TeacherSurveyResults";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Результаты опросов";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -187,5 +210,7 @@ namespace WinFormInfSys.Window
         private System.Windows.Forms.TableLayoutPanel Table3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TableLayoutPanel Table4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox Disciplines;
     }
 }

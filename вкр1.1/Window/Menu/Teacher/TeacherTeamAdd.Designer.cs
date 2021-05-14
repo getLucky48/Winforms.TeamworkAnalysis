@@ -228,6 +228,7 @@ namespace WinFormInfSys.Window
             this.Controls.Add(this.GroupList);
             this.Controls.Add(this.DisciplinesList);
             this.Name = "TeacherTeamAdd";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить бригаду";
             this.ResumeLayout(false);
             this.PerformLayout();

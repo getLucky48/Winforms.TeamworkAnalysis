@@ -101,6 +101,7 @@ namespace WinFormInfSys.Window
             this.Controls.Add(this.label2);
             this.Controls.Add(this.GroupList);
             this.Name = "TeacherBelbinResults";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Результаты теста Белбина";
             this.ResumeLayout(false);
             this.PerformLayout();

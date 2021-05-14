@@ -69,6 +69,7 @@ namespace WinFormInfSys.Window
             this.Controls.Add(this.Disc_name);
             this.Controls.Add(this.Create);
             this.Name = "_edit_AdminDisciplinesList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редактирование";
             this.ResumeLayout(false);
             this.PerformLayout();

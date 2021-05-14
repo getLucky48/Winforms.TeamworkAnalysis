@@ -98,6 +98,7 @@ namespace WinFormInfSys.Window
             this.Controls.Add(this.label1);
             this.Controls.Add(this.first);
             this.Name = "StudentSurveys";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Опросы";
             this.ResumeLayout(false);
 

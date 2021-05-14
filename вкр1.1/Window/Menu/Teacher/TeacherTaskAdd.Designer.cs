@@ -171,6 +171,7 @@ namespace WinFormInfSys.Window
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DisciplineList);
             this.Name = "TeacherTaskAdd";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить задание";
             this.ResumeLayout(false);
             this.PerformLayout();

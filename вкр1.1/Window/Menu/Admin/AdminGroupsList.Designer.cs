@@ -129,14 +129,15 @@ namespace WinFormInfSys.Window
             this.Table.Size = new System.Drawing.Size(570, 382);
             this.Table.TabIndex = 3;
             // 
-            // Group
+            // AdminGroupsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(575, 497);
             this.Controls.Add(this.Table);
             this.Controls.Add(this.Editor);
-            this.Name = "Group";
+            this.Name = "AdminGroupsList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Список групп";
             this.Editor.ResumeLayout(false);
             this.Editor.PerformLayout();

@@ -20,61 +20,84 @@ namespace WinFormInfSys.Window
             InitializeComponent();
             this.Text = title;
             this.role = role;
+            Utils.bind(comboBox1, "is_discipline", "name");
 
         }
         private Tuple<Role, int> role { get; set; }
 
-        private RadioButton getSelectedInGroup(Panel panel)
+        private int getSelectedInGroup(Panel panel)
         {
 
-            RadioButton rb = new RadioButton();
+            int indx = -1;
+
+            int curr = 0;
 
             for(int i = 0; i < panel.Controls.Count; i++)
             {
 
-                RadioButton temp = (RadioButton)panel.Controls[i];
+                try
+                {
 
-                if (temp.Checked) { rb = temp; break; }
+                    RadioButton temp = (RadioButton)panel.Controls[i];
+
+                    if (temp.Checked) { indx = curr; break; }
+
+                    curr++;
+
+                }
+                catch (InvalidCastException) { }
 
             }
 
-            return rb;
+            return indx;
 
         }
 
         private void submit_Click(object sender, EventArgs e)
         {
 
+            if(comboBox1.SelectedIndex == -1)
+            {
+
+                MessageBox.Show("Проверьте правильность данных");
+
+                return;
+
+            }
+
             submit.Enabled = false;
 
             string name = this.Text;
 
-            int value1 = question1.Controls.IndexOf(getSelectedInGroup(question1));
-            int value2 = question2.Controls.IndexOf(getSelectedInGroup(question2));
-            int value3 = question3.Controls.IndexOf(getSelectedInGroup(question3));
-            int value4 = question4.Controls.IndexOf(getSelectedInGroup(question4));
-            int value5 = question5.Controls.IndexOf(getSelectedInGroup(question5));
-            int value6 = question6.Controls.IndexOf(getSelectedInGroup(question6));
-            int value7 = question7.Controls.IndexOf(getSelectedInGroup(question7));
-            int value8 = question8.Controls.IndexOf(getSelectedInGroup(question8));
-            int value9 = question9.Controls.IndexOf(getSelectedInGroup(question9));
-            int value10 = question10.Controls.IndexOf(getSelectedInGroup(question10));
-            int value11 = question11.Controls.IndexOf(getSelectedInGroup(question11));
-            int value12 = question12.Controls.IndexOf(getSelectedInGroup(question12));
-            int value13 = question13.Controls.IndexOf(getSelectedInGroup(question13));
-            int value14 = question14.Controls.IndexOf(getSelectedInGroup(question14));
+            string discipline = comboBox1.SelectedItem.ToString();
+
+            int value1 = 6 - getSelectedInGroup(question1);
+            int value2 = 6 - getSelectedInGroup(question2);
+            int value3 = 6 - getSelectedInGroup(question3);
+            int value4 = 6 - getSelectedInGroup(question4);
+            int value5 = 6 - getSelectedInGroup(question5);
+            int value6 = 6 - getSelectedInGroup(question6);
+            int value7 = 6 - getSelectedInGroup(question7);
+            int value8 = 6 - getSelectedInGroup(question8);
+            int value9 = 6 - getSelectedInGroup(question9);
+            int value10 = 6 - getSelectedInGroup(question10);
+            int value11 = 6 - getSelectedInGroup(question11);
+            int value12 = 6 - getSelectedInGroup(question12);
+            int value13 = 6 - getSelectedInGroup(question13);
+            int value14 = 6 - getSelectedInGroup(question14);
 
             string values = $"{value1},{value2},{value3},{value4},{value5},{value6},{value7},{value8},{value9},{value10},{value11},{value12},{value13},{value14}";
 
             string query = $@"
 
-                insert into is_survey(name, result, date, fl_array, group_id) values
+                insert into is_survey(name, result, date, fl_array, group_id, discipline_id) values
                 (
                 '{name}',
                 '{values}',
                 CURRENT_TIMESTAMP,
                 1,
-                (select group_id from is_user where id = {this.role.Item2})
+                (select group_id from is_user where id = {this.role.Item2}),
+                (select id from is_discipline where name = '{discipline}')
                 )
 
             ";

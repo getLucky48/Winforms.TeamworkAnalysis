@@ -20,8 +20,10 @@ namespace WinFormInfSys.Window
             InitializeComponent();
             this.Text = title;
             this.role = role;
+            Utils.bind(comboBox1, "is_discipline", "name");
 
         }
+
         private Tuple<Role, int> role { get; set; }
 
         private void submit_Click(object sender, EventArgs e)
@@ -32,7 +34,7 @@ namespace WinFormInfSys.Window
             string name = this.Text;
             string txt = Survey.Text;
 
-            if (string.IsNullOrEmpty(txt))
+            if (string.IsNullOrEmpty(txt) || comboBox1.SelectedIndex == -1)
             {
 
                 MessageBox.Show("Проверьте правильность данных");
@@ -43,14 +45,17 @@ namespace WinFormInfSys.Window
 
             }
 
+            string discipline = comboBox1.SelectedItem.ToString();
+
             string query = $@"
 
-                insert into is_survey(name, result, date, group_id) values
+                insert into is_survey(name, result, date, group_id, discipline_id) values
                 (
                 '{name}',
                 '{txt}',
                 CURRENT_TIMESTAMP,
-                (select group_id from is_user where id = {this.role.Item2})
+                (select group_id from is_user where id = {this.role.Item2}),
+                (select id from is_discipline where name = '{discipline}')
                 )
 
             ";

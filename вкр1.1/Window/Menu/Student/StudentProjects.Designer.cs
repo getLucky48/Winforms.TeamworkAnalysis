@@ -58,6 +58,7 @@ namespace WinFormInfSys
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.Table);
             this.Name = "StudentProjects";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Таблица проектов";
             this.ResumeLayout(false);
             this.PerformLayout();

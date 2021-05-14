@@ -116,7 +116,7 @@ namespace WinFormInfSys.Window
             this.label4.TabIndex = 15;
             this.label4.Text = "Группа";
             // 
-            // _edit_Students
+            // _edit_AdminStudentsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -130,7 +130,8 @@ namespace WinFormInfSys.Window
             this.Controls.Add(this.Login);
             this.Controls.Add(this.Fio);
             this.Controls.Add(this.Create);
-            this.Name = "_edit_Students";
+            this.Name = "_edit_AdminStudentsList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редактирование";
             this.ResumeLayout(false);
             this.PerformLayout();

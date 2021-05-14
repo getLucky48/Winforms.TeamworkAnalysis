@@ -69,7 +69,7 @@ namespace WinFormInfSys
             this.label1.Text = "Распределите 10 баллов между вопросами по вашему усмотрению";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // TestBelbin
+            // StudentBelbin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -78,7 +78,8 @@ namespace WinFormInfSys
             this.Controls.Add(this.Steps);
             this.Controls.Add(this.Container);
             this.Controls.Add(this.Title);
-            this.Name = "TestBelbin";
+            this.Name = "StudentBelbin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Тест Белбина";
             this.ResumeLayout(false);
 

@@ -80,7 +80,7 @@ namespace WinFormInfSys.Window
             this.Table.ColumnCount = 3;
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 375F));
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this.Table.Location = new System.Drawing.Point(0, 0);
             this.Table.Name = "Table";
             this.Table.RowCount = 1;
@@ -96,6 +96,7 @@ namespace WinFormInfSys.Window
             this.Controls.Add(this.Table);
             this.Controls.Add(this.Editor);
             this.Name = "AdminDisciplinesList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Список дисциплин";
             this.Editor.ResumeLayout(false);
             this.Editor.PerformLayout();

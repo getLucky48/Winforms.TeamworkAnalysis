@@ -97,7 +97,7 @@ namespace WinFormInfSys.Window
             this.Create.UseVisualStyleBackColor = true;
             this.Create.Click += new System.EventHandler(this.Create_Click);
             // 
-            // _edit_Teachers
+            // _edit_AdminTeachersList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -109,7 +109,8 @@ namespace WinFormInfSys.Window
             this.Controls.Add(this.Login);
             this.Controls.Add(this.Fio);
             this.Controls.Add(this.Create);
-            this.Name = "_edit_Teachers";
+            this.Name = "_edit_AdminTeachersList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редактирование";
             this.ResumeLayout(false);
             this.PerformLayout();

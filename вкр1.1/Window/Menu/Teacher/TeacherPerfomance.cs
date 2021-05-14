@@ -62,16 +62,25 @@ namespace WinFormInfSys.Window
 
             string query = $@"
 
-                select isp.* from is_project isp
+                select 
 
-                join is_user isu on isu.id = isp.student_Id
+                isu.*, 
+                iss.discipline_id as disc_id,
+                iss.score as disc_score 
 
-                where isp.fl_unique = 0 
-                and isu.group_id = (select id from is_group where name = '{group}')
-                and isp.discipline_id = (select id from is_discipline where name = '{discipline}')
+                from is_user isu
+
+                left join is_score iss on iss.student_id = isu.id
+				
+                where isu.group_id = (select id from is_group where name = '{group}') and iss.discipline_id = (select id from is_discipline where name = '{discipline}')
                 
-
             ";
+
+            int studCount = 0;
+            ComboBox cb = new ComboBox();
+            Utils.bind(cb, "is_user", "name", true, $"where group_id = (select id from is_group where name = '{group}')");
+            studCount = cb.Items.Count;
+
 
             MySqlConnection connection = DBUtils.getConnection();
             connection.Open();
@@ -85,13 +94,15 @@ namespace WinFormInfSys.Window
             while (reader.Read())
             {
 
-                string score = reader["score"].ToString();
+                string score = reader["disciplinescore"].ToString();
 
                 if (string.IsNullOrEmpty(score)) { score = "1"; }
 
                 int indx = int.Parse(score);
 
                 arr[indx - 1]++;
+
+                studCount--;
 
             }
 
@@ -101,6 +112,8 @@ namespace WinFormInfSys.Window
                 chart.Series[i].Points.Add(arr[i]);
 
             }
+
+            chart.Series[0].Points.Add(studCount);
 
             connection.Close();
 

@@ -128,14 +128,15 @@ namespace WinFormInfSys.Window
             this.Table.Size = new System.Drawing.Size(570, 382);
             this.Table.TabIndex = 0;
             // 
-            // Teachers
+            // AdminTeachersList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(571, 497);
             this.Controls.Add(this.Table);
             this.Controls.Add(this.Editor);
-            this.Name = "Teachers";
+            this.Name = "AdminTeachersList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Список преподавателей";
             this.Editor.ResumeLayout(false);
             this.Editor.PerformLayout();

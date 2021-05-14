@@ -21,17 +21,18 @@ namespace WinFormInfSys.Window
             InitializeComponent();
 
             Utils.bind(Groups, "is_group", "name");
+            Utils.bind(Disciplines, "is_discipline", "name");
 
         }
 
-        private void renderSection(TableLayoutPanel table, string group, string name)
+        private void renderSection(TableLayoutPanel table, string group, string discipline, string name)
         {
 
             table.SuspendLayout();
 
             Utils.initTable(table, new string[] { "Дата", "Результат" });
 
-            string query = $"select * from is_survey where group_id = (select id from is_group where name = '{group}' limit 1) and name = '{name}'";
+            string query = $"select * from is_survey where group_id = (select id from is_group where name = '{group}' limit 1) and name = '{name}' and discipline_id = (select id from is_discipline where name = '{discipline}')";
 
             MySqlConnection connection = DBUtils.getConnection();
             connection.Open();
@@ -60,16 +61,32 @@ namespace WinFormInfSys.Window
 
         }
 
+        private void handler()
+        {
+
+            if (Groups.SelectedIndex == -1 || Disciplines.SelectedIndex == -1) { return; }
+
+            string group = Groups.SelectedItem.ToString();
+            string discipline = Disciplines.SelectedItem.ToString();
+
+            renderSection(Table1, group, discipline, "Мои ожидания от командной работы");
+            renderSection(Table2, group, discipline, "Анкета для оценки качества взаимодействия членов команды в процессе разработки программного продукта");
+            renderSection(Table3, group, discipline, "Анкета для оценки качества взаимодействия членов команды в завершении разработки программного продукта");
+            renderSection(Table4, group, discipline, "Я в команде: сильные и слабые стороны");
+
+        }
+
         private void Groups_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            string group = Groups.SelectedItem.ToString();
+            handler();
 
-            renderSection(Table1, group, "Мои ожидания от командной работы");
-            renderSection(Table2, group, "Анкета для оценки качества взаимодействия членов команды в процессе разработки программного продукта");
-            renderSection(Table3, group, "Анкета для оценки качества взаимодействия членов команды в завершении разработки программного продукта");
-            renderSection(Table4, group, "Я в команде: сильные и слабые стороны");
+        }
 
+        private void Disciplines_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            handler();
 
         }
 

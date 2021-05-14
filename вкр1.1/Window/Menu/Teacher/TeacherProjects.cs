@@ -25,7 +25,7 @@ namespace WinFormInfSys
             Utils.bind(CurrentGroup, "is_group", "name");
 
             Utils.fillRow(Table, new Control[] {
-                new Label(){Text = "Дисциплина", AutoSize = true },
+                new Label(){Text = "Название", AutoSize = true },
                 new Label(){Text = "Номер \nбригады", AutoSize = true},
                 new Label(){Text = "Студент", AutoSize = true},
                 new Label(){Text = "Этап 1\nпостановка задачи" , AutoSize = true},
@@ -47,7 +47,7 @@ namespace WinFormInfSys
 
             Table.Controls.Clear();
             Utils.fillRow(Table, new Control[] {
-                new Label(){Text = "Проект", AutoSize = true },
+                new Label(){Text = "Название", AutoSize = true },
                 new Label(){Text = "Номер \nбригады", AutoSize = true},
                 new Label(){Text = "Студент", AutoSize = true},
                 new Label(){Text = "Этап 1\nпостановка задачи" , AutoSize = true},
@@ -56,7 +56,8 @@ namespace WinFormInfSys
                 new Label(){Text = "Этап 4\nинтерфейс", AutoSize = true},
                 new Label(){Text = "Этап 5\nотладка", AutoSize = true},
                 new Label(){Text = "Этап 6\nзащита", AutoSize = true},
-                new Label(){Text = "Оценка", AutoSize = true}
+                new Label(){Text = "Оценка (работа)", AutoSize = true},
+                new Label(){Text = "Оценка (дисциплина)", AutoSize = true}
             }, 0);
 
             if (CurrentDiscipline.SelectedIndex == -1 || CurrentGroup.SelectedIndex == -1) { Table.ResumeLayout(); return; }
@@ -72,13 +73,15 @@ namespace WinFormInfSys
                 isp.*,
                 isg.name as groupname,
                 ist.num as teamnum,
-                isu.name as student
+                isu.name as student,
+                iss.score as disciplinescore
                 
                 from is_project isp 
 
 				join is_user isu on isu.id = isp.student_Id
                 join is_group isg on isg.id = (select id from is_group where name = '{gr}' limit 1)
                	join is_team ist on ist.user_id = isp.student_Id
+                left join is_score iss on iss.student_id = isu.id
 
                 where 
                 isp.discipline_id = (select id from is_discipline where name = '{discipline}' limit 1)
@@ -113,6 +116,7 @@ namespace WinFormInfSys
                 string s5 = reader["step5"].ToString();
                 string s6 = reader["step6"].ToString();
                 string s = reader["score"].ToString();
+                string ds = reader["disciplinescore"].ToString();
 
                 Label team = Utils.buildLabel(t, row.ToString());
                 Label proj = Utils.buildLabel(p, row.ToString());
@@ -124,6 +128,7 @@ namespace WinFormInfSys
                 Label step5 = Utils.buildLabel(s5, Guid.NewGuid().ToString());
                 Label step6 = Utils.buildLabel(s6, Guid.NewGuid().ToString());
                 Label score = Utils.buildLabel(s, Guid.NewGuid().ToString());
+                Label disciplinescore = Utils.buildLabel(ds, Guid.NewGuid().ToString());
 
                 Utils.fillRow(Table, new Control[] {
                     proj,
@@ -135,7 +140,8 @@ namespace WinFormInfSys
                     step4,
                     step5,
                     step6,
-                    score
+                    score,
+                    disciplinescore
                 }, row);
 
                 row++;

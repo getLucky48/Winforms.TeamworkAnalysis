@@ -29,10 +29,10 @@ namespace WinFormInfSys.Window
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.Chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Groups = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,10 +48,10 @@ namespace WinFormInfSys.Window
             // 
             // Chart1
             // 
-            chartArea3.Name = "ChartArea1";
-            this.Chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.Chart1.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.Chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.Chart1.Legends.Add(legend1);
             this.Chart1.Location = new System.Drawing.Point(12, 161);
             this.Chart1.Name = "Chart1";
             this.Chart1.Size = new System.Drawing.Size(302, 300);
@@ -121,10 +121,10 @@ namespace WinFormInfSys.Window
             // 
             // Chart2
             // 
-            chartArea4.Name = "ChartArea1";
-            this.Chart2.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.Chart2.Legends.Add(legend4);
+            chartArea2.Name = "ChartArea1";
+            this.Chart2.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.Chart2.Legends.Add(legend2);
             this.Chart2.Location = new System.Drawing.Point(345, 161);
             this.Chart2.Name = "Chart2";
             this.Chart2.Size = new System.Drawing.Size(302, 300);
@@ -146,6 +146,7 @@ namespace WinFormInfSys.Window
             this.Controls.Add(this.Groups);
             this.Controls.Add(this.Chart1);
             this.Name = "TeacherPerfomance";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Графики успеваемости";
             ((System.ComponentModel.ISupportInitialize)(this.Chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Chart2)).EndInit();
