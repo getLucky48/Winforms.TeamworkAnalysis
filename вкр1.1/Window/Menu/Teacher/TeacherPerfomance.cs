@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using WinFormInfSys.Class;
 
 namespace WinFormInfSys.Window
@@ -20,23 +21,27 @@ namespace WinFormInfSys.Window
             InitializeComponent();
 
             Utils.bind(Groups, "is_group", "name");
+            Utils.bind(Groups2, "is_group", "name");
             Utils.bind(Disciplines, "is_discipline", "name");
 
             Chart1.Series.Add("Не оценено");
             Chart1.Series.Add("2");
             Chart1.Series.Add("3");
             Chart1.Series.Add("4");
-            Chart1.Series.Add("5");
+            Chart1.Series.Add("5"); 
+            
+            Chart2.Series.Add("Не оценено");
+            Chart2.Series.Add("2");
+            Chart2.Series.Add("3");
+            Chart2.Series.Add("4");
+            Chart2.Series.Add("5");
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buildChart(ComboBox groupBox, Chart chart)
         {
 
-            string group = Groups.SelectedItem.ToString();
-            string discipline = Disciplines.SelectedItem.ToString();
-
-            if(Groups.SelectedIndex == -1 || Disciplines.SelectedIndex == -1)
+            if (groupBox.SelectedIndex == -1 || Disciplines.SelectedIndex == -1)
             {
 
                 MessageBox.Show("Проверьте правильность данных");
@@ -45,12 +50,15 @@ namespace WinFormInfSys.Window
 
             }
 
-            Chart1.Series.Clear();
-            Chart1.Series.Add("Не оценено");
-            Chart1.Series.Add("2");
-            Chart1.Series.Add("3");
-            Chart1.Series.Add("4");
-            Chart1.Series.Add("5");
+            string group = groupBox.SelectedItem.ToString();
+            string discipline = Disciplines.SelectedItem.ToString();
+
+            chart.Series.Clear();
+            chart.Series.Add("Не оценено");
+            chart.Series.Add("2");
+            chart.Series.Add("3");
+            chart.Series.Add("4");
+            chart.Series.Add("5");
 
             string query = $@"
 
@@ -87,14 +95,23 @@ namespace WinFormInfSys.Window
 
             }
 
-            for(int i = 0; i < arr.Count; i++)
+            for (int i = 0; i < arr.Count; i++)
             {
 
-                Chart1.Series[i].Points.Add(arr[i]);
+                chart.Series[i].Points.Add(arr[i]);
 
             }
 
             connection.Close();
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            buildChart(Groups, Chart1);
+            buildChart(Groups2, Chart2);
+
 
         }
 
