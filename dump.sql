@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: remotemysql.com
--- Время создания: Май 12 2021 г., 17:06
+-- Время создания: Май 15 2021 г., 16:41
 -- Версия сервера: 8.0.13-4
 -- Версия PHP: 7.2.24-0ubuntu0.18.04.6
 
@@ -20,6 +20,19 @@ SET time_zone = "+00:00";
 --
 -- База данных: `nwst3qKymu`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `is_alert`
+--
+
+CREATE TABLE `is_alert` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `alert` text COLLATE utf8_unicode_ci NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -65,18 +78,8 @@ INSERT INTO `is_course` (`id`, `name`, `num`) VALUES
 
 CREATE TABLE `is_discipline` (
   `id` int(11) NOT NULL,
-  `name` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `type_Id` int(11) NOT NULL
+  `name` varchar(128) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Дамп данных таблицы `is_discipline`
---
-
-INSERT INTO `is_discipline` (`id`, `name`, `type_Id`) VALUES
-(9, 'Информатика', 2),
-(10, 'Информатика', 1),
-(11, 'Информатика', 3);
 
 -- --------------------------------------------------------
 
@@ -94,9 +97,17 @@ CREATE TABLE `is_faculty` (
 --
 
 INSERT INTO `is_faculty` (`id`, `name`) VALUES
-(1, 'КБСП'),
-(2, 'КиБ'),
-(3, 'РТС');
+(4, 'АВТФ'),
+(5, 'ИСТ'),
+(6, 'ФЛА'),
+(7, 'МТФ'),
+(8, 'ФМА'),
+(9, 'ФПМИ'),
+(10, 'РЭФ'),
+(11, 'ФТФ'),
+(12, 'ФЭН'),
+(13, 'ФБ'),
+(14, 'ФГО');
 
 -- --------------------------------------------------------
 
@@ -111,15 +122,6 @@ CREATE TABLE `is_group` (
   `course_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Дамп данных таблицы `is_group`
---
-
-INSERT INTO `is_group` (`id`, `name`, `faculty_id`, `course_id`) VALUES
-(1, 'БСБО-12-18', 1, 1),
-(4, 'БСБО-13-18', 1, 1),
-(7, 'БСБО-11-18', 2, 4);
-
 -- --------------------------------------------------------
 
 --
@@ -128,26 +130,23 @@ INSERT INTO `is_group` (`id`, `name`, `faculty_id`, `course_id`) VALUES
 
 CREATE TABLE `is_project` (
   `id` int(11) NOT NULL,
-  `discipline_id` int(11) DEFAULT NULL,
   `teacher_id` int(11) DEFAULT NULL,
   `student_Id` int(11) DEFAULT NULL,
+  `discipline_id` int(11) DEFAULT NULL,
   `deadline` date DEFAULT NULL,
+  `name` varchar(512) COLLATE utf8_unicode_ci NOT NULL,
   `descr` varchar(512) COLLATE utf8_unicode_ci DEFAULT NULL,
   `fl_completed` tinyint(1) NOT NULL DEFAULT '0',
   `fl_unique` bit(1) NOT NULL DEFAULT b'0',
-  `token` varchar(36) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
+  `token` varchar(36) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `step1` int(11) DEFAULT NULL,
+  `step2` int(11) DEFAULT NULL,
+  `step3` int(11) DEFAULT NULL,
+  `step4` int(11) DEFAULT NULL,
+  `step5` int(11) DEFAULT NULL,
+  `step6` int(11) DEFAULT NULL,
+  `score` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Дамп данных таблицы `is_project`
---
-
-INSERT INTO `is_project` (`id`, `discipline_id`, `teacher_id`, `student_Id`, `deadline`, `descr`, `fl_completed`, `fl_unique`, `token`) VALUES
-(77, 10, 0, NULL, NULL, '', 0, b'1', 'f3dff322-fcc4-406f-a44c-6c253fd2acba'),
-(78, 10, 0, 101, NULL, '', 0, b'0', 'f3dff322-fcc4-406f-a44c-6c253fd2acba'),
-(79, 10, 0, 78, NULL, '', 0, b'0', 'f3dff322-fcc4-406f-a44c-6c253fd2acba'),
-(80, 10, 0, 86, NULL, '', 0, b'0', 'f3dff322-fcc4-406f-a44c-6c253fd2acba'),
-(81, 11, 0, NULL, '2021-07-01', '', 0, b'1', '561518c5-7e67-4430-b41b-95eaa3c5cb25');
 
 -- --------------------------------------------------------
 
@@ -171,11 +170,66 @@ INSERT INTO `is_role` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `is_score`
+--
+
+CREATE TABLE `is_score` (
+  `id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `discipline_id` int(11) NOT NULL,
+  `score` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `is_solution`
+--
+
+CREATE TABLE `is_solution` (
+  `id` int(11) NOT NULL,
+  `status_id` int(11) NOT NULL,
+  `token` varchar(36) COLLATE utf8_unicode_ci NOT NULL,
+  `solution` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `checkarray` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `descr` text COLLATE utf8_unicode_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `is_status`
+--
+
+CREATE TABLE `is_status` (
+  `id` int(11) NOT NULL,
+  `name` varchar(128) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Дамп данных таблицы `is_status`
+--
+
+INSERT INTO `is_status` (`id`, `name`) VALUES
+(1, 'Принято'),
+(2, 'Отклонено'),
+(3, 'Просмотрено'),
+(4, 'Отправлено');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `is_survey`
 --
 
 CREATE TABLE `is_survey` (
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(512) COLLATE utf8_unicode_ci NOT NULL,
+  `result` text COLLATE utf8_unicode_ci NOT NULL,
+  `date` date NOT NULL,
+  `fl_array` bit(1) NOT NULL DEFAULT b'0',
+  `group_id` int(11) NOT NULL,
+  `discipline_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -192,15 +246,6 @@ CREATE TABLE `is_team` (
   `user_id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Дамп данных таблицы `is_team`
---
-
-INSERT INTO `is_team` (`id`, `designation`, `num`, `leader`, `user_id`, `project_id`) VALUES
-(38, 'f6bcfaba-8064-44a9-a3ee-e60072277d2c', 1, b'0', 101, 77),
-(39, 'f6bcfaba-8064-44a9-a3ee-e60072277d2c', 1, b'0', 78, 77),
-(40, 'f6bcfaba-8064-44a9-a3ee-e60072277d2c', 1, b'0', 86, 77);
 
 -- --------------------------------------------------------
 
@@ -230,29 +275,10 @@ INSERT INTO `is_test` (`id`, `name`, `content`) VALUES
 CREATE TABLE `is_testresult` (
   `id` int(11) NOT NULL,
   `rolebybelbin` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `rolebybelbin_s` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `rolebybelbin_t` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   `user_Id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `is_typediscipline`
---
-
-CREATE TABLE `is_typediscipline` (
-  `id` int(11) NOT NULL,
-  `name` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `name_short` varchar(128) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Дамп данных таблицы `is_typediscipline`
---
-
-INSERT INTO `is_typediscipline` (`id`, `name`, `name_short`) VALUES
-(1, 'Практика', 'Пр'),
-(2, 'Лекция', 'Лек'),
-(3, 'Лабораторная работа', 'Лаб');
 
 -- --------------------------------------------------------
 
@@ -274,65 +300,18 @@ CREATE TABLE `is_user` (
 --
 
 INSERT INTO `is_user` (`id`, `login`, `password`, `name`, `role_id`, `group_id`) VALUES
-(0, 'admin', 'ISMvKXpXpadDiUoOSoAfww==', 'Администратор', 1, NULL),
-(2, 'test', 'ISMvKXpXpadDiUoOSoAfww==', 'Студент Н.', 2, 1),
-(73, 'ЕрохинЮД', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Ерохин Ю. Д.', 2, 1),
-(74, 'ЕрохинОЮ', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Ерохин О. Ю.', 2, 1),
-(75, 'НовиковЮД', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Новиков Ю. Д.', 2, 1),
-(77, 'ЛопатинСН', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Лопатин С. Н.', 2, 1),
-(78, 'СеливановПД', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Селиванов П. Д.', 2, 1),
-(79, 'ЗаложкинСА', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Заложкин С. А.', 2, 1),
-(80, 'ЕрохинЮА', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Ерохин Ю. А.', 2, 1),
-(81, 'КурненковЮС', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Курненков Ю. С.', 2, 1),
-(82, 'НовиковОП', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Новиков О. П.', 2, 1),
-(83, 'СахончикСА', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Сахончик С. А.', 2, 1),
-(84, 'ЛопатинОО', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Лопатин О. О.', 2, 1),
-(85, 'СахончикЮО', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Сахончик Ю. О.', 2, 1),
-(86, 'ЛаухинАА', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Лаухин А. А.', 2, 1),
-(87, 'ЗаложкинНП', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Заложкин Н. П.', 2, 1),
-(88, 'СотниковЮО', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Сотников Ю. О.', 2, 1),
-(89, 'СеливановДЮ', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Селиванов Д. Ю.', 2, 1),
-(90, 'ЕрохинДН', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Ерохин Д. Н.', 2, 1),
-(91, 'ЗаложкинСС', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Заложкин С. С.', 2, 1),
-(92, 'НовиковЮА', 'ISMvKXpXpadDiUoOSoAfww==', 'Новиков Ю. А.', 2, 1),
-(93, 'ЕрохинАП', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Ерохин А. П.', 2, 1),
-(94, 'СотниковОА', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Сотников О. А.', 2, 1),
-(95, 'СеливановАО', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Селиванов А. О.', 2, 1),
-(96, 'НовиковАА', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Новиков А. А.', 2, 1),
-(97, 'СахончикПО', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Сахончик П. О.', 2, 1),
-(98, 'ЛаухинПО', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Лаухин П. О.', 2, 1),
-(99, 'СеливановСС', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Селиванов С. С.', 2, 1),
-(100, 'ЗаложкинНА', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Заложкин Н. А.', 2, 1),
-(101, 'ЛаухинСС', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Лаухин С. С.', 2, 1),
-(103, 'ЛопатинЮС', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Лопатин Ю. С.', 2, NULL),
-(104, 'ГончаровДС', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Гончаров Д. С.', 2, NULL),
-(105, 'СотниковПЮ', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Сотников П. Ю.', 2, NULL),
-(106, 'ЗаложкинДС', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Заложкин Д. С.', 2, NULL),
-(107, 'КурненковДП', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Курненков Д. П.', 2, NULL),
-(108, 'ЗаложкинНО', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Заложкин Н. О.', 2, NULL),
-(109, 'КурненковПЮ', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Курненков П. Ю.', 2, NULL),
-(110, 'НовиковДА', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Новиков Д. А.', 2, NULL),
-(111, 'ЛаухинДП', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Лаухин Д. П.', 2, NULL),
-(112, 'СахончикДП', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Сахончик Д. П.', 2, NULL),
-(113, 'ЗаложкинАД', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Заложкин А. Д.', 2, NULL),
-(114, 'СахончикНЮ', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Сахончик Н. Ю.', 2, NULL),
-(115, 'ЛаухинАО', 'ISMvKXpXpadDiUoOSoAfww==', 'Лаухин А. О.', 2, 1),
-(116, 'ЕрохинАД', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Ерохин А. Д.', 2, NULL),
-(117, 'КурненковОН', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Курненков О. Н.', 2, NULL),
-(118, 'ЕрохинЮН', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Ерохин Ю. Н.', 2, NULL),
-(119, 'ЕрохинПД', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Ерохин П. Д.', 2, NULL),
-(120, 'КурненковОП', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Курненков О. П.', 2, NULL),
-(121, 'ЛопатинДЮ', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Лопатин Д. Ю.', 2, NULL),
-(122, 'СеливановПД', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Селиванов П. Д.', 2, NULL),
-(123, 'СахончикАП', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Сахончик А. П.', 2, NULL),
-(124, 'ЗаложкинНП', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Заложкин Н. П.', 2, NULL),
-(125, 'ГончаровЮА', 'ISMvKXpXpadDiUoOSoAfww==', 'Гончаров Ю. А.', 2, 1),
-(126, 'СахончикАА', 'cVrvC/VmN+dwWe63QOVjzQ==', 'Сахончик А. А.', 2, NULL),
-(139, 'anovikov', 'ISMvKXpXpadDiUoOSoAfww==', 'anovikov', 2, 1);
+(142, 'admin', 'ISMvKXpXpadDiUoOSoAfww==', 'Администратор', 1, NULL);
 
 --
 -- Индексы сохранённых таблиц
 --
+
+--
+-- Индексы таблицы `is_alert`
+--
+ALTER TABLE `is_alert`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Индексы таблицы `is_attachedfile`
@@ -350,8 +329,7 @@ ALTER TABLE `is_course`
 -- Индексы таблицы `is_discipline`
 --
 ALTER TABLE `is_discipline`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `type_Id` (`type_Id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `is_faculty`
@@ -374,7 +352,13 @@ ALTER TABLE `is_project`
   ADD PRIMARY KEY (`id`),
   ADD KEY `discipline_id` (`discipline_id`,`teacher_id`,`student_Id`),
   ADD KEY `teacher_id` (`teacher_id`),
-  ADD KEY `student_Id` (`student_Id`);
+  ADD KEY `student_Id` (`student_Id`),
+  ADD KEY `step1` (`step1`,`step2`,`step3`,`step4`,`step5`,`step6`),
+  ADD KEY `step6` (`step6`),
+  ADD KEY `step4` (`step4`),
+  ADD KEY `step5` (`step5`),
+  ADD KEY `step3` (`step3`),
+  ADD KEY `step2` (`step2`);
 
 --
 -- Индексы таблицы `is_role`
@@ -383,10 +367,33 @@ ALTER TABLE `is_role`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `is_score`
+--
+ALTER TABLE `is_score`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `discipline_id` (`discipline_id`,`student_id`),
+  ADD KEY `user_id` (`student_id`);
+
+--
+-- Индексы таблицы `is_solution`
+--
+ALTER TABLE `is_solution`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `student_id` (`status_id`);
+
+--
+-- Индексы таблицы `is_status`
+--
+ALTER TABLE `is_status`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `is_survey`
 --
 ALTER TABLE `is_survey`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `group_id` (`group_id`),
+  ADD KEY `discipline_id` (`discipline_id`);
 
 --
 -- Индексы таблицы `is_team`
@@ -406,13 +413,8 @@ ALTER TABLE `is_test`
 -- Индексы таблицы `is_testresult`
 --
 ALTER TABLE `is_testresult`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `is_typediscipline`
---
-ALTER TABLE `is_typediscipline`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_Id` (`user_Id`);
 
 --
 -- Индексы таблицы `is_user`
@@ -427,10 +429,16 @@ ALTER TABLE `is_user`
 --
 
 --
+-- AUTO_INCREMENT для таблицы `is_alert`
+--
+ALTER TABLE `is_alert`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT для таблицы `is_attachedfile`
 --
 ALTER TABLE `is_attachedfile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT для таблицы `is_course`
@@ -442,25 +450,25 @@ ALTER TABLE `is_course`
 -- AUTO_INCREMENT для таблицы `is_discipline`
 --
 ALTER TABLE `is_discipline`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT для таблицы `is_faculty`
 --
 ALTER TABLE `is_faculty`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT для таблицы `is_group`
 --
 ALTER TABLE `is_group`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT для таблицы `is_project`
 --
 ALTER TABLE `is_project`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=337;
 
 --
 -- AUTO_INCREMENT для таблицы `is_role`
@@ -469,16 +477,34 @@ ALTER TABLE `is_role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT для таблицы `is_score`
+--
+ALTER TABLE `is_score`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `is_solution`
+--
+ALTER TABLE `is_solution`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT для таблицы `is_status`
+--
+ALTER TABLE `is_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT для таблицы `is_survey`
 --
 ALTER TABLE `is_survey`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT для таблицы `is_team`
 --
 ALTER TABLE `is_team`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=290;
 
 --
 -- AUTO_INCREMENT для таблицы `is_test`
@@ -490,29 +516,23 @@ ALTER TABLE `is_test`
 -- AUTO_INCREMENT для таблицы `is_testresult`
 --
 ALTER TABLE `is_testresult`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT для таблицы `is_typediscipline`
---
-ALTER TABLE `is_typediscipline`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT для таблицы `is_user`
 --
 ALTER TABLE `is_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
 
 --
--- Ограничения внешнего ключа таблицы `is_discipline`
+-- Ограничения внешнего ключа таблицы `is_alert`
 --
-ALTER TABLE `is_discipline`
-  ADD CONSTRAINT `is_discipline_ibfk_1` FOREIGN KEY (`type_Id`) REFERENCES `is_typediscipline` (`id`);
+ALTER TABLE `is_alert`
+  ADD CONSTRAINT `is_alert_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `is_user` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `is_group`
@@ -527,7 +547,33 @@ ALTER TABLE `is_group`
 ALTER TABLE `is_project`
   ADD CONSTRAINT `is_project_ibfk_1` FOREIGN KEY (`discipline_id`) REFERENCES `is_discipline` (`id`),
   ADD CONSTRAINT `is_project_ibfk_2` FOREIGN KEY (`teacher_id`) REFERENCES `is_user` (`id`),
-  ADD CONSTRAINT `is_project_ibfk_3` FOREIGN KEY (`student_Id`) REFERENCES `is_user` (`id`);
+  ADD CONSTRAINT `is_project_ibfk_3` FOREIGN KEY (`student_Id`) REFERENCES `is_user` (`id`),
+  ADD CONSTRAINT `is_project_ibfk_4` FOREIGN KEY (`step6`) REFERENCES `is_solution` (`id`),
+  ADD CONSTRAINT `is_project_ibfk_5` FOREIGN KEY (`step4`) REFERENCES `is_solution` (`id`),
+  ADD CONSTRAINT `is_project_ibfk_6` FOREIGN KEY (`step5`) REFERENCES `is_solution` (`id`),
+  ADD CONSTRAINT `is_project_ibfk_7` FOREIGN KEY (`step3`) REFERENCES `is_solution` (`id`),
+  ADD CONSTRAINT `is_project_ibfk_8` FOREIGN KEY (`step1`) REFERENCES `is_solution` (`id`),
+  ADD CONSTRAINT `is_project_ibfk_9` FOREIGN KEY (`step2`) REFERENCES `is_solution` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `is_score`
+--
+ALTER TABLE `is_score`
+  ADD CONSTRAINT `is_score_ibfk_1` FOREIGN KEY (`discipline_id`) REFERENCES `is_discipline` (`id`),
+  ADD CONSTRAINT `is_score_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `is_user` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `is_solution`
+--
+ALTER TABLE `is_solution`
+  ADD CONSTRAINT `is_solution_ibfk_1` FOREIGN KEY (`status_id`) REFERENCES `is_status` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `is_survey`
+--
+ALTER TABLE `is_survey`
+  ADD CONSTRAINT `is_survey_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `is_group` (`id`),
+  ADD CONSTRAINT `is_survey_ibfk_2` FOREIGN KEY (`discipline_id`) REFERENCES `is_discipline` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `is_team`
@@ -535,6 +581,12 @@ ALTER TABLE `is_project`
 ALTER TABLE `is_team`
   ADD CONSTRAINT `is_team_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `is_user` (`id`),
   ADD CONSTRAINT `is_team_ibfk_2` FOREIGN KEY (`project_id`) REFERENCES `is_project` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `is_testresult`
+--
+ALTER TABLE `is_testresult`
+  ADD CONSTRAINT `is_testresult_ibfk_1` FOREIGN KEY (`user_Id`) REFERENCES `is_user` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `is_user`
