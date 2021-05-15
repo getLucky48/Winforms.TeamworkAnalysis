@@ -51,7 +51,7 @@ namespace WinFormInfSys.Window
                 string l = reader["login"].ToString();
                 string id = reader["id"].ToString();
 
-                Label name = Utils.buildLabel(l, row.ToString());
+                Label name = Utils.buildLabel(n, row.ToString());
                 Label login = Utils.buildLabel(l, row.ToString());
 
                 Button edit = Utils.buildButton("Редактировать", $"ButtonEdit_{id}");
