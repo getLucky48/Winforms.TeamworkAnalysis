@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormInfSys.Class;
+using static WinFormInfSys.Auth;
 
 namespace WinFormInfSys.Window
 {
@@ -22,21 +23,61 @@ namespace WinFormInfSys.Window
         {
             InitializeComponent();
         }
-        public StudentOpenProject(int projId)
+        public StudentOpenProject(int projId, Tuple<Role, int> role)
         {
 
             InitializeComponent();
 
             this.projId = projId;
             this.currentStep = 0;
+            this.role = role;
 
             setTitle();
             setFiles();
 
             buildStep();
 
+            if (this.currentStep <= 6)
+            {
+
+                string query = $@"
+
+                select * from is_solution 
+
+                where id = (select step{this.currentStep} from is_project where id = {this.projId})
+
+                ";
+
+                MySqlConnection connection = DBUtils.getConnection();
+                connection.Open();
+
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    int statusId = int.Parse(reader["status_id"].ToString());
+
+                    if(statusId == 2)
+                    {
+
+                        ChangedStatus.Text = $"Преподаватель отклонил ваше решение: {reader["descr"]}";
+
+                    }
+
+                    break;
+
+                }
+
+                connection.Close();
+
+            }
+
         }
 
+        private Tuple<Role, int> role { get; set; }
         private int projId { get; set; }
         private int currentStep { get; set; }
         private void setTitle()
@@ -215,8 +256,6 @@ namespace WinFormInfSys.Window
 
                 FileContainer.Controls.Add(b);
 
-                break;
-
             }
 
             connection.Close();
@@ -261,6 +300,8 @@ namespace WinFormInfSys.Window
             }
 
             this.currentStep = indx;
+
+            if(this.currentStep > 6) { return; }
 
             StepTitle.Text = $"Этап {indx}: {(this.Controls.Find($"L{indx}", true).FirstOrDefault() as Label).Text}";
             (this.Controls.Find($"S{indx}", true).FirstOrDefault() as Label).BackColor = Color.Yellow;
@@ -386,6 +427,24 @@ namespace WinFormInfSys.Window
             string upQuery = $"update is_project set step{this.currentStep} = {id} where id = {this.projId}";
 
             DBUtils.execQuery(upQuery);
+
+            string log = $@"
+
+                insert into is_alert(user_id, alert, date)
+
+                values (
+                (select teacher_id from is_project where id = {this.projId} limit 1),
+
+                concat((select name from is_user where id = {this.role.Item2}),
+                ' отправил задание по дисциплине ',
+                (select name from is_discipline where id = (select discipline_id from is_project where id = {this.projId})) , 
+                ' ' ,
+                (select name from is_project where id = {this.projId} limit 1)),
+                
+                CURRENT_TIMESTAMP
+                )";
+
+            DBUtils.execQuery(log);
 
             MessageBox.Show("Успешно добавлено!");
 

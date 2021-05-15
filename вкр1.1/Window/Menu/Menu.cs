@@ -39,7 +39,7 @@ namespace WinFormInfSys
             this.role = role;
 
             infoUser();
-
+            alertUser();
         }
 
         private Tuple<Role, int> role;
@@ -73,6 +73,30 @@ namespace WinFormInfSys
 
         }
 
+        private void alertUser()
+        {
+             
+            string query = $"select * from is_alert where user_id = {this.role.Item2} order by date desc";
+
+            MySqlConnection connection = DBUtils.getConnection();
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                Alerts.Items.Add($"{reader["date"]} {reader["alert"]}");
+
+            }
+
+            connection.Close();
+
+
+
+        }
         private void сменитьПользователяToolStripMenuItem_Click_1(object sender, EventArgs e)       { this.Close(); }
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)                       { Application.Exit(); }
         private void тестБелбинаToolStripMenuItem_Click(object sender, EventArgs e)                 { Utils.switchWindow(this, new StudentBelbin(role)); }

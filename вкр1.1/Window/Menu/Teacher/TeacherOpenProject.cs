@@ -35,17 +35,81 @@ namespace WinFormInfSys.Window
 
             buildStep();
 
-            string query = $@"
+
+            if(this.currentStep <= 6)
+            {
+                string query = $@"
 
                 update is_solution 
 
                 set status_id = 3
 
+                where id = (select step{this.currentStep} from is_project where id = {this.projId}) and status_id != 1 and status_id != 2 and status_id != 3
+
+                ";
+
+                DBUtils.execQuery(query);
+
+                query = $@"
+
+                select * from is_solution 
+
                 where id = (select step{this.currentStep} from is_project where id = {this.projId})
 
                 ";
 
-            DBUtils.execQuery(query);
+                MySqlConnection connection = DBUtils.getConnection();
+                connection.Open();
+
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    Solution.Text = reader["solution"].ToString();
+
+                    break;
+
+                }
+
+                connection.Close();
+
+                query = $@"
+
+                select * from is_attachedfile where token in (select token from is_solution 
+
+                where id = (select step{this.currentStep} from is_project where id = {this.projId}))
+
+                ";
+
+                connection.Open();
+
+                cmd = new MySqlCommand(query, connection);
+
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    Button b = Utils.buildButton(reader["name"].ToString(), $"LoadFile_{reader["id"]}");
+                    b.Click += downloadFile;
+
+                    UserFiles.Controls.Add(b);
+
+                }
+
+                connection.Close();
+
+            }
+
+        }
+
+        private void downloadFile(object sender, EventArgs e)
+        {
+            
+            //todo download file
 
         }
 
@@ -209,7 +273,6 @@ namespace WinFormInfSys.Window
 
                 where isp.Id = {this.projId}
 
-
             ";
 
             MySqlConnection connection = DBUtils.getConnection();
@@ -226,8 +289,6 @@ namespace WinFormInfSys.Window
                 b.Click += B_Click;
 
                 FileContainer.Controls.Add(b);
-
-                break;
 
             }
 
@@ -252,6 +313,8 @@ namespace WinFormInfSys.Window
 
             colorSteps(stepsId);
 
+            if(stepsId.Length > 6) { return; }
+
             int indx = 1;
 
             for(int i = 0; i < stepsId.Length; i++)
@@ -267,6 +330,8 @@ namespace WinFormInfSys.Window
             }
 
             this.currentStep = indx;
+
+            if(indx > 6) { return; }
 
             StepTitle.Text = $"Этап {indx}: {(this.Controls.Find($"L{indx}", true).FirstOrDefault() as Label).Text}";
             (this.Controls.Find($"S{indx}", true).FirstOrDefault() as Label).BackColor = Color.Yellow;
@@ -288,77 +353,16 @@ namespace WinFormInfSys.Window
                 button1.Enabled = false;
 
             }
-
-
-        }
-        private void uploadFiles(Guid token)
-        {
-
-            int len = openFileDialog1.FileNames.Length;
-
-            for (int i = 0; i < len; i++)
+            else if(stepsId[this.currentStep - 1] == -1)
             {
 
-                string path = openFileDialog1.FileNames[i];
-
-                if (!File.Exists(path)) { continue; }
-
-                FileStream fs = new FileStream(path, FileMode.Open);
-                BufferedStream bf = new BufferedStream(fs);
-                byte[] buffer = new byte[bf.Length];
-                bf.Read(buffer, 0, buffer.Length);
-
-                byte[] buffer_new = buffer;
-
-                MySqlConnection connection = DBUtils.getConnection();
-                connection.Open();
-                MySqlCommand command = new MySqlCommand("", connection);
-                command.CommandText = "insert into is_attachedfile(name, file, token) values(@name, @file, @token);";
-
-                command.Parameters.AddWithValue("@name", openFileDialog1.SafeFileNames[i]);
-                command.Parameters.AddWithValue("@file", buffer_new);
-                command.Parameters.AddWithValue("@token", token.ToString());
-
-                command.ExecuteNonQuery();
-
-                connection.Close();
-
-                bf.Close();
-                fs.Close();
+                button2.Enabled = false;
+                Solution.Text = "Решений нет";
+                Solution.ReadOnly = true;
+                button1.Enabled = false;
 
             }
 
-        }
-        private void refreshUploadFiles()
-        {
-
-            string txt = string.Empty;
-
-            int len = openFileDialog1.SafeFileNames.Length;
-
-            for (int i = 0; i < len; i++)
-            {
-
-                string t = openFileDialog1.SafeFileNames[i];
-
-                txt += t;
-
-                if (i < len - 1) { txt += ", "; }
-
-            }
-
-            UserFiles.Text = txt;
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-            DialogResult result = openFileDialog1.ShowDialog();
-
-            if (result != DialogResult.OK) { return; }
-
-            refreshUploadFiles();
 
         }
 
@@ -377,6 +381,25 @@ namespace WinFormInfSys.Window
 
            
             DBUtils.execQuery(query);
+
+            string log = $@"
+
+                insert into is_alert(user_id, alert, date)
+
+                values (
+                (select student_id from is_project where id = {this.projId} limit 1),
+
+                concat(
+                'Изменился статус задания по дисциплине: ',
+                (select name from is_discipline where id = (select discipline_id from is_project where id = {this.projId})) ,
+                ' ',
+                (select name from is_project where id = {this.projId} limit 1)
+                ),
+
+                CURRENT_TIMESTAMP
+                )";
+
+            DBUtils.execQuery(log);
 
             MessageBox.Show("Ответ отправлен!");
 
@@ -399,6 +422,25 @@ namespace WinFormInfSys.Window
 
 
             DBUtils.execQuery(query);
+
+            string log = $@"
+
+                insert into is_alert(user_id, alert, date)
+
+                values (
+                (select student_id from is_project where id = {this.projId} limit 1),
+
+                concat(
+                'Изменился статус задания по дисциплине: ',
+                (select name from is_discipline where id = (select discipline_id from is_project where id = {this.projId})) ,
+                ' ',
+                (select name from is_project where id = {this.projId} limit 1)
+                ),
+
+                CURRENT_TIMESTAMP
+                )";
+
+            DBUtils.execQuery(log);
 
             MessageBox.Show("Ответ отправлен!");
 

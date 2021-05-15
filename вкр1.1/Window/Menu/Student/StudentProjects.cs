@@ -168,7 +168,7 @@ namespace WinFormInfSys
             Button b = (Button)sender;
             int projId = int.Parse(b.Name.Replace("OpenProjById_", string.Empty));
 
-            Utils.switchWindow(this, new StudentOpenProject(projId));
+            Utils.switchWindow(this, new StudentOpenProject(projId, this.role));
 
             buildTable();
 

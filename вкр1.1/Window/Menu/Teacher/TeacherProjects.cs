@@ -35,7 +35,9 @@ namespace WinFormInfSys
                 new Label(){Text = "Этап 4\nинтерфейс", AutoSize = true},
                 new Label(){Text = "Этап 5\nотладка", AutoSize = true},
                 new Label(){Text = "Этап 6\nзащита", AutoSize = true},
-                new Label(){Text = "Оценка", AutoSize = true}
+                new Label(){Text = "Оценка (работа)", AutoSize = true},
+                new Label(){Text = "Оценка (дисциплина)", AutoSize = true},
+                new Label(){Text = " "}
             }, 0);
         }
 

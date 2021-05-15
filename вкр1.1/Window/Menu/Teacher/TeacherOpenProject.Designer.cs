@@ -53,11 +53,12 @@ namespace WinFormInfSys.Window
             this.label4 = new System.Windows.Forms.Label();
             this.FileContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.Solution = new System.Windows.Forms.RichTextBox();
-            this.UserFiles = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.descr = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.UserFiles = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,7 +105,7 @@ namespace WinFormInfSys.Window
             this.panel1.Controls.Add(this.S1);
             this.panel1.Location = new System.Drawing.Point(15, 170);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(663, 81);
+            this.panel1.Size = new System.Drawing.Size(663, 60);
             this.panel1.TabIndex = 3;
             // 
             // L6
@@ -119,9 +120,9 @@ namespace WinFormInfSys.Window
             // S6
             // 
             this.S6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.S6.Location = new System.Drawing.Point(581, 51);
+            this.S6.Location = new System.Drawing.Point(549, 40);
             this.S6.Name = "S6";
-            this.S6.Size = new System.Drawing.Size(30, 30);
+            this.S6.Size = new System.Drawing.Size(97, 10);
             this.S6.TabIndex = 15;
             // 
             // L5
@@ -136,9 +137,9 @@ namespace WinFormInfSys.Window
             // S5
             // 
             this.S5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.S5.Location = new System.Drawing.Point(475, 51);
+            this.S5.Location = new System.Drawing.Point(443, 40);
             this.S5.Name = "S5";
-            this.S5.Size = new System.Drawing.Size(30, 30);
+            this.S5.Size = new System.Drawing.Size(97, 10);
             this.S5.TabIndex = 13;
             // 
             // L4
@@ -153,9 +154,9 @@ namespace WinFormInfSys.Window
             // S4
             // 
             this.S4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.S4.Location = new System.Drawing.Point(369, 51);
+            this.S4.Location = new System.Drawing.Point(337, 40);
             this.S4.Name = "S4";
-            this.S4.Size = new System.Drawing.Size(30, 30);
+            this.S4.Size = new System.Drawing.Size(97, 10);
             this.S4.TabIndex = 11;
             // 
             // L3
@@ -170,9 +171,9 @@ namespace WinFormInfSys.Window
             // S3
             // 
             this.S3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.S3.Location = new System.Drawing.Point(263, 51);
+            this.S3.Location = new System.Drawing.Point(231, 40);
             this.S3.Name = "S3";
-            this.S3.Size = new System.Drawing.Size(30, 30);
+            this.S3.Size = new System.Drawing.Size(97, 10);
             this.S3.TabIndex = 9;
             // 
             // L2
@@ -187,9 +188,9 @@ namespace WinFormInfSys.Window
             // S2
             // 
             this.S2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.S2.Location = new System.Drawing.Point(157, 51);
+            this.S2.Location = new System.Drawing.Point(125, 40);
             this.S2.Name = "S2";
-            this.S2.Size = new System.Drawing.Size(30, 30);
+            this.S2.Size = new System.Drawing.Size(97, 10);
             this.S2.TabIndex = 7;
             // 
             // L1
@@ -204,9 +205,9 @@ namespace WinFormInfSys.Window
             // S1
             // 
             this.S1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.S1.Location = new System.Drawing.Point(51, 51);
+            this.S1.Location = new System.Drawing.Point(19, 40);
             this.S1.Name = "S1";
-            this.S1.Size = new System.Drawing.Size(30, 30);
+            this.S1.Size = new System.Drawing.Size(97, 10);
             this.S1.TabIndex = 0;
             // 
             // label3
@@ -230,11 +231,11 @@ namespace WinFormInfSys.Window
             // 
             // StepDescr
             // 
-            this.StepDescr.Location = new System.Drawing.Point(10, 309);
+            this.StepDescr.Location = new System.Drawing.Point(15, 316);
             this.StepDescr.Name = "StepDescr";
-            this.StepDescr.Size = new System.Drawing.Size(667, 40);
+            this.StepDescr.Size = new System.Drawing.Size(667, 18);
             this.StepDescr.TabIndex = 17;
-            this.StepDescr.Text = "Проанализируйте задание и добавьте свой вариант решения для текущей задачи";
+            this.StepDescr.Text = "Решение студента";
             // 
             // openFileDialog1
             // 
@@ -264,14 +265,6 @@ namespace WinFormInfSys.Window
             this.Solution.Size = new System.Drawing.Size(661, 174);
             this.Solution.TabIndex = 20;
             this.Solution.Text = "";
-            // 
-            // UserFiles
-            // 
-            this.UserFiles.AutoSize = true;
-            this.UserFiles.Location = new System.Drawing.Point(137, 522);
-            this.UserFiles.Name = "UserFiles";
-            this.UserFiles.Size = new System.Drawing.Size(0, 13);
-            this.UserFiles.TabIndex = 22;
             // 
             // button2
             // 
@@ -309,16 +302,33 @@ namespace WinFormInfSys.Window
             this.label5.TabIndex = 26;
             this.label5.Text = "Примечание:";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(19, 517);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(126, 13);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "Прикрепленные файлы";
+            // 
+            // UserFiles
+            // 
+            this.UserFiles.Location = new System.Drawing.Point(154, 519);
+            this.UserFiles.Name = "UserFiles";
+            this.UserFiles.Size = new System.Drawing.Size(521, 43);
+            this.UserFiles.TabIndex = 28;
+            // 
             // TeacherOpenProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(691, 727);
+            this.Controls.Add(this.UserFiles);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.descr);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.UserFiles);
             this.Controls.Add(this.Solution);
             this.Controls.Add(this.FileContainer);
             this.Controls.Add(this.label4);
@@ -364,10 +374,11 @@ namespace WinFormInfSys.Window
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.FlowLayoutPanel FileContainer;
         private System.Windows.Forms.RichTextBox Solution;
-        private System.Windows.Forms.Label UserFiles;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.RichTextBox descr;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.FlowLayoutPanel UserFiles;
     }
 }

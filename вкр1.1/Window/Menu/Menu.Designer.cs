@@ -52,6 +52,8 @@ namespace WinFormInfSys
             this.списокСтудентовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокДисциплинToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserInfo = new System.Windows.Forms.Label();
+            this.Alerts = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +66,7 @@ namespace WinFormInfSys
             this.adminPage});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(484, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(650, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -243,11 +245,31 @@ namespace WinFormInfSys
             this.UserInfo.Size = new System.Drawing.Size(0, 13);
             this.UserInfo.TabIndex = 1;
             // 
+            // Alerts
+            // 
+            this.Alerts.FormattingEnabled = true;
+            this.Alerts.IntegralHeight = false;
+            this.Alerts.Location = new System.Drawing.Point(15, 66);
+            this.Alerts.Name = "Alerts";
+            this.Alerts.Size = new System.Drawing.Size(629, 264);
+            this.Alerts.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Оповещения";
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 348);
+            this.ClientSize = new System.Drawing.Size(650, 348);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Alerts);
             this.Controls.Add(this.UserInfo);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -285,6 +307,8 @@ namespace WinFormInfSys
         private System.Windows.Forms.ToolStripMenuItem списокСтудентовToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem списокДисциплинToolStripMenuItem;
         private System.Windows.Forms.Label UserInfo;
+        private System.Windows.Forms.ListBox Alerts;
+        private System.Windows.Forms.Label label1;
     }
 }
 
