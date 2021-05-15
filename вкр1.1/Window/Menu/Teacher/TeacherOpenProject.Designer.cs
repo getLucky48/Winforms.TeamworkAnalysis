@@ -59,6 +59,7 @@ namespace WinFormInfSys.Window
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.UserFiles = new System.Windows.Forms.FlowLayoutPanel();
+            this.LeaderContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -268,7 +269,7 @@ namespace WinFormInfSys.Window
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(349, 692);
+            this.button2.Location = new System.Drawing.Point(352, 908);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(180, 23);
             this.button2.TabIndex = 23;
@@ -278,7 +279,7 @@ namespace WinFormInfSys.Window
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(152, 692);
+            this.button1.Location = new System.Drawing.Point(155, 908);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(180, 23);
             this.button1.TabIndex = 24;
@@ -288,7 +289,7 @@ namespace WinFormInfSys.Window
             // 
             // descr
             // 
-            this.descr.Location = new System.Drawing.Point(18, 588);
+            this.descr.Location = new System.Drawing.Point(21, 804);
             this.descr.Name = "descr";
             this.descr.Size = new System.Drawing.Size(661, 98);
             this.descr.TabIndex = 25;
@@ -296,7 +297,7 @@ namespace WinFormInfSys.Window
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(15, 565);
+            this.label5.Location = new System.Drawing.Point(18, 781);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(667, 20);
             this.label5.TabIndex = 26;
@@ -318,11 +319,19 @@ namespace WinFormInfSys.Window
             this.UserFiles.Size = new System.Drawing.Size(521, 43);
             this.UserFiles.TabIndex = 28;
             // 
+            // LeaderContainer
+            // 
+            this.LeaderContainer.Location = new System.Drawing.Point(27, 578);
+            this.LeaderContainer.Name = "LeaderContainer";
+            this.LeaderContainer.Size = new System.Drawing.Size(647, 190);
+            this.LeaderContainer.TabIndex = 29;
+            // 
             // TeacherOpenProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(691, 727);
+            this.ClientSize = new System.Drawing.Size(691, 943);
+            this.Controls.Add(this.LeaderContainer);
             this.Controls.Add(this.UserFiles);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -380,5 +389,6 @@ namespace WinFormInfSys.Window
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.FlowLayoutPanel UserFiles;
+        private System.Windows.Forms.FlowLayoutPanel LeaderContainer;
     }
 }

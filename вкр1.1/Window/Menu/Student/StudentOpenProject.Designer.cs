@@ -56,6 +56,7 @@ namespace WinFormInfSys.Window {
             this.L1 = new System.Windows.Forms.Label();
             this.S1 = new System.Windows.Forms.Label();
             this.ChangedStatus = new System.Windows.Forms.Label();
+            this.LeaderContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -302,11 +303,22 @@ namespace WinFormInfSys.Window {
             this.ChangedStatus.Text = " ";
             this.ChangedStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // LeaderContainer
+            // 
+            this.LeaderContainer.AutoSize = true;
+            this.LeaderContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.LeaderContainer.Location = new System.Drawing.Point(2, 603);
+            this.LeaderContainer.Name = "LeaderContainer";
+            this.LeaderContainer.Size = new System.Drawing.Size(687, 30);
+            this.LeaderContainer.TabIndex = 26;
+            // 
             // StudentOpenProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(691, 655);
+            this.Controls.Add(this.LeaderContainer);
             this.Controls.Add(this.ChangedStatus);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.panel1);
@@ -360,5 +372,6 @@ namespace WinFormInfSys.Window {
         private System.Windows.Forms.Label L1;
         private System.Windows.Forms.Label S1;
         private System.Windows.Forms.Label ChangedStatus;
+        private System.Windows.Forms.FlowLayoutPanel LeaderContainer;
     }
 }
