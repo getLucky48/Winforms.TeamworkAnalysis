@@ -360,7 +360,7 @@ namespace WinFormInfSys.Window
 
 
 
-                    where isp.discipline_id = 15 and isp.fl_unique = 1
+                    where isp.discipline_id = (select id from is_discipline where name = '{DisciplinesList.SelectedItem}') and isp.fl_unique = 1
 
             ";
 
