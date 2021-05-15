@@ -23,14 +23,20 @@ namespace WinFormInfSys
 
             InitializeComponent();
 
-            buildTable(role.Item2);
+            this.role = role;
+
+            buildTable();
 
         }
 
-        private void buildTable(int userId)
+        private Tuple<Role, int> role { get; set; }
+
+        private void buildTable()
         {
 
             Table.SuspendLayout();
+
+            Table.Controls.Clear();
 
             Utils.fillRow(Table, new Control[] {
                 new Label(){ Text = "Предмет", AutoSize = true },
@@ -59,12 +65,12 @@ namespace WinFormInfSys
                 isd.id as discipline_id,
                 isp.fl_completed as complete,
                 isp.name,
-                isp.step1,
-                isp.step2,
-                isp.step3,
-                isp.step4,
-                isp.step5,
-                isp.step6,
+                isstat1.name as step1, 
+                isstat2.name as step2, 
+                isstat3.name as step3, 
+                isstat4.name as step4, 
+                isstat5.name as step5, 
+                isstat6.name as step6,
                 isp.score
 
                 from is_user isu
@@ -72,8 +78,22 @@ namespace WinFormInfSys
                 join is_project isp on isp.student_Id = isu.id
                 join is_discipline isd on isd.id = isp.discipline_id
                 left join is_user iste on iste.id = isp.teacher_id
+                
+                left join is_solution iss1 on iss1.id = isp.step1
+                left join is_solution iss2 on iss2.id = isp.step2
+                left join is_solution iss3 on iss3.id = isp.step3
+                left join is_solution iss4 on iss4.id = isp.step4
+                left join is_solution iss5 on iss5.id = isp.step5
+                left join is_solution iss6 on iss6.id = isp.step6
 
-                where isu.id = {userId}
+				left join is_status isstat1 on isstat1.id = iss1.status_id
+				left join is_status isstat2 on isstat2.id = iss2.status_id
+				left join is_status isstat3 on isstat3.id = iss3.status_id
+				left join is_status isstat4 on isstat4.id = iss4.status_id
+				left join is_status isstat5 on isstat5.id = iss5.status_id
+				left join is_status isstat6 on isstat6.id = iss6.status_id
+
+                where isu.id = {this.role.Item2}
 
             ";
 
@@ -149,6 +169,8 @@ namespace WinFormInfSys
             int projId = int.Parse(b.Name.Replace("OpenProjById_", string.Empty));
 
             Utils.switchWindow(this, new StudentOpenProject(projId));
+
+            buildTable();
 
         }
 

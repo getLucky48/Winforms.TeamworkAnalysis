@@ -122,10 +122,10 @@
     <Compile Include="Window\Auth\Auth.Designer.cs">
       <DependentUpon>Auth.cs</DependentUpon>
     </Compile>
-    <Compile Include="Window\Menu\Student\StudentOpenProject\StudentOpenProject.cs">
+    <Compile Include="Window\Menu\Student\StudentOpenProject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Window\Menu\Student\StudentOpenProject\StudentOpenProject.Designer.cs">
+    <Compile Include="Window\Menu\Student\StudentOpenProject.Designer.cs">
       <DependentUpon>StudentOpenProject.cs</DependentUpon>
     </Compile>
     <Compile Include="Window\Menu\Student\StudentSurveyLayouts\Layout3.cs">
@@ -151,6 +151,12 @@
     </Compile>
     <Compile Include="Window\Menu\Student\StudentSurveys.Designer.cs">
       <DependentUpon>StudentSurveys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\Menu\Teacher\TeacherOpenProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Menu\Teacher\TeacherOpenProject.Designer.cs">
+      <DependentUpon>TeacherOpenProject.cs</DependentUpon>
     </Compile>
     <Compile Include="Window\Menu\Teacher\TeacherPerfomance.cs">
       <SubType>Form</SubType>
@@ -256,7 +262,7 @@
     <EmbeddedResource Include="Window\Auth\Auth.resx">
       <DependentUpon>Auth.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Window\Menu\Student\StudentOpenProject\StudentOpenProject.resx">
+    <EmbeddedResource Include="Window\Menu\Student\StudentOpenProject.resx">
       <DependentUpon>StudentOpenProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Window\Menu\Student\StudentSurveyLayouts\Layout3.resx">
@@ -270,6 +276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Window\Menu\Student\StudentSurveys.resx">
       <DependentUpon>StudentSurveys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Menu\Teacher\TeacherOpenProject.resx">
+      <DependentUpon>TeacherOpenProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Window\Menu\Teacher\TeacherPerfomance.resx">
       <DependentUpon>TeacherPerfomance.cs</DependentUpon>
