@@ -8,8 +8,6 @@ using static WinFormInfSys.Auth;
 namespace WinFormInfSys.Window
 {
 
-    //todo: рекомендации
-
     public partial class TeacherTeamAdd : Form
     {
 

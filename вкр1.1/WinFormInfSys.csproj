@@ -122,6 +122,12 @@
     <Compile Include="Window\Auth\Auth.Designer.cs">
       <DependentUpon>Auth.cs</DependentUpon>
     </Compile>
+    <Compile Include="Window\Menu\Student\StudentOpenProject\StudentOpenProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Menu\Student\StudentOpenProject\StudentOpenProject.Designer.cs">
+      <DependentUpon>StudentOpenProject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Window\Menu\Student\StudentSurveyLayouts\Layout3.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -250,6 +256,9 @@
     <EmbeddedResource Include="Window\Auth\Auth.resx">
       <DependentUpon>Auth.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Window\Menu\Student\StudentOpenProject\StudentOpenProject.resx">
+      <DependentUpon>StudentOpenProject.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Window\Menu\Student\StudentSurveyLayouts\Layout3.resx">
       <DependentUpon>Layout3.cs</DependentUpon>
     </EmbeddedResource>
@@ -334,8 +343,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Window\TaskTemplates\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

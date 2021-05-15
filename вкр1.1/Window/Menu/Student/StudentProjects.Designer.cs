@@ -37,25 +37,31 @@ namespace WinFormInfSys
             this.Table.AutoScroll = true;
             this.Table.AutoSize = true;
             this.Table.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.Table.ColumnCount = 1;
-            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.Table.ColumnCount = 12;
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.Table.Location = new System.Drawing.Point(0, 0);
             this.Table.Name = "Table";
             this.Table.RowCount = 1;
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.Table.Size = new System.Drawing.Size(1264, 681);
+            this.Table.Size = new System.Drawing.Size(1213, 681);
             this.Table.TabIndex = 8;
             // 
             // StudentProjects
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1214, 681);
             this.Controls.Add(this.Table);
             this.Name = "StudentProjects";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

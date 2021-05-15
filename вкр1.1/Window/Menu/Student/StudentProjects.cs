@@ -5,12 +5,12 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using WinFormInfSys.Class;
+using WinFormInfSys.Window;
 using static WinFormInfSys.Auth;
 
 namespace WinFormInfSys
 {
 
-    //todo: open proj
     public partial class StudentProjects : Form
     {
         public StudentProjects()
@@ -32,24 +32,26 @@ namespace WinFormInfSys
 
             Table.SuspendLayout();
 
-            Utils.initTable(Table, new string[] {
-                "Предмет",
-                "Преподаватель",
-                "Задание",
-                "Срок сдачи",
-                "Этап 1\nпостановка задачи",
-                "Этап 2\nтестовые данные",
-                "Этап 3\nструктура и алгоритмы",
-                "Этап 4\nинтерфейс",
-                "Этап 5\nотладка",
-                "Этап 6\nзащита",
-                "Оценка"
-            });
+            Utils.fillRow(Table, new Control[] {
+                new Label(){ Text = "Предмет", AutoSize = true },
+                new Label(){ Text = "Преподаватель", AutoSize = true},
+                new Label(){ Text = "Задание", AutoSize = true},
+                new Label(){ Text = "Срок сдачи", AutoSize = true},
+                new Label(){ Text = "Этап 1\nпостановка задачи", AutoSize = true},
+                new Label(){ Text = "Этап 2\nтестовые данные", AutoSize = true},
+                new Label(){ Text = "Этап 3\nструктура и алгоритмы", AutoSize = true},
+                new Label(){ Text = "Этап 4\nинтерфейс", AutoSize = true},
+                new Label(){ Text = "Этап 5\nотладка", AutoSize = true},
+                new Label(){ Text = "Этап 6\nзащита", AutoSize = true},
+                new Label(){ Text = "Оценка", AutoSize = true },
+                new Label(){ Text = " " }
+            }, 0); ;
 
             string query = $@"
 
                 select 
-
+                
+                isp.id as id,
                 isp.descr as descr, 
                 isp.deadline as deadline,
                 iste.name as teacher,
@@ -111,6 +113,9 @@ namespace WinFormInfSys
                 Label step5 = Utils.buildLabel(s5, Guid.NewGuid().ToString());
                 Label step6 = Utils.buildLabel(s6, Guid.NewGuid().ToString());
                 Label score = Utils.buildLabel(s, Guid.NewGuid().ToString());
+                Button open = Utils.buildButton("Открыть", $"OpenProjById_{reader["id"]}");
+                open.Width = 100;
+                open.Click += Open_Click;
 
                 Utils.fillRow(Table, new Control[] {
                     discipline,
@@ -123,7 +128,8 @@ namespace WinFormInfSys
                     step4,
                     step5,
                     step6,
-                    score                
+                    score,
+                    open
                 }, row);
 
                 row++;
@@ -136,6 +142,15 @@ namespace WinFormInfSys
 
         }
 
+        private void Open_Click(object sender, EventArgs e)
+        {
+
+            Button b = (Button)sender;
+            int projId = int.Parse(b.Name.Replace("OpenProjById_", string.Empty));
+
+            Utils.switchWindow(this, new StudentOpenProject(projId));
+
+        }
 
     }
 
