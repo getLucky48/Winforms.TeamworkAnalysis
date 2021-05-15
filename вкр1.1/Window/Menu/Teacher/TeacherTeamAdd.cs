@@ -32,6 +32,13 @@ namespace WinFormInfSys.Window
             studAll = new List<Tuple<int, string, string>>();
             groupNew = new List<Tuple<int, string, string>>();
 
+            Utils.fillRow(Table, new Control[] {
+                new Label(){Text = "ФИО", AutoSize = true },
+                new Label(){Text = "Роль", AutoSize = true },
+                new Label(){Text = "Бригада", AutoSize = true },
+                new Label(){Text = " ", AutoSize = true }
+            }, 0);
+
         }
 
         private int currentNum { get; set; }
@@ -194,7 +201,15 @@ namespace WinFormInfSys.Window
 
             this.currentNum = -1;
 
-            Utils.initTable(Table, new string[] { "ФИО", "Роль", "Бригада", " " });
+            //Utils.initTable(Table, new string[] { "ФИО", "Роль", "Бригада", " " });
+
+            Table.Controls.Clear();
+            Utils.fillRow(Table, new Control[] {
+                new Label(){Text = "ФИО", AutoSize = true },
+                new Label(){Text = "Роль", AutoSize = true },
+                new Label(){Text = "Бригада", AutoSize = true },
+                new Label(){Text = " ", AutoSize = true }
+            } , 0);
 
             studAll.Clear();
             groupNew.Clear();

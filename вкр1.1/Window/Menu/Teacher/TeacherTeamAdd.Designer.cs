@@ -161,14 +161,16 @@ namespace WinFormInfSys.Window
             this.Table.AutoScroll = true;
             this.Table.AutoSize = true;
             this.Table.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.Table.ColumnCount = 1;
-            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.Table.ColumnCount = 4;
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.Table.Location = new System.Drawing.Point(594, 52);
-            this.Table.MaximumSize = new System.Drawing.Size(539, 497);
             this.Table.Name = "Table";
             this.Table.RowCount = 1;
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.Table.Size = new System.Drawing.Size(539, 497);
+            this.Table.Size = new System.Drawing.Size(555, 464);
             this.Table.TabIndex = 14;
             // 
             // StudentsCount
@@ -209,7 +211,7 @@ namespace WinFormInfSys.Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1146, 563);
+            this.ClientSize = new System.Drawing.Size(1177, 563);
             this.Controls.Add(this.Recommendation);
             this.Controls.Add(this.Leader);
             this.Controls.Add(this.label6);

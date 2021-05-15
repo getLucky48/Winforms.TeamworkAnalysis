@@ -115,6 +115,7 @@ namespace WinFormInfSys
                 isp.fl_unique = 0
                 and
                 isp.teacher_id = {this.role.Item2}
+                and isg.id = isu.group_id
 
                 order by groupname, teamnum
 
