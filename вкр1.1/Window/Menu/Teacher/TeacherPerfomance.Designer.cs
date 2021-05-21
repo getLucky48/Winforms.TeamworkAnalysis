@@ -30,9 +30,10 @@ namespace WinFormInfSys.Window
         private void InitializeComponent()
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.Chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Groups = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,24 +42,28 @@ namespace WinFormInfSys.Window
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.Groups2 = new System.Windows.Forms.ComboBox();
-            this.Chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Chart2)).BeginInit();
             this.SuspendLayout();
             // 
             // Chart1
             // 
             chartArea1.Name = "ChartArea1";
+            chartArea2.Name = "ChartArea2";
             this.Chart1.ChartAreas.Add(chartArea1);
+            this.Chart1.ChartAreas.Add(chartArea2);
             legend1.Name = "Legend1";
             this.Chart1.Legends.Add(legend1);
             this.Chart1.Location = new System.Drawing.Point(12, 161);
             this.Chart1.Name = "Chart1";
-            this.Chart1.Size = new System.Drawing.Size(302, 300);
+            this.Chart1.Size = new System.Drawing.Size(632, 300);
             this.Chart1.TabIndex = 0;
             this.Chart1.Text = "chart1";
+            title1.Name = "Title1";
+            title2.Name = "Title2";
+            this.Chart1.Titles.Add(title1);
+            this.Chart1.Titles.Add(title2);
             // 
             // Groups
             // 
@@ -121,18 +126,6 @@ namespace WinFormInfSys.Window
             this.Groups2.Size = new System.Drawing.Size(169, 21);
             this.Groups2.TabIndex = 7;
             // 
-            // Chart2
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.Chart2.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.Chart2.Legends.Add(legend2);
-            this.Chart2.Location = new System.Drawing.Point(345, 161);
-            this.Chart2.Name = "Chart2";
-            this.Chart2.Size = new System.Drawing.Size(302, 300);
-            this.Chart2.TabIndex = 6;
-            this.Chart2.Text = "chart1";
-            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
@@ -159,7 +152,6 @@ namespace WinFormInfSys.Window
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Groups2);
-            this.Controls.Add(this.Chart2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Disciplines);
@@ -170,7 +162,6 @@ namespace WinFormInfSys.Window
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Графики успеваемости";
             ((System.ComponentModel.ISupportInitialize)(this.Chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Chart2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,7 +177,6 @@ namespace WinFormInfSys.Window
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox Groups2;
-        private System.Windows.Forms.DataVisualization.Charting.Chart Chart2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label4;
     }

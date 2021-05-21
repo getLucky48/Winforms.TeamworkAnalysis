@@ -28,27 +28,20 @@ namespace WinFormInfSys.Window
             Chart1.Series.Add("2");
             Chart1.Series.Add("3");
             Chart1.Series.Add("4");
-            Chart1.Series.Add("5"); 
-            
-            Chart2.Series.Add("Не оценено");
-            Chart2.Series.Add("2");
-            Chart2.Series.Add("3");
-            Chart2.Series.Add("4");
-            Chart2.Series.Add("5");
+            Chart1.Series.Add("5");
+
+            //Chart1.Series.Add("Не оценено");
+            //Chart1.Series.Add("2");
+            //Chart1.Series.Add("3");
+            //Chart1.Series.Add("4");
+            //Chart1.Series.Add("5");
 
         }
 
         private void buildChart(ComboBox groupBox, Chart chart)
         {
 
-            if (groupBox.SelectedIndex == -1 || Disciplines.SelectedIndex == -1)
-            {
-
-                MessageBox.Show("Проверьте правильность данных");
-
-                return;
-
-            }
+            if (groupBox.SelectedIndex == -1 || Disciplines.SelectedIndex == -1 || comboBox1.SelectedIndex == -1) { return; }
 
             string group = groupBox.SelectedItem.ToString();
             string discipline = Disciplines.SelectedItem.ToString();
@@ -123,7 +116,7 @@ namespace WinFormInfSys.Window
         {
 
             buildChart(Groups, Chart1);
-            buildChart(Groups2, Chart2);
+            //buildChart(Groups2, Chart2);
 
 
         }

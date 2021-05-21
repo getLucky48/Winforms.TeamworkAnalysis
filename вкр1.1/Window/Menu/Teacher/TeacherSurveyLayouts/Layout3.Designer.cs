@@ -41,11 +41,17 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
             this.GroupList = new System.Windows.Forms.ComboBox();
             this.Table = new System.Windows.Forms.TableLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
-            this.count1 = new System.Windows.Forms.Label();
             this.SubGroupList = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.SubGroup = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.Data = new System.Windows.Forms.ListBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label6
@@ -158,12 +164,12 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 189F));
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 190F));
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 192F));
-            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 122F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 192F));
             this.Table.Location = new System.Drawing.Point(16, 129);
             this.Table.Name = "Table";
             this.Table.RowCount = 1;
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.Table.Size = new System.Drawing.Size(857, 393);
+            this.Table.Size = new System.Drawing.Size(859, 393);
             this.Table.TabIndex = 29;
             // 
             // label9
@@ -177,24 +183,15 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
             this.label9.Text = "Дата";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // count1
-            // 
-            this.count1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.count1.Location = new System.Drawing.Point(898, 499);
-            this.count1.Margin = new System.Windows.Forms.Padding(0);
-            this.count1.Name = "count1";
-            this.count1.Size = new System.Drawing.Size(236, 23);
-            this.count1.TabIndex = 35;
-            this.count1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // SubGroupList
             // 
             this.SubGroupList.FormattingEnabled = true;
             this.SubGroupList.Location = new System.Drawing.Point(898, 131);
             this.SubGroupList.Margin = new System.Windows.Forms.Padding(0);
             this.SubGroupList.Name = "SubGroupList";
-            this.SubGroupList.Size = new System.Drawing.Size(236, 368);
+            this.SubGroupList.Size = new System.Drawing.Size(236, 394);
             this.SubGroupList.TabIndex = 33;
+            this.SubGroupList.SelectedIndexChanged += new System.EventHandler(this.SubGroupList_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -223,13 +220,82 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
             this.label11.Text = "Создать подгруппы";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label10
+            // 
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label10.Location = new System.Drawing.Point(1140, 84);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(236, 21);
+            this.label10.TabIndex = 40;
+            this.label10.Text = "todo1";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Data
+            // 
+            this.Data.FormattingEnabled = true;
+            this.Data.Location = new System.Drawing.Point(1140, 131);
+            this.Data.Margin = new System.Windows.Forms.Padding(0);
+            this.Data.Name = "Data";
+            this.Data.Size = new System.Drawing.Size(236, 342);
+            this.Data.TabIndex = 39;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(1301, 104);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 21);
+            this.button2.TabIndex = 38;
+            this.button2.Text = "Добавить";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(1140, 105);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(164, 20);
+            this.textBox1.TabIndex = 37;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(1140, 505);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(236, 20);
+            this.textBox2.TabIndex = 41;
+            // 
+            // label12
+            // 
+            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label12.Location = new System.Drawing.Point(1140, 481);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(236, 21);
+            this.label12.TabIndex = 42;
+            this.label12.Text = "Синонимы";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(582, 545);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(228, 23);
+            this.button3.TabIndex = 43;
+            this.button3.Text = "Сохранить";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Layout3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1436, 534);
+            this.ClientSize = new System.Drawing.Size(1390, 580);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.Data);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.count1);
             this.Controls.Add(this.SubGroupList);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.SubGroup);
@@ -246,7 +312,7 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
             this.Controls.Add(this.DisciplineList);
             this.Controls.Add(this.label1);
             this.Name = "Layout3";
-            this.Text = "Layout3";
+            this.Text = "Я в команде: мои сильные и слабые стороны";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,10 +332,16 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
         private System.Windows.Forms.ComboBox GroupList;
         private System.Windows.Forms.TableLayoutPanel Table;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label count1;
         private System.Windows.Forms.ListBox SubGroupList;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox SubGroup;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ListBox Data;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button button3;
     }
 }
