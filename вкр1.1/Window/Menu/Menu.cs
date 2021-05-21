@@ -22,24 +22,28 @@ namespace WinFormInfSys
 
             InitializeComponent();
 
+            this.role = role;
+
             if (role.Item1 == Role.Teacher)
             {
 
                 teacherPage.Enabled = true;
                 adminPage.Enabled = true;
+                this.Controls.RemoveByKey("Alerts");
+                this.Controls.RemoveByKey("label1");
 
             }
             else if(role.Item1 == Role.Student)
             {
 
                 studentPage.Enabled = true;
+                alertUser();
 
             }
 
-            this.role = role;
 
             infoUser();
-            alertUser();
+
         }
 
         private Tuple<Role, int> role;
@@ -115,6 +119,8 @@ namespace WinFormInfSys
         private void оценкипроектыToolStripMenuItem_Click(object sender, EventArgs e)               { /*todo*/ }
         private void оценкидисциплинаToolStripMenuItem_Click(object sender, EventArgs e)            { /*todo*/}
         private void справкаToolStripMenuItem_Click(object sender, EventArgs e)                     { /*todo*/}
+        private void списокЗаданийToolStripMenuItem_Click(object sender, EventArgs e)               { Utils.switchWindow(this, new TeacherProjectsEdit(role)); }
+
     }
 
 }

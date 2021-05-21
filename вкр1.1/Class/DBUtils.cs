@@ -1,10 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using static WinFormInfSys.Auth;
 
 namespace WinFormInfSys.Class
@@ -20,7 +17,7 @@ namespace WinFormInfSys.Class
         public static MySqlConnection getConnection()
         {
 
-            string connString = "Server=" + host + ";Database=" + database + ";User Id=" + userid + ";password=" + password;
+            string connString = "Server=" + host + ";Database=" + database + ";User Id=" + userid + ";password=" + password + "; Allow User Variables=True";
 
             return new MySqlConnection(connString);
 
@@ -32,40 +29,6 @@ namespace WinFormInfSys.Class
             string query = $@"select * from is_user
 
                             where login = '{login}'
-
-                            and id != '{id}'
-
-                            ";
-
-            MySqlConnection conn = DBUtils.getConnection();
-
-            conn.Open();
-
-            MySqlCommand cmd = new MySqlCommand(query, conn);
-
-            MySqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-
-                conn.Close();
-
-                return true;
-
-            }
-
-            conn.Close();
-
-            return false;
-
-        }
-
-        public static bool groupIsExists(string name, int id = -1)
-        {
-
-            string query = $@"select * from is_group
-
-                            where name = '{name}'
 
                             and id != '{id}'
 
@@ -147,7 +110,7 @@ namespace WinFormInfSys.Class
             connection.Open();
 
             MySqlCommand cmd = new MySqlCommand(query, connection);
-
+            
             cmd.ExecuteNonQuery();
 
             connection.Close();

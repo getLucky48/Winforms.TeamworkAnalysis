@@ -109,6 +109,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\DBUtils.cs" />
+    <Compile Include="Class\Teacher\ObjBelbinResults.cs" />
+    <Compile Include="Class\Admin\ObjGroupsList.cs" />
+    <Compile Include="Class\Teacher\ObjProjectsEdit.cs" />
+    <Compile Include="Class\Teacher\ObjSurveyRes_Layout1.cs" />
+    <Compile Include="Class\Teacher\ObjSurveyRes_Layout3.cs" />
     <Compile Include="Class\Utils.cs" />
     <Compile Include="Window\Menu\Menu.cs">
       <SubType>Form</SubType>
@@ -152,6 +157,12 @@
     <Compile Include="Window\Menu\Student\StudentSurveys.Designer.cs">
       <DependentUpon>StudentSurveys.cs</DependentUpon>
     </Compile>
+    <Compile Include="Window\Menu\Teacher\TeacherProjectsEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Menu\Teacher\TeacherProjectsEdit.Designer.cs">
+      <DependentUpon>TeacherProjectsEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Window\Menu\Teacher\TeacherOpenProject.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,11 +175,29 @@
     <Compile Include="Window\Menu\Teacher\TeacherPerfomance.Designer.cs">
       <DependentUpon>TeacherPerfomance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Window\Menu\Teacher\TeacherSurveyLayouts\Layout1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Menu\Teacher\TeacherSurveyLayouts\Layout1.Designer.cs">
+      <DependentUpon>Layout1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\Menu\Teacher\TeacherSurveyLayouts\Layout3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Menu\Teacher\TeacherSurveyLayouts\Layout3.Designer.cs">
+      <DependentUpon>Layout3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Window\Menu\Teacher\TeacherSurveyResults.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Window\Menu\Teacher\TeacherSurveyResults.Designer.cs">
       <DependentUpon>TeacherSurveyResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\Menu\Teacher\_edit_TeacherProjectsEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Menu\Teacher\_edit_TeacherProjectsEdit.Designer.cs">
+      <DependentUpon>_edit_TeacherProjectsEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Window\Menu\Teacher\TeacherTeamAdd.cs">
       <SubType>Form</SubType>
@@ -277,14 +306,26 @@
     <EmbeddedResource Include="Window\Menu\Student\StudentSurveys.resx">
       <DependentUpon>StudentSurveys.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Window\Menu\Teacher\TeacherProjectsEdit.resx">
+      <DependentUpon>TeacherProjectsEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Window\Menu\Teacher\TeacherOpenProject.resx">
       <DependentUpon>TeacherOpenProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Window\Menu\Teacher\TeacherPerfomance.resx">
       <DependentUpon>TeacherPerfomance.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Window\Menu\Teacher\TeacherSurveyLayouts\Layout1.resx">
+      <DependentUpon>Layout1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Menu\Teacher\TeacherSurveyLayouts\Layout3.resx">
+      <DependentUpon>Layout3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Window\Menu\Teacher\TeacherSurveyResults.resx">
       <DependentUpon>TeacherSurveyResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Menu\Teacher\_edit_TeacherProjectsEdit.resx">
+      <DependentUpon>_edit_TeacherProjectsEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Window\Menu\Teacher\TeacherTeamAdd.resx">
       <DependentUpon>TeacherTeamAdd.cs</DependentUpon>

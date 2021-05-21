@@ -94,6 +94,7 @@ namespace WinFormInfSys
             this.Password.PasswordChar = '*';
             this.Password.Size = new System.Drawing.Size(118, 20);
             this.Password.TabIndex = 1;
+            this.Password.KeyUp += Password_KeyUp;
             // 
             // Auth
             // 

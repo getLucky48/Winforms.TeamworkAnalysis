@@ -124,5 +124,8 @@ D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.Window.L
 D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.Window.TeacherSurveyResults.resources
 D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.Window.TeacherPerfomance.resources
 D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.Window.StudentOpenProject.resources
-D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.csprojAssemblyReference.cache
 D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.Window.TeacherOpenProject.resources
+D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.TeacherProjectsEdit.resources
+D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.Window._edit_TeacherProjectsEdit.resources
+D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts.Layout1.resources
+D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts.Layout3.resources

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Windows.Forms;
 using WinFormInfSys.Class;
 using static WinFormInfSys.Auth;
@@ -32,7 +33,10 @@ namespace WinFormInfSys.Window
             submit.Enabled = false;
 
             string name = this.Text;
-            string txt = Survey.Text;
+            string txt = richTextBox0.Text;
+            string txt1 = richTextBox1.Text;
+            string txt2 = richTextBox2.Text;
+            string txt3 = richTextBox3.Text;
 
             if (string.IsNullOrEmpty(txt) || comboBox1.SelectedIndex == -1)
             {
@@ -52,7 +56,7 @@ namespace WinFormInfSys.Window
                 insert into is_survey(name, result, date, group_id, discipline_id) values
                 (
                 '{name}',
-                '{txt}',
+                '{ JsonConvert.SerializeObject(new string[] { txt, txt1, txt2, txt3 }) }',
                 CURRENT_TIMESTAMP,
                 (select group_id from is_user where id = {this.role.Item2}),
                 (select id from is_discipline where name = '{discipline}')

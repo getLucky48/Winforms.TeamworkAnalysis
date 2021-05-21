@@ -2,6 +2,7 @@
 using System;
 using System.Windows.Forms;
 using WinFormInfSys.Class;
+using WinFormInfSys.Class.Admin;
 
 namespace WinFormInfSys.Window
 {
@@ -17,28 +18,30 @@ namespace WinFormInfSys.Window
 
             InitializeComponent();
 
-            this.user_id = group_id;
+            this.group_id = group_id;
 
             string query = $"select * from is_group where id = '{group_id}'";
 
             Utils.bind(FacultyList, "is_faculty", "name");
-            Utils.selectItem(FacultyList, "is_group", "faculty_id", "is_faculty", "id", "name", this.user_id);
+            Utils.selectItem(FacultyList, "is_group", "faculty_id", "is_faculty", "id", "name", this.group_id);
 
             Utils.bind(CourseList, "is_course", "name");
-            Utils.selectItem(CourseList, "is_group", "course_id", "is_course", "id", "name", this.user_id);
+            Utils.selectItem(CourseList, "is_group", "course_id", "is_course", "id", "name", this.group_id);
 
             Utils.bind(GroupName, "name", query);
+            Utils.bind(Year, "dt", query);
 
         }
 
-        private int user_id { get; set; }
+        private int group_id { get; set; }
 
         private void Create_Click(object sender, EventArgs e)
         {
 
             string name = GroupName.Text;
+            string year = Year.Text;
 
-            if (string.IsNullOrWhiteSpace(name) || FacultyList.SelectedIndex == -1 || CourseList.SelectedIndex == -1)
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(year) || FacultyList.SelectedIndex == -1 || CourseList.SelectedIndex == -1)
             {
 
                 MessageBox.Show("Проверьте правильность данных");
@@ -47,18 +50,18 @@ namespace WinFormInfSys.Window
 
             }
 
-            string query = $@"
-                            UPDATE is_group SET 
+            ObjGroupsList obj = new ObjGroupsList()
+            {
 
-                            name = '{name}', 
-                            course_id = (select id from is_course where name = '{CourseList.SelectedItem}' limit 1),
-                            faculty_id = (select id from is_faculty where name = '{FacultyList.SelectedItem}' limit 1)
+                id = this.group_id.ToString(),
+                name = name,
+                dt = year,
+                faculty = FacultyList.SelectedItem.ToString(),
+                course = CourseList.SelectedItem.ToString()
 
-                            WHERE id = '{user_id}'
+            };
 
-                            ";
-
-            DBUtils.execQuery(query);
+            ObjGroupsList.update(obj);
 
             this.Close();
 

@@ -60,6 +60,7 @@ namespace WinFormInfSys.Window
             this.label6 = new System.Windows.Forms.Label();
             this.UserFiles = new System.Windows.Forms.FlowLayoutPanel();
             this.LeaderContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -269,22 +270,24 @@ namespace WinFormInfSys.Window
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(352, 908);
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button2.Location = new System.Drawing.Point(455, 908);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(180, 23);
             this.button2.TabIndex = 23;
             this.button2.Text = "Отклонить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(155, 908);
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button1.Location = new System.Drawing.Point(83, 908);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(180, 23);
             this.button1.TabIndex = 24;
             this.button1.Text = "Принять";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // descr
@@ -326,11 +329,22 @@ namespace WinFormInfSys.Window
             this.LeaderContainer.Size = new System.Drawing.Size(647, 190);
             this.LeaderContainer.TabIndex = 29;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(269, 908);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(180, 23);
+            this.button3.TabIndex = 30;
+            this.button3.Text = "Просмотрено";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // TeacherOpenProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(691, 943);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.LeaderContainer);
             this.Controls.Add(this.UserFiles);
             this.Controls.Add(this.label6);
@@ -390,5 +404,6 @@ namespace WinFormInfSys.Window
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.FlowLayoutPanel UserFiles;
         private System.Windows.Forms.FlowLayoutPanel LeaderContainer;
+        private System.Windows.Forms.Button button3;
     }
 }

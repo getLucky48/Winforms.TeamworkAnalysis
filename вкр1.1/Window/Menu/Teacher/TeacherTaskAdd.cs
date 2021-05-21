@@ -90,24 +90,69 @@ namespace WinFormInfSys.Window
             string disc = DisciplineList.SelectedItem.ToString();
             string name = ProjName.Text;
             string descr = Description.Text;
+
             DateTime date = Calendar.Value;
             bool ignore = IgnoreCalendar.Checked;
-
             string preparedDate = $"CAST('{date.ToString("yyyyMMdd")}' as date)";
+
+            DateTime date1 = dateTimePicker1.Value;
+            DateTime date2 = dateTimePicker2.Value;
+            DateTime date3 = dateTimePicker3.Value;
+            DateTime date4 = dateTimePicker4.Value;
+            DateTime date5 = dateTimePicker5.Value;
+            DateTime date6 = dateTimePicker6.Value;
+
+            bool ignore1 = checkBox1.Checked;
+            bool ignore2 = checkBox2.Checked;
+            bool ignore3 = checkBox3.Checked;
+            bool ignore4 = checkBox4.Checked;
+            bool ignore5 = checkBox5.Checked;
+            bool ignore6 = checkBox6.Checked;
+
+            string preparedDate1 = $"CAST('{date1.ToString("yyyyMMdd")}' as date)";
+            string preparedDate2 = $"CAST('{date2.ToString("yyyyMMdd")}' as date)";
+            string preparedDate3 = $"CAST('{date3.ToString("yyyyMMdd")}' as date)";
+            string preparedDate4 = $"CAST('{date4.ToString("yyyyMMdd")}' as date)";
+            string preparedDate5 = $"CAST('{date5.ToString("yyyyMMdd")}' as date)";
+            string preparedDate6 = $"CAST('{date6.ToString("yyyyMMdd")}' as date)";
 
             Guid guid = Guid.NewGuid();
 
             string cQuery = $@"
 
-                                insert into is_project(discipline_id, teacher_id, deadline, descr, fl_unique, token, name)
+                                insert into is_project(
+
+                                    discipline_id,
+                                    teacher_id,
+                                    deadline,
+                                    deadline1,
+                                    deadline2,
+                                    deadline3,
+                                    deadline4,
+                                    deadline5,
+                                    deadline6,
+                                    descr,
+                                    fl_unique,
+                                    token,
+                                    name
+
+                                )
+
                                 values(
                                     (select id from is_discipline where name = '{disc}' limit 1),
                                     '{this.role.Item2}',
                                     { (ignore ? "null" : preparedDate) },
+                                    { (ignore1 ? "null" : preparedDate1) },
+                                    { (ignore2 ? "null" : preparedDate2) },
+                                    { (ignore3 ? "null" : preparedDate3) },
+                                    { (ignore4 ? "null" : preparedDate4) },
+                                    { (ignore5 ? "null" : preparedDate5) },
+                                    { (ignore6 ? "null" : preparedDate6) },
                                     '{descr}',
                                     true,
                                     '{guid}',
                                     '{name}'
+
                                 )
 
                               ";

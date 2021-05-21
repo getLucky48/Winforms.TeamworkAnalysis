@@ -640,23 +640,23 @@ namespace WinFormInfSys.Window
 
             DBUtils.execQuery(upQuery);
 
-            string log = $@"
+            //string log = $@"
 
-                insert into is_alert(user_id, alert, date)
+            //    insert into is_alert(user_id, alert, date)
 
-                values (
-                (select teacher_id from is_project where id = {this.projId} limit 1),
+            //    values (
+            //    (select teacher_id from is_project where id = {this.projId} limit 1),
 
-                concat((select name from is_user where id = {this.role.Item2}),
-                ' отправил задание по дисциплине ',
-                (select name from is_discipline where id = (select discipline_id from is_project where id = {this.projId})) , 
-                ' ' ,
-                (select name from is_project where id = {this.projId} limit 1)),
+            //    concat((select name from is_user where id = {this.role.Item2}),
+            //    ' отправил задание по дисциплине ',
+            //    (select name from is_discipline where id = (select discipline_id from is_project where id = {this.projId})) , 
+            //    ' ' ,
+            //    (select name from is_project where id = {this.projId} limit 1)),
                 
-                CURRENT_TIMESTAMP
-                )";
+            //    CURRENT_TIMESTAMP
+            //    )";
 
-            DBUtils.execQuery(log);
+            //DBUtils.execQuery(log);
 
             MessageBox.Show("Успешно добавлено!");
 

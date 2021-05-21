@@ -36,19 +36,8 @@ namespace WinFormInfSys.Window
 
             if(this.currentStep <= 6)
             {
+
                 string query = $@"
-
-                update is_solution 
-
-                set status_id = 3
-
-                where id = (select step{this.currentStep} from is_project where id = {this.projId}) and status_id != 1 and status_id != 2 and status_id != 3
-
-                ";
-
-                DBUtils.execQuery(query);
-
-                query = $@"
 
                 select * from is_solution 
 
@@ -442,24 +431,24 @@ namespace WinFormInfSys.Window
            
             DBUtils.execQuery(query);
 
-            string log = $@"
+            //string log = $@"
 
-                insert into is_alert(user_id, alert, date)
+            //    insert into is_alert(user_id, alert, date)
 
-                values (
-                (select student_id from is_project where id = {this.projId} limit 1),
+            //    values (
+            //    (select student_id from is_project where id = {this.projId} limit 1),
 
-                concat(
-                'Изменился статус задания по дисциплине: ',
-                (select name from is_discipline where id = (select discipline_id from is_project where id = {this.projId})) ,
-                ' ',
-                (select name from is_project where id = {this.projId} limit 1)
-                ),
+            //    concat(
+            //    'Изменился статус задания по дисциплине: ',
+            //    (select name from is_discipline where id = (select discipline_id from is_project where id = {this.projId})) ,
+            //    ' ',
+            //    (select name from is_project where id = {this.projId} limit 1)
+            //    ),
 
-                CURRENT_TIMESTAMP
-                )";
+            //    CURRENT_TIMESTAMP
+            //    )";
 
-            DBUtils.execQuery(log);
+            //DBUtils.execQuery(log);
 
             MessageBox.Show("Ответ отправлен!");
 
@@ -639,30 +628,70 @@ namespace WinFormInfSys.Window
 
             DBUtils.execQuery(query);
 
-            string log = $@"
+            if (this.currentStep == 3)
+            {
 
-                insert into is_alert(user_id, alert, date)
+                string log = $@"
 
-                values (
-                (select student_id from is_project where id = {this.projId} limit 1),
+                    insert into is_alert(user_id, alert, date)
 
-                concat(
-                'Изменился статус задания по дисциплине: ',
-                (select name from is_discipline where id = (select discipline_id from is_project where id = {this.projId})) ,
-                ' ',
-                (select name from is_project where id = {this.projId} limit 1)
-                ),
+                    values (
+                    (select student_id from is_project where id = {this.projId} limit 1),
 
-                CURRENT_TIMESTAMP
-                )";
+                    'Пройдите тест!',
 
-            DBUtils.execQuery(log);
+                    CURRENT_TIMESTAMP
+                    )";
+
+                DBUtils.execQuery(log);
+
+            }
+            else if (this.currentStep == 6)
+            {
+
+                string log = $@"
+
+                    insert into is_alert(user_id, alert, date)
+
+                    values (
+                    (select student_id from is_project where id = {this.projId} limit 1),
+
+                    'Пройдите тест!',
+
+                    CURRENT_TIMESTAMP
+                    )";
+
+                DBUtils.execQuery(log);
+
+            }
 
             MessageBox.Show("Ответ отправлен!");
 
             this.Close();
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            string query = $@"
+
+                update is_solution 
+
+                set status_id = 3
+
+                where id = (select step{this.currentStep} from is_project where id = {this.projId}) and status_id != 1 and status_id != 2 and status_id != 3
+
+                ";
+
+            DBUtils.execQuery(query);
+
+            MessageBox.Show("Ответ отправлен!");
+
+            this.Close();
+
+        }
+
     }
 
 }

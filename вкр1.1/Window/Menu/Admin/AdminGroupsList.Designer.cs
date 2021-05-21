@@ -30,6 +30,8 @@ namespace WinFormInfSys.Window
         private void InitializeComponent()
         {
             this.Editor = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.Year = new System.Windows.Forms.TextBox();
             this.CourseList = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.FacultyList = new System.Windows.Forms.ComboBox();
@@ -43,6 +45,8 @@ namespace WinFormInfSys.Window
             // 
             // Editor
             // 
+            this.Editor.Controls.Add(this.label4);
+            this.Editor.Controls.Add(this.Year);
             this.Editor.Controls.Add(this.CourseList);
             this.Editor.Controls.Add(this.label3);
             this.Editor.Controls.Add(this.FacultyList);
@@ -52,8 +56,24 @@ namespace WinFormInfSys.Window
             this.Editor.Controls.Add(this.Create);
             this.Editor.Location = new System.Drawing.Point(2, 391);
             this.Editor.Name = "Editor";
-            this.Editor.Size = new System.Drawing.Size(569, 110);
+            this.Editor.Size = new System.Drawing.Size(752, 110);
             this.Editor.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(561, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(92, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Год поступления";
+            // 
+            // Year
+            // 
+            this.Year.Location = new System.Drawing.Point(564, 32);
+            this.Year.Name = "Year";
+            this.Year.Size = new System.Drawing.Size(175, 20);
+            this.Year.TabIndex = 10;
             // 
             // CourseList
             // 
@@ -107,7 +127,7 @@ namespace WinFormInfSys.Window
             // 
             // Create
             // 
-            this.Create.Location = new System.Drawing.Point(241, 59);
+            this.Create.Location = new System.Drawing.Point(330, 73);
             this.Create.Name = "Create";
             this.Create.Size = new System.Drawing.Size(96, 21);
             this.Create.TabIndex = 0;
@@ -126,14 +146,14 @@ namespace WinFormInfSys.Window
             this.Table.Name = "Table";
             this.Table.RowCount = 1;
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.Table.Size = new System.Drawing.Size(570, 382);
+            this.Table.Size = new System.Drawing.Size(752, 382);
             this.Table.TabIndex = 3;
             // 
             // AdminGroupsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 497);
+            this.ClientSize = new System.Drawing.Size(760, 497);
             this.Controls.Add(this.Table);
             this.Controls.Add(this.Editor);
             this.Name = "AdminGroupsList";
@@ -155,5 +175,7 @@ namespace WinFormInfSys.Window
         private System.Windows.Forms.ComboBox CourseList;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TableLayoutPanel Table;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox Year;
     }
 }

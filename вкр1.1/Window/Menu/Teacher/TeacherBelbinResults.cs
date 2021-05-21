@@ -1,17 +1,15 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormInfSys.Class;
+using WinFormInfSys.Class.Teacher;
+using System.Linq;
 
 namespace WinFormInfSys.Window
 {
+    //todo: покраска строк
+    
     public partial class TeacherBelbinResults : Form
     {
         public TeacherBelbinResults()
@@ -26,44 +24,66 @@ namespace WinFormInfSys.Window
         private void formLists(string groupName)
         {
 
-            Complete.Items.Clear();
-            Uncomplete.Items.Clear();
+            Table.Controls.Clear();
 
-            string query = $@"
+            List<ObjBelbinResults> list = ObjBelbinResults.getList(groupName).OrderBy(t => t.roles == null).ToList();
 
-                        select 
-
-                        isu.name,
-                        isu.id,
-                        concat(istr.rolebybelbin, ' ', istr.rolebybelbin_s, ' ', istr.rolebybelbin_t ) as role
-
-                        from is_user isu 
-
-                        left join is_testresult istr on istr.user_Id = isu.id
-
-                        where isu.group_id = (select id from is_group where name = '{groupName}')
-
-                        order by isu.name asc
-
-            ";
-
-            MySqlConnection conn = DBUtils.getConnection();
-
-            conn.Open();
-
-            MySqlCommand cmd = new MySqlCommand(query, conn);
-
-            MySqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            for (int i = 0; i < list.Count; i++)
             {
 
-                if (string.IsNullOrEmpty(reader["role"].ToString())) { Uncomplete.Items.Add(reader["name"].ToString());  }
-                else { Complete.Items.Add($"{reader["name"]} [{reader["role"]}]"); }
+                ObjBelbinResults obj = list[i];
+
+                string name = obj.name;
+
+                string role1 = string.Empty;
+                string role2 = string.Empty;
+                string role3 = string.Empty;
+                string role4 = string.Empty;
+                string role5 = string.Empty;
+                string role6 = string.Empty;
+                string role7 = string.Empty;
+                string role8 = string.Empty;
+
+                if(obj.roles != null)
+                {
+
+                    Dictionary<string, int> roles = obj.roles;
+
+                    int sum = roles.Sum(t => t.Value);
+
+                    role1 = $"{Math.Round(double.Parse(roles["Реализатор"].ToString()) / sum, 4) * 100}%";
+                    role2 = $"{Math.Round(double.Parse(roles["Исполнитель"].ToString()) / sum, 4) * 100}%";
+                    role3 = $"{Math.Round(double.Parse(roles["Координатор"].ToString()) / sum, 4) * 100}%";
+                    role4 = $"{Math.Round(double.Parse(roles["Исследователь"].ToString()) / sum, 4) * 100}%";
+                    role5 = $"{Math.Round(double.Parse(roles["Творец"].ToString()) / sum, 4) * 100}%";
+                    role6 = $"{Math.Round(double.Parse(roles["Генератор идей"].ToString()) / sum, 4) * 100}%";
+                    role7 = $"{Math.Round(double.Parse(roles["Коллективист"].ToString()) / sum, 4) * 100}%";
+                    role8 = $"{Math.Round(double.Parse(roles["Оценщик"].ToString()) / sum, 4) * 100}%";
+
+                }
+
+                Utils.fillRow(
+
+                    Table,
+                    new Control[]
+                    {
+
+                        Utils.buildLabel(name),
+                        Utils.buildLabel(role1),
+                        Utils.buildLabel(role2),
+                        Utils.buildLabel(role3),
+                        Utils.buildLabel(role4),
+                        Utils.buildLabel(role5),
+                        Utils.buildLabel(role6),
+                        Utils.buildLabel(role7),
+                        Utils.buildLabel(role8)
+
+                    },
+                    i
+
+                );
 
             }
-
-            conn.Close();
 
         }
 

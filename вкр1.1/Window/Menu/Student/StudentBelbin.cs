@@ -2,13 +2,10 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormInfSys.Class;
 using static WinFormInfSys.Auth;
@@ -377,7 +374,7 @@ namespace WinFormInfSys
 
             connection.Close();
 
-            string insert = $"insert into is_testresult(rolebybelbin, rolebybelbin_s, rolebybelbin_t, user_id) values('{role}','{role1}','{role2}', '{this.role.Item2}') ";
+            string insert = $"insert into is_testresult(result, user_id) values('{JsonConvert.SerializeObject(this.currentSum)}', '{this.role.Item2}') ";
 
             DBUtils.execQuery(insert);
 

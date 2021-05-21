@@ -35,7 +35,7 @@ namespace WinFormInfSys.Class
 
         }
 
-        public static Label buildLabel(string text, string data)
+        public static Label buildLabel(string text, string data = "")
         {
 
             Label res = new Label();
@@ -113,6 +113,29 @@ namespace WinFormInfSys.Class
             {
 
                 textBox.Text = reader[bindProperty].ToString();
+
+                break;
+
+            }
+
+            connection.Close();
+
+        }
+        public static void bind(RichTextBox richTextBox, string bindProperty, string query)
+        {
+
+            MySqlConnection connection = DBUtils.getConnection();
+
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                richTextBox.Text = reader[bindProperty].ToString();
 
                 break;
 

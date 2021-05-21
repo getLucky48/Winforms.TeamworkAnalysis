@@ -111,6 +111,17 @@ namespace WinFormInfSys
             catch (ObjectDisposedException) { };
 
         }
+        private void Password_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            
+            if(e.KeyCode == Keys.Enter)
+            {
+
+                button1_Click(sender, e);
+
+            }
+
+        }
 
         public enum Role
         {

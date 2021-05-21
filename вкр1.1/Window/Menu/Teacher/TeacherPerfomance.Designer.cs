@@ -42,6 +42,8 @@ namespace WinFormInfSys.Window
             this.label3 = new System.Windows.Forms.Label();
             this.Groups2 = new System.Windows.Forms.ComboBox();
             this.Chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Chart2)).BeginInit();
             this.SuspendLayout();
@@ -61,7 +63,7 @@ namespace WinFormInfSys.Window
             // Groups
             // 
             this.Groups.FormattingEnabled = true;
-            this.Groups.Location = new System.Drawing.Point(15, 134);
+            this.Groups.Location = new System.Drawing.Point(15, 85);
             this.Groups.Name = "Groups";
             this.Groups.Size = new System.Drawing.Size(169, 21);
             this.Groups.TabIndex = 1;
@@ -69,7 +71,7 @@ namespace WinFormInfSys.Window
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 118);
+            this.label1.Location = new System.Drawing.Point(12, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 13);
             this.label1.TabIndex = 2;
@@ -105,7 +107,7 @@ namespace WinFormInfSys.Window
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(345, 118);
+            this.label3.Location = new System.Drawing.Point(187, 69);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 8;
@@ -114,7 +116,7 @@ namespace WinFormInfSys.Window
             // Groups2
             // 
             this.Groups2.FormattingEnabled = true;
-            this.Groups2.Location = new System.Drawing.Point(348, 134);
+            this.Groups2.Location = new System.Drawing.Point(190, 85);
             this.Groups2.Name = "Groups2";
             this.Groups2.Size = new System.Drawing.Size(169, 21);
             this.Groups2.TabIndex = 7;
@@ -131,11 +133,30 @@ namespace WinFormInfSys.Window
             this.Chart2.TabIndex = 6;
             this.Chart2.Text = "chart1";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(190, 25);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(112, 21);
+            this.comboBox1.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(187, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(25, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Год";
+            // 
             // TeacherPerfomance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(656, 522);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Groups2);
             this.Controls.Add(this.Chart2);
@@ -166,5 +187,7 @@ namespace WinFormInfSys.Window
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox Groups2;
         private System.Windows.Forms.DataVisualization.Charting.Chart Chart2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label4;
     }
 }
