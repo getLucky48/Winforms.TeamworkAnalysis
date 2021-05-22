@@ -9,15 +9,8 @@ namespace WinFormInfSys.Window.Menu.Teacher
     {
         public TeacherSetScoreDiscipline()
         {
-            InitializeComponent();
-        }
-        public TeacherSetScoreDiscipline(int userId)
-        {
 
             InitializeComponent();
-            
-            this.userId = userId;
-
             Utils.bind(Disciplines, "is_discipline", "name");
             Utils.bind(Groups, "is_group", "name");
 
@@ -27,8 +20,6 @@ namespace WinFormInfSys.Window.Menu.Teacher
             Scores.Items.Add(5);
 
         }
-
-        private int userId { get; set; }
 
         private void buildTable()
         {

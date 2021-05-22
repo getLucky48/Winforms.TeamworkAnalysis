@@ -211,17 +211,6 @@ namespace WinFormInfSys.Class
 
         }
 
-        public static void selectItem(ComboBox comboBox, string bindProperty, MySqlDataReader reader)
-        {
-
-            string target = reader[bindProperty].ToString();
-
-            int indxGroup = comboBox.Items.IndexOf(target);
-
-            comboBox.SelectedIndex = indxGroup;
-
-        }
-
         public static void selectItem(ComboBox comboBox, string srcClass, string srcProperty, string distClass, string distProperty, string getProperty, int srcId)
         {
 

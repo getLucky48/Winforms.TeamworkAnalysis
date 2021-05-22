@@ -117,11 +117,12 @@ namespace WinFormInfSys
         private void списокГруппToolStripMenuItem_Click(object sender, EventArgs e)                 { Utils.switchWindow(this, new AdminGroupsList()); }
         private void списокСтудентовToolStripMenuItem_Click(object sender, EventArgs e)             { Utils.switchWindow(this, new AdminStudentsList()); }
         private void списокДисциплинToolStripMenuItem_Click(object sender, EventArgs e)             { Utils.switchWindow(this, new AdminDisciplinesList()); }
-        private void оценкипроектыToolStripMenuItem_Click(object sender, EventArgs e)               { /*todo*/ }
-        private void оценкидисциплинаToolStripMenuItem_Click(object sender, EventArgs e)            { Utils.switchWindow(this, new TeacherSetScoreDiscipline(role.Item2)); }
+        private void оценкипроектыToolStripMenuItem_Click(object sender, EventArgs e)               { Utils.switchWindow(this, new TeacherSetScoreProject(this.role.Item2)); }
+        private void оценкидисциплинаToolStripMenuItem_Click(object sender, EventArgs e)            { Utils.switchWindow(this, new TeacherSetScoreDiscipline()); }
         private void справкаToolStripMenuItem_Click(object sender, EventArgs e)                     { Utils.switchWindow(this, new About()); }
         private void списокЗаданийToolStripMenuItem_Click(object sender, EventArgs e)               { Utils.switchWindow(this, new TeacherProjectsEdit(role)); }
         private void установитьСрокиПрохожденияТестовToolStripMenuItem_Click(object sender, EventArgs e) { Utils.switchWindow(this, new TeacherSurveyDeadline()); }
+
     }
 
 }

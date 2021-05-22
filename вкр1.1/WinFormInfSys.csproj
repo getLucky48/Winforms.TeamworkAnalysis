@@ -164,6 +164,12 @@
     <Compile Include="Window\Menu\Student\StudentSurveys.Designer.cs">
       <DependentUpon>StudentSurveys.cs</DependentUpon>
     </Compile>
+    <Compile Include="Window\Menu\Teacher\TeacherSetScoreProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Menu\Teacher\TeacherSetScoreProject.Designer.cs">
+      <DependentUpon>TeacherSetScoreProject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Window\Menu\Teacher\TeacherProjectsEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -327,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Window\Menu\Student\StudentSurveys.resx">
       <DependentUpon>StudentSurveys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Menu\Teacher\TeacherSetScoreProject.resx">
+      <DependentUpon>TeacherSetScoreProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Window\Menu\Teacher\TeacherProjectsEdit.resx">
       <DependentUpon>TeacherProjectsEdit.cs</DependentUpon>
