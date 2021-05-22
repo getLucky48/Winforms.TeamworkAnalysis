@@ -129,4 +129,6 @@ D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.TeacherP
 D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.Window._edit_TeacherProjectsEdit.resources
 D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts.Layout1.resources
 D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts.Layout3.resources
+D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.csproj.ResolveComReference.cache
+D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.Window.TeacherSurveyDeadline.resources
 D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.csprojAssemblyReference.cache

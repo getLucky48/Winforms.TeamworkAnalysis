@@ -42,6 +42,7 @@ namespace WinFormInfSys.Window
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.Deadline = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -90,6 +91,7 @@ namespace WinFormInfSys.Window
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(189, 21);
             this.comboBox1.TabIndex = 5;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // richTextBox1
             // 
@@ -171,11 +173,20 @@ namespace WinFormInfSys.Window
             this.label7.Text = "Слабые стороны";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // Deadline
+            // 
+            this.Deadline.AutoSize = true;
+            this.Deadline.Location = new System.Drawing.Point(222, 36);
+            this.Deadline.Name = "Deadline";
+            this.Deadline.Size = new System.Drawing.Size(0, 13);
+            this.Deadline.TabIndex = 15;
+            // 
             // Layout3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(789, 459);
+            this.Controls.Add(this.Deadline);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
@@ -212,5 +223,6 @@ namespace WinFormInfSys.Window
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label Deadline;
     }
 }

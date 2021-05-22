@@ -66,6 +66,21 @@ namespace WinFormInfSys.Window
 
         }
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            Utils.bind(Deadline, "deadline", $@"select * from is_survey_deadline 
+
+                where 
+                group_id = (select group_id from is_user where id = {role.Item2}) 
+                and discipline_id = (select id from is_discipline where name = '{comboBox1.SelectedItem}')
+                and name = '{this.Text}'
+
+            ");
+
+            if (string.IsNullOrEmpty(Deadline.Text)) { Deadline.Text = "Срок сдачи не установлен"; }
+
+        }
     }
 
 }

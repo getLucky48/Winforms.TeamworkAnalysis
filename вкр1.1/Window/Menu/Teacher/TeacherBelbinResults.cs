@@ -5,10 +5,10 @@ using System.Windows.Forms;
 using WinFormInfSys.Class;
 using WinFormInfSys.Class.Teacher;
 using System.Linq;
+using System.Drawing;
 
 namespace WinFormInfSys.Window
 {
-    //todo: покраска строк
     
     public partial class TeacherBelbinResults : Form
     {
@@ -18,6 +18,17 @@ namespace WinFormInfSys.Window
             InitializeComponent();
 
             Utils.bind(GroupList, "is_group", "name");
+
+        }
+
+        private Color getColor(IOrderedEnumerable<KeyValuePair<string, int>> sorted, string role)
+        {
+
+            if (sorted.ElementAt(0).Key == role) { return Color.LightGreen; }
+            if (sorted.ElementAt(1).Key == role) { return Color.LightGreen; }
+            if (sorted.ElementAt(2).Key == role) { return Color.LightGreen; }
+
+            return Color.Transparent;
 
         }
 
@@ -60,7 +71,33 @@ namespace WinFormInfSys.Window
                     role7 = $"{Math.Round(double.Parse(roles["Коллективист"].ToString()) / sum, 4) * 100}%";
                     role8 = $"{Math.Round(double.Parse(roles["Оценщик"].ToString()) / sum, 4) * 100}%";
 
+                    var sorted = from t in roles orderby t.Value descending select t;
+
+                    Utils.fillRow(
+
+                        Table,
+                        new Control[]
+                        {
+
+                                            Utils.buildLabel(name),
+                                            Utils.buildLabel(role1, getColor(sorted, "Реализатор")),
+                                            Utils.buildLabel(role2, getColor(sorted, "Исполнитель")),
+                                            Utils.buildLabel(role3, getColor(sorted, "Координатор")),
+                                            Utils.buildLabel(role4, getColor(sorted, "Исследователь")),
+                                            Utils.buildLabel(role5, getColor(sorted, "Творец")),
+                                            Utils.buildLabel(role6, getColor(sorted, "Генератор идей")),
+                                            Utils.buildLabel(role7, getColor(sorted, "Коллективист")),
+                                            Utils.buildLabel(role8, getColor(sorted, "Оценщик"))
+
+                        },
+                        i
+
+                    );
+
+                    continue;
+
                 }
+
 
                 Utils.fillRow(
 
@@ -69,14 +106,14 @@ namespace WinFormInfSys.Window
                     {
 
                         Utils.buildLabel(name),
-                        Utils.buildLabel(role1),
-                        Utils.buildLabel(role2),
-                        Utils.buildLabel(role3),
-                        Utils.buildLabel(role4),
-                        Utils.buildLabel(role5),
-                        Utils.buildLabel(role6),
-                        Utils.buildLabel(role7),
-                        Utils.buildLabel(role8)
+                        Utils.buildLabel(role1, Color.Tomato),
+                        Utils.buildLabel(role2, Color.Tomato),
+                        Utils.buildLabel(role3, Color.Tomato),
+                        Utils.buildLabel(role4, Color.Tomato),
+                        Utils.buildLabel(role5, Color.Tomato),
+                        Utils.buildLabel(role6, Color.Tomato),
+                        Utils.buildLabel(role7, Color.Tomato),
+                        Utils.buildLabel(role8, Color.Tomato)
 
                     },
                     i

@@ -49,7 +49,6 @@ namespace WinFormInfSys.Window
             this.StepTitle = new System.Windows.Forms.Label();
             this.StepDescr = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.label4 = new System.Windows.Forms.Label();
             this.FileContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.Solution = new System.Windows.Forms.RichTextBox();
@@ -393,7 +392,6 @@ namespace WinFormInfSys.Window
         private System.Windows.Forms.Label StepTitle;
         private System.Windows.Forms.Label StepDescr;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.FlowLayoutPanel FileContainer;
         private System.Windows.Forms.RichTextBox Solution;

@@ -284,6 +284,7 @@ namespace WinFormInfSys.Window
             this.radioButton98 = new System.Windows.Forms.RadioButton();
             this.label127 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Deadline = new System.Windows.Forms.Label();
             this.question1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -2897,12 +2898,22 @@ namespace WinFormInfSys.Window
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(166, 21);
             this.comboBox1.TabIndex = 21;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // Deadline
+            // 
+            this.Deadline.AutoSize = true;
+            this.Deadline.Location = new System.Drawing.Point(198, 25);
+            this.Deadline.Name = "Deadline";
+            this.Deadline.Size = new System.Drawing.Size(0, 13);
+            this.Deadline.TabIndex = 22;
             // 
             // Layout2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(745, 691);
+            this.Controls.Add(this.Deadline);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label127);
             this.Controls.Add(this.panel27);
@@ -3226,5 +3237,6 @@ namespace WinFormInfSys.Window
         private System.Windows.Forms.Label label126;
         private System.Windows.Forms.Label label127;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label Deadline;
     }
 }

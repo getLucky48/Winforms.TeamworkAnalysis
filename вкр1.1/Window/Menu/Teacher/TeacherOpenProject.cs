@@ -1,15 +1,12 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormInfSys.Class;
+
+using Word = Microsoft.Office.Interop.Word;
 
 namespace WinFormInfSys.Window
 {
@@ -100,13 +97,7 @@ namespace WinFormInfSys.Window
 
             Button b = sender as Button;
 
-            saveFileDialog1.DefaultExt = b.Text;
-
-            DialogResult dialogResult = saveFileDialog1.ShowDialog();
-
-            if (dialogResult != DialogResult.OK) { return; }
-
-            string fileName = saveFileDialog1.FileName;
+            string fileName = $"{Guid.NewGuid()}_{b.Text}.docx";
             string fileId = b.Name.Replace("SaveFile_", string.Empty);
 
             MySqlConnection connection = DBUtils.getConnection();
@@ -129,6 +120,21 @@ namespace WinFormInfSys.Window
             }
 
             connection.Close();
+
+            openDOCX(fileName);
+
+        }
+
+        private void openDOCX(string path)
+        {
+
+            Word.Application wordApp = new Word.Application();
+
+            Word.Document doc = null;
+
+            doc = wordApp.Documents.Open(path);
+
+            doc.Activate();
 
         }
 
@@ -321,13 +327,7 @@ namespace WinFormInfSys.Window
 
             Button b = sender as Button;
 
-            saveFileDialog1.DefaultExt = b.Text;
-
-            DialogResult dialogResult = saveFileDialog1.ShowDialog();
-
-            if (dialogResult != DialogResult.OK) { return; }
-
-            string fileName = saveFileDialog1.FileName;
+            string fileName = $"{Guid.NewGuid()}_{b.Text}.docx";
             string fileId = b.Name.Replace("SaveFile_", string.Empty);
 
             MySqlConnection connection = DBUtils.getConnection();
@@ -350,6 +350,8 @@ namespace WinFormInfSys.Window
             }
 
             connection.Close();
+
+            openDOCX(fileName);
 
         }
 

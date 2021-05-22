@@ -8,9 +8,6 @@ using WinFormInfSys.Class;
 namespace WinFormInfSys.Window
 {
 
-
-    //todo: слияние графиков
-
     public partial class TeacherPerfomance : Form
     {
         public TeacherPerfomance()
@@ -30,6 +27,11 @@ namespace WinFormInfSys.Window
             Chart1.Series.Add("4");
             Chart1.Series.Add("5");
 
+            Chart1.Series.Add("Не оценено ");
+            Chart1.Series.Add("2 ");
+            Chart1.Series.Add("3 ");
+            Chart1.Series.Add("4 ");
+            Chart1.Series.Add("5 ");
             //Chart1.Series.Add("Не оценено");
             //Chart1.Series.Add("2");
             //Chart1.Series.Add("3");
@@ -38,20 +40,11 @@ namespace WinFormInfSys.Window
 
         }
 
-        private void buildChart(ComboBox groupBox, Chart chart)
+        private void buildChart(ComboBox groupBox, bool first)
         {
-
-            if (groupBox.SelectedIndex == -1 || Disciplines.SelectedIndex == -1 || comboBox1.SelectedIndex == -1) { return; }
 
             string group = groupBox.SelectedItem.ToString();
             string discipline = Disciplines.SelectedItem.ToString();
-
-            chart.Series.Clear();
-            chart.Series.Add("Не оценено");
-            chart.Series.Add("2");
-            chart.Series.Add("3");
-            chart.Series.Add("4");
-            chart.Series.Add("5");
 
             string query = $@"
 
@@ -87,7 +80,7 @@ namespace WinFormInfSys.Window
             while (reader.Read())
             {
 
-                string score = reader["disciplinescore"].ToString();
+                string score = reader["disc_score"].ToString();
 
                 if (string.IsNullOrEmpty(score)) { score = "1"; }
 
@@ -101,12 +94,12 @@ namespace WinFormInfSys.Window
 
             for (int i = 0; i < arr.Count; i++)
             {
-
-                chart.Series[i].Points.Add(arr[i]);
+                int indx = first ? i : i + 5;
+                Chart1.Series[indx].Points.Add(arr[i]);
 
             }
 
-            chart.Series[0].Points.Add(studCount);
+            Chart1.Series[first ? 0 : 5].Points.Add(studCount);
 
             connection.Close();
 
@@ -115,8 +108,24 @@ namespace WinFormInfSys.Window
         private void button1_Click(object sender, EventArgs e)
         {
 
-            buildChart(Groups, Chart1);
-            //buildChart(Groups2, Chart2);
+
+            if (Groups.SelectedIndex == -1  || Groups2.SelectedIndex == -1 || Disciplines.SelectedIndex == -1 || comboBox1.SelectedIndex == -1) { return; }
+
+            Chart1.Series.Clear();
+            Chart1.Series.Add("Не оценено ");
+            Chart1.Series.Add("2 ");
+            Chart1.Series.Add("3 ");
+            Chart1.Series.Add("4 ");
+            Chart1.Series.Add("5 ");
+
+            Chart1.Series.Add("Не оценено");
+            Chart1.Series.Add("2");
+            Chart1.Series.Add("3");
+            Chart1.Series.Add("4");
+            Chart1.Series.Add("5");
+
+            buildChart(Groups, true);
+            buildChart(Groups2, false);
 
 
         }

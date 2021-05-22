@@ -56,6 +56,7 @@ namespace WinFormInfSys
             this.UserInfo = new System.Windows.Forms.Label();
             this.Alerts = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.установитьСрокиПрохожденияТестовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -149,7 +150,8 @@ namespace WinFormInfSys
             this.графикиУспеваемостиToolStripMenuItem,
             this.результатыОпросовToolStripMenuItem,
             this.оценкипроектыToolStripMenuItem,
-            this.оценкидисциплинаToolStripMenuItem});
+            this.оценкидисциплинаToolStripMenuItem,
+            this.установитьСрокиПрохожденияТестовToolStripMenuItem});
             this.teacherPage.Enabled = false;
             this.teacherPage.Name = "teacherPage";
             this.teacherPage.Size = new System.Drawing.Size(104, 20);
@@ -159,14 +161,14 @@ namespace WinFormInfSys
             // 
             this.добавитьЗаданиеToolStripMenuItem.AutoToolTip = true;
             this.добавитьЗаданиеToolStripMenuItem.Name = "добавитьЗаданиеToolStripMenuItem";
-            this.добавитьЗаданиеToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.добавитьЗаданиеToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
             this.добавитьЗаданиеToolStripMenuItem.Text = "Добавить задание";
             this.добавитьЗаданиеToolStripMenuItem.Click += new System.EventHandler(this.добавитьЗаданиеToolStripMenuItem_Click);
             // 
             // списокЗаданийToolStripMenuItem
             // 
             this.списокЗаданийToolStripMenuItem.Name = "списокЗаданийToolStripMenuItem";
-            this.списокЗаданийToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.списокЗаданийToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
             this.списокЗаданийToolStripMenuItem.Text = "Список заданий";
             this.списокЗаданийToolStripMenuItem.Click += new System.EventHandler(this.списокЗаданийToolStripMenuItem_Click);
             // 
@@ -174,7 +176,7 @@ namespace WinFormInfSys
             // 
             this.таблицаПроектовToolStripMenuItem1.AutoToolTip = true;
             this.таблицаПроектовToolStripMenuItem1.Name = "таблицаПроектовToolStripMenuItem1";
-            this.таблицаПроектовToolStripMenuItem1.Size = new System.Drawing.Size(217, 22);
+            this.таблицаПроектовToolStripMenuItem1.Size = new System.Drawing.Size(288, 22);
             this.таблицаПроектовToolStripMenuItem1.Text = "Выполнение заданий";
             this.таблицаПроектовToolStripMenuItem1.Click += new System.EventHandler(this.таблицаПроектовToolStripMenuItem1_Click);
             // 
@@ -182,7 +184,7 @@ namespace WinFormInfSys
             // 
             this.результатыТестаToolStripMenuItem.AutoToolTip = true;
             this.результатыТестаToolStripMenuItem.Name = "результатыТестаToolStripMenuItem";
-            this.результатыТестаToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.результатыТестаToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
             this.результатыТестаToolStripMenuItem.Text = "Результаты теста Белбина";
             this.результатыТестаToolStripMenuItem.ToolTipText = "Открыть результаты  теста Белбина";
             this.результатыТестаToolStripMenuItem.Click += new System.EventHandler(this.результатыТестаToolStripMenuItem_Click_1);
@@ -191,7 +193,7 @@ namespace WinFormInfSys
             // 
             this.создатьБригадыToolStripMenuItem.AutoToolTip = true;
             this.создатьБригадыToolStripMenuItem.Name = "создатьБригадыToolStripMenuItem";
-            this.создатьБригадыToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.создатьБригадыToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
             this.создатьБригадыToolStripMenuItem.Text = "Создать команды";
             this.создатьБригадыToolStripMenuItem.Click += new System.EventHandler(this.создатьБригадыToolStripMenuItem_Click_1);
             // 
@@ -199,7 +201,7 @@ namespace WinFormInfSys
             // 
             this.графикиУспеваемостиToolStripMenuItem.AutoToolTip = true;
             this.графикиУспеваемостиToolStripMenuItem.Name = "графикиУспеваемостиToolStripMenuItem";
-            this.графикиУспеваемостиToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.графикиУспеваемостиToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
             this.графикиУспеваемостиToolStripMenuItem.Text = "Качество выполнения";
             this.графикиУспеваемостиToolStripMenuItem.Click += new System.EventHandler(this.графикиУспеваемостиToolStripMenuItem_Click);
             // 
@@ -207,7 +209,7 @@ namespace WinFormInfSys
             // 
             this.результатыОпросовToolStripMenuItem.AutoToolTip = true;
             this.результатыОпросовToolStripMenuItem.Name = "результатыОпросовToolStripMenuItem";
-            this.результатыОпросовToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.результатыОпросовToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
             this.результатыОпросовToolStripMenuItem.Text = "Результаты опросов";
             this.результатыОпросовToolStripMenuItem.Click += new System.EventHandler(this.результатыОпросовToolStripMenuItem_Click);
             // 
@@ -215,7 +217,7 @@ namespace WinFormInfSys
             // 
             this.оценкипроектыToolStripMenuItem.AutoToolTip = true;
             this.оценкипроектыToolStripMenuItem.Name = "оценкипроектыToolStripMenuItem";
-            this.оценкипроектыToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.оценкипроектыToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
             this.оценкипроектыToolStripMenuItem.Text = "Оценки (проект)";
             this.оценкипроектыToolStripMenuItem.Click += new System.EventHandler(this.оценкипроектыToolStripMenuItem_Click);
             // 
@@ -223,7 +225,7 @@ namespace WinFormInfSys
             // 
             this.оценкидисциплинаToolStripMenuItem.AutoToolTip = true;
             this.оценкидисциплинаToolStripMenuItem.Name = "оценкидисциплинаToolStripMenuItem";
-            this.оценкидисциплинаToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.оценкидисциплинаToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
             this.оценкидисциплинаToolStripMenuItem.Text = "Оценки (дисциплина)";
             this.оценкидисциплинаToolStripMenuItem.Click += new System.EventHandler(this.оценкидисциплинаToolStripMenuItem_Click);
             // 
@@ -242,7 +244,7 @@ namespace WinFormInfSys
             // 
             this.списокГруппToolStripMenuItem.AutoToolTip = true;
             this.списокГруппToolStripMenuItem.Name = "списокГруппToolStripMenuItem";
-            this.списокГруппToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.списокГруппToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.списокГруппToolStripMenuItem.Text = "Список групп";
             this.списокГруппToolStripMenuItem.Click += new System.EventHandler(this.списокГруппToolStripMenuItem_Click);
             // 
@@ -250,7 +252,7 @@ namespace WinFormInfSys
             // 
             this.списокСтудентовToolStripMenuItem.AutoToolTip = true;
             this.списокСтудентовToolStripMenuItem.Name = "списокСтудентовToolStripMenuItem";
-            this.списокСтудентовToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.списокСтудентовToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.списокСтудентовToolStripMenuItem.Text = "Список студентов";
             this.списокСтудентовToolStripMenuItem.Click += new System.EventHandler(this.списокСтудентовToolStripMenuItem_Click);
             // 
@@ -258,7 +260,7 @@ namespace WinFormInfSys
             // 
             this.списокДисциплинToolStripMenuItem.AutoToolTip = true;
             this.списокДисциплинToolStripMenuItem.Name = "списокДисциплинToolStripMenuItem";
-            this.списокДисциплинToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.списокДисциплинToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.списокДисциплинToolStripMenuItem.Text = "Список дисциплин";
             this.списокДисциплинToolStripMenuItem.Click += new System.EventHandler(this.списокДисциплинToolStripMenuItem_Click);
             // 
@@ -296,6 +298,13 @@ namespace WinFormInfSys
             this.label1.Size = new System.Drawing.Size(72, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Оповещения";
+            // 
+            // установитьСрокиПрохожденияТестовToolStripMenuItem
+            // 
+            this.установитьСрокиПрохожденияТестовToolStripMenuItem.Name = "установитьСрокиПрохожденияТестовToolStripMenuItem";
+            this.установитьСрокиПрохожденияТестовToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
+            this.установитьСрокиПрохожденияТестовToolStripMenuItem.Text = "Установить сроки прохождения тестов";
+            this.установитьСрокиПрохожденияТестовToolStripMenuItem.Click += new System.EventHandler(this.установитьСрокиПрохожденияТестовToolStripMenuItem_Click);
             // 
             // Menu
             // 
@@ -344,6 +353,7 @@ namespace WinFormInfSys
         private System.Windows.Forms.ToolStripMenuItem оценкидисциплинаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem списокЗаданийToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem установитьСрокиПрохожденияТестовToolStripMenuItem;
     }
 }
 

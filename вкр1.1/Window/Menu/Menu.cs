@@ -120,7 +120,7 @@ namespace WinFormInfSys
         private void оценкидисциплинаToolStripMenuItem_Click(object sender, EventArgs e)            { /*todo*/}
         private void справкаToolStripMenuItem_Click(object sender, EventArgs e)                     { /*todo*/}
         private void списокЗаданийToolStripMenuItem_Click(object sender, EventArgs e)               { Utils.switchWindow(this, new TeacherProjectsEdit(role)); }
-
+        private void установитьСрокиПрохожденияТестовToolStripMenuItem_Click(object sender, EventArgs e) { Utils.switchWindow(this, new TeacherSurveyDeadline()); }
     }
 
 }

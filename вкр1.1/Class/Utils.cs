@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace WinFormInfSys.Class
@@ -27,7 +28,7 @@ namespace WinFormInfSys.Class
             {
 
                 table.Controls.Add(new Label() { Text = columns[i], AutoSize = true }, i, 0);
-                
+
 
             }
 
@@ -42,6 +43,21 @@ namespace WinFormInfSys.Class
             res.Text = text;
             res.Name = $"LabelNum{data}";
             res.AutoSize = true;
+
+
+            return res;
+
+        }
+        public static Label buildLabel(string text, Color color)
+        {
+
+            Label res = new Label();
+            res.Text = text;
+            res.Name = $"LabelNum";
+            res.AutoSize = false;
+            res.BackColor = color;
+            res.TextAlign = ContentAlignment.MiddleCenter;
+            res.Margin = new Padding(0, 0, 0, 0);
 
             return res;
 
@@ -97,7 +113,6 @@ namespace WinFormInfSys.Class
             connection.Close();
 
         }
-
         public static void bind(TextBox textBox, string bindProperty, string query)
         {
 
@@ -113,6 +128,29 @@ namespace WinFormInfSys.Class
             {
 
                 textBox.Text = reader[bindProperty].ToString();
+
+                break;
+
+            }
+
+            connection.Close();
+
+        }
+        public static void bind(Label label, string bindProperty, string query)
+        {
+
+            MySqlConnection connection = DBUtils.getConnection();
+
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                label.Text = reader[bindProperty].ToString();
 
                 break;
 
@@ -201,7 +239,7 @@ namespace WinFormInfSys.Class
 
             table.SuspendLayout();
 
-            for(int i = 0; i < controlls.Length; i++)
+            for (int i = 0; i < controlls.Length; i++)
             {
 
                 table.Controls.Add(controlls[i], i, row);
