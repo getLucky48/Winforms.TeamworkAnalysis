@@ -113,6 +113,34 @@ namespace WinFormInfSys.Class
             connection.Close();
 
         }
+
+        public static void bind(ListBox listBox, string bindClass, string bindProperty, bool distinct = false, string customWhere = "")
+        {
+
+            string query = $"select {(distinct ? "distinct" : "") } {bindProperty} from {bindClass} ";
+
+            if (!string.IsNullOrEmpty(customWhere)) { query += customWhere; }
+
+            MySqlConnection connection = DBUtils.getConnection();
+
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                listBox.Items.Add(reader[bindProperty]);
+
+            }
+
+            connection.Close();
+
+
+        }
+
         public static void bind(TextBox textBox, string bindProperty, string query)
         {
 

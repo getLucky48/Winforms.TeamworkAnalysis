@@ -132,3 +132,5 @@ D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.Window.M
 D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.csproj.ResolveComReference.cache
 D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.Window.TeacherSurveyDeadline.resources
 D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.csprojAssemblyReference.cache
+D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.Window.About.resources
+D:\2_GitHub\Winforms.TeamworkAnalysis\вкр1.1\obj\Debug\WinFormInfSys.Window.Menu.Teacher.TeacherSetScoreDiscipline.resources

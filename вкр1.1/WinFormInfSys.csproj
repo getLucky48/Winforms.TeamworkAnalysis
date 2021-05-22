@@ -116,6 +116,12 @@
     <Compile Include="Class\Teacher\ObjSurveyRes_Layout1.cs" />
     <Compile Include="Class\Teacher\ObjSurveyRes_Layout3.cs" />
     <Compile Include="Class\Utils.cs" />
+    <Compile Include="Window\Menu\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Menu\About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
     <Compile Include="Window\Menu\Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,12 @@
     </Compile>
     <Compile Include="Window\Menu\Teacher\TeacherPerfomance.Designer.cs">
       <DependentUpon>TeacherPerfomance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\Menu\Teacher\TeacherSetScoreDiscipline.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Menu\Teacher\TeacherSetScoreDiscipline.Designer.cs">
+      <DependentUpon>TeacherSetScoreDiscipline.cs</DependentUpon>
     </Compile>
     <Compile Include="Window\Menu\Teacher\TeacherSurveyDeadline.cs">
       <SubType>Form</SubType>
@@ -292,6 +304,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Window\Menu\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Window\Menu\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
@@ -321,6 +336,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Window\Menu\Teacher\TeacherPerfomance.resx">
       <DependentUpon>TeacherPerfomance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Menu\Teacher\TeacherSetScoreDiscipline.resx">
+      <DependentUpon>TeacherSetScoreDiscipline.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Window\Menu\Teacher\TeacherSurveyDeadline.resx">
       <DependentUpon>TeacherSurveyDeadline.cs</DependentUpon>

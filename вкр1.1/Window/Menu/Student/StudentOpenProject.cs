@@ -459,7 +459,7 @@ namespace WinFormInfSys.Window
 
             ";
 
-            //todo: form other solutions
+            //form other solutions
 
         }
 
