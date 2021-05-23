@@ -487,15 +487,18 @@ namespace WinFormInfSys.Window
             this.Close();
 
         }
-        private void buildLeaderSection()
+        private void buildLeaderSection(int step = -1)
         {
+
+            int stepIndx = step;
+            if(stepIndx == -1) { stepIndx = this.currentStep; }
 
             string query = $@"
 
                 select isp.*, iss.checkarray from is_team 
 
                 join is_project isp on isp.student_Id = user_id
-                join is_solution iss on iss.id = isp.step{this.currentStep}
+                join is_solution iss on iss.id = isp.step{stepIndx}
 
                 where user_id = 
                     (select user_id from is_team 
@@ -529,7 +532,7 @@ namespace WinFormInfSys.Window
             CheckedListBox check = new CheckedListBox();
             check.Name = "ListOfChecks";
             check.Size = new Size(new Point((int)(LeaderContainer.Width), 200));
-            if (this.currentStep == 1)
+            if (stepIndx == 1)
             {
 
                 check.Items.Add("Определить все термины и понятия с учетом предметной области");
@@ -539,7 +542,7 @@ namespace WinFormInfSys.Window
                 check.Items.Add("Обеспечить однозначность понимания постановки задачи пользователем и программистом");
 
             }
-            else if (this.currentStep == 2)
+            else if (stepIndx == 2)
             {
 
                 check.Items.Add("Программный продукт должен отвергать любые данные, которые он не в состоянии обрабатывать правильно");
@@ -554,7 +557,7 @@ namespace WinFormInfSys.Window
 
 
             }
-            else if (this.currentStep == 3)
+            else if (stepIndx == 3)
             {
 
                 check.Items.Add("Выбрать представление данных, соответствующее задаче");
@@ -568,7 +571,7 @@ namespace WinFormInfSys.Window
 
 
             }
-            else if (this.currentStep == 4)
+            else if (stepIndx == 4)
             {
 
                 check.Items.Add("Разрабатывать интерфейс пользователя до начала процесса кодирования");
@@ -586,7 +589,7 @@ namespace WinFormInfSys.Window
 
 
             }
-            else if (this.currentStep == 5)
+            else if (stepIndx == 5)
             {
 
                 check.Items.Add("Исключать синтаксические ошибки, приводящие к множественным распространенным ошибкам");
@@ -603,7 +606,7 @@ namespace WinFormInfSys.Window
                 check.Items.Add("Тестовые наборы данных в узлах ветвления с более чем одним условием должны обеспечивать перебор всех возможных сочетаний значений условий в одном узле ветвления");
 
             }
-            else if (this.currentStep == 6)
+            else if (stepIndx == 6)
             {
 
                 check.Items.Add("Наличие вводных комментариев");
@@ -633,7 +636,7 @@ namespace WinFormInfSys.Window
 
             string[] values = array.Split(new char[] { ' ' });
 
-            for(int i = 0; i < values.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
                 if (string.IsNullOrEmpty(values[i])) { continue; }
 
