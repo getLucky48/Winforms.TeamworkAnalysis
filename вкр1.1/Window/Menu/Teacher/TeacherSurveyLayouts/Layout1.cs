@@ -30,6 +30,12 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
         private void buildTable()
         {
 
+            listBox1.Items.Clear();
+            listBox2.Items.Clear();
+
+            count1.Text = $"Количество положительных откликов {listBox1.Items.Count}";
+            count2.Text = $"Количество положительных откликов {listBox2.Items.Count}";
+
             if (DisciplineList.SelectedIndex == -1 || GroupList.SelectedIndex == -1) { return; }
 
             Table.SuspendLayout();
@@ -52,7 +58,7 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
 
                 Utils.fillRow(Table, new Control[] {
 
-                    Utils.buildLabel(obj.date),
+                    Utils.buildLabel(obj.date.Replace("0:00:00", string.Empty)),
                     Utils.buildLabel(obj.result)
 
                 }, i + 1);
@@ -64,8 +70,8 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
             string[] plus = prepareArray(columns.Item1);
             string[] minus = prepareArray(columns.Item2);
 
-            for (int i = 0; i < plus.Length; i++) { listBox1.Items.Add(plus[i]); }
-            for (int i = 0; i < minus.Length; i++) { listBox2.Items.Add(minus[i]); }
+            for (int i = 0; i < plus.Length; i++) { if(!string.IsNullOrEmpty(plus[i])) listBox1.Items.Add(plus[i]); }
+            for (int i = 0; i < minus.Length; i++) { if (!string.IsNullOrEmpty(minus[i])) listBox2.Items.Add(minus[i]); }
 
             count1.Text = $"Количество положительных откликов {listBox1.Items.Count}";
             count2.Text = $"Количество положительных откликов {listBox2.Items.Count}";
@@ -100,6 +106,8 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
         private void button1_Click(object sender, EventArgs e)
         {
 
+            count1.Text = $"Количество положительных откликов {listBox1.Items.Count}";
+
             if (string.IsNullOrWhiteSpace(textBox1.Text)) { return; }
 
             if (DisciplineList.SelectedIndex == -1 || GroupList.SelectedIndex == -1) { return; }
@@ -114,6 +122,8 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
 
         private void button2_Click(object sender, EventArgs e)
         {
+
+            count2.Text = $"Количество положительных откликов {listBox2.Items.Count}";
 
             if (string.IsNullOrWhiteSpace(textBox2.Text)) { return; }
             if (DisciplineList.SelectedIndex == -1 || GroupList.SelectedIndex == -1) { return; }

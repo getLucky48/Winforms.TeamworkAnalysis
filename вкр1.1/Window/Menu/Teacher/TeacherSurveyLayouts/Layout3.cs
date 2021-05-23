@@ -83,7 +83,7 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
 
                 Utils.fillRow(Table, new Control[] {
 
-                    Utils.buildLabel(obj.date),
+                    Utils.buildLabel(obj.date.Replace("0:00:00", string.Empty)),
                     Utils.buildLabel(args[0]),
                     Utils.buildLabel(args[1]),
                     Utils.buildLabel(args[2]),
