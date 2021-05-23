@@ -114,7 +114,6 @@
     <Compile Include="Class\Teacher\ObjProjectsEdit.cs" />
     <Compile Include="Class\Teacher\ObjSurveyDeadline.cs" />
     <Compile Include="Class\Teacher\ObjSurveyRes_Layout1.cs" />
-    <Compile Include="Class\Teacher\ObjSurveyRes_Layout2.cs" />
     <Compile Include="Class\Teacher\ObjSurveyRes_Layout3.cs" />
     <Compile Include="Class\Utils.cs" />
     <Compile Include="Window\Menu\About.cs">

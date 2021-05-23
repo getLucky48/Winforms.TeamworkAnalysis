@@ -30,25 +30,12 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
             Utils.bind(DisciplineList, "is_discipline", "name");
             Utils.bind(GroupList, "is_group", "name");
 
+            Chart1.ChartAreas[0].AxisX.CustomLabels.Add(0.0f, 100.0f, "%");
+
+
         }
 
         private bool isFirst { get; set; }
-        public static T Clone<T>(T controlToClone) where T : Control
-        {
-            T instance = Activator.CreateInstance<T>();
-
-            Type control = controlToClone.GetType();
-            PropertyInfo[] info = control.GetProperties();
-            object p = control.InvokeMember("", System.Reflection.BindingFlags.CreateInstance, null, controlToClone, null);
-            foreach (PropertyInfo pi in info)
-            {
-                if ((pi.CanWrite) && !(pi.Name == "WindowTarget") && !(pi.Name == "Capture"))
-                {
-                    pi.SetValue(instance, pi.GetValue(controlToClone, null), null);
-                }
-            }
-            return instance;
-        }
 
         private void build()
         {
@@ -82,6 +69,8 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
 
             int column = 0;
 
+            List<double> values = new List<double>();
+
             while (reader.Read())
             {
 
@@ -89,17 +78,41 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
                 string[] arr = result.Replace(" ", string.Empty).Split(new char[] { ',' });
 
                 int sum = arr.Sum(t => int.Parse(t));
-
                 double val = (sum * 100) / 6;
 
-                Chart1.Series.Add($"Студент {column}");
-
-                Chart1.Series[$"Студент {column}"].Points.Add(val);
+                values.Add(val);
 
                 dictionary.Add(column, new List<int>());
                 for(int i = 0; i < arr.Length; i++) { dictionary[column].Add(int.Parse(arr[i])); }
 
                 column++;
+
+            }
+
+            Dictionary<double, int> dict = new Dictionary<double, int>();
+
+            for(int i = 0; i < values.Count; i++)
+            {
+                double d = Math.Round(values[i] / 1400.0f, 4) * 100;
+
+                if (dict.ContainsKey(d)) { 
+                    dict[d]++;
+                }
+                else { dict.Add(d, 1); }
+
+            }
+
+            string space = " ";
+            foreach(var target in dict)
+            {
+
+                double value = (double)target.Value / (double)values.Count;
+                string str = $"{Math.Round(value, 4) * 100}%" + space;
+
+                Chart1.Series.Add(str);
+                Chart1.Series[str].Points.Add(target.Value);
+
+                space += " ";
 
             }
 
@@ -110,6 +123,7 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
 
                 Chart c = Container.Controls.Find($"Chart{i + 2}", true).FirstOrDefault() as Chart;
                 c.Series.Clear();
+                c.ChartAreas[0].AxisX.CustomLabels.Add(0.0f, 100.0f, "%");
 
             }
 
@@ -118,16 +132,32 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
 
                 Chart c = Container.Controls.Find($"Chart{i + 2}", true).FirstOrDefault() as Chart;
 
-                c.Series.Add($"Вопрос {i + 1}");
+                //c.Series.Add($"Вопрос {i + 1}");
 
-                foreach (var t in dictionary)
+                space = " ";
+                foreach (var target in dictionary)
                 {
 
-                    double target = t.Value[i];
+                    int sum = dictionary.Sum(t => t.Value[i]);
 
-                    c.Series[$"Вопрос {i + 1}"].Points.Add(target * 100.0f / 6.0f);
+                    double value = (double)target.Value[i] / sum;
+                    string str = $"{Math.Round(value, 4) * 100}%" + space;
+
+                    c.Series.Add(str);
+                    c.Series[str].Points.Add(target.Value[i]);
+
+                    space += " ";
 
                 }
+
+                //foreach (var t in dictionary)
+                //{
+
+                //    double target = t.Value[i];
+
+                //    c.Series[$"Вопрос {i + 1}"].Points.Add(target * 100.0f / 6.0f);
+
+                //}
 
             }
 

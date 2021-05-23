@@ -70,9 +70,9 @@ namespace WinFormInfSys.Window
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.Size = new System.Drawing.Size(70, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Проект";
+            this.label1.Text = "Дисциплина";
             // 
             // label2
             // 
@@ -105,7 +105,7 @@ namespace WinFormInfSys.Window
             this.NewTeam.FormattingEnabled = true;
             this.NewTeam.Location = new System.Drawing.Point(323, 278);
             this.NewTeam.Name = "NewTeam";
-            this.NewTeam.Size = new System.Drawing.Size(230, 147);
+            this.NewTeam.Size = new System.Drawing.Size(230, 186);
             this.NewTeam.TabIndex = 7;
             // 
             // label4
@@ -148,7 +148,7 @@ namespace WinFormInfSys.Window
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(402, 493);
+            this.button1.Location = new System.Drawing.Point(477, 493);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 13;
@@ -165,12 +165,12 @@ namespace WinFormInfSys.Window
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
             this.Table.Location = new System.Drawing.Point(594, 52);
             this.Table.Name = "Table";
             this.Table.RowCount = 1;
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.Table.Size = new System.Drawing.Size(555, 464);
+            this.Table.Size = new System.Drawing.Size(556, 464);
             this.Table.TabIndex = 14;
             // 
             // StudentsCount
@@ -183,7 +183,7 @@ namespace WinFormInfSys.Window
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(321, 440);
+            this.label6.Location = new System.Drawing.Point(321, 467);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(233, 23);
             this.label6.TabIndex = 16;
@@ -193,9 +193,9 @@ namespace WinFormInfSys.Window
             // Leader
             // 
             this.Leader.FormattingEnabled = true;
-            this.Leader.Location = new System.Drawing.Point(323, 466);
+            this.Leader.Location = new System.Drawing.Point(323, 493);
             this.Leader.Name = "Leader";
-            this.Leader.Size = new System.Drawing.Size(230, 21);
+            this.Leader.Size = new System.Drawing.Size(148, 21);
             this.Leader.TabIndex = 17;
             // 
             // Recommendation
