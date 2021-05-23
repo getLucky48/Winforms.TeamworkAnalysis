@@ -46,6 +46,7 @@ namespace WinFormInfSys.Window
             this.label6 = new System.Windows.Forms.Label();
             this.Leader = new System.Windows.Forms.ComboBox();
             this.Recommendation = new System.Windows.Forms.RichTextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // DisciplinesList
@@ -61,7 +62,7 @@ namespace WinFormInfSys.Window
             this.GroupList.FormattingEnabled = true;
             this.GroupList.Location = new System.Drawing.Point(364, 52);
             this.GroupList.Name = "GroupList";
-            this.GroupList.Size = new System.Drawing.Size(189, 21);
+            this.GroupList.Size = new System.Drawing.Size(238, 21);
             this.GroupList.TabIndex = 1;
             this.GroupList.SelectedIndexChanged += new System.EventHandler(this.GroupList_SelectedIndexChanged);
             // 
@@ -103,7 +104,7 @@ namespace WinFormInfSys.Window
             // NewTeam
             // 
             this.NewTeam.FormattingEnabled = true;
-            this.NewTeam.Location = new System.Drawing.Point(323, 278);
+            this.NewTeam.Location = new System.Drawing.Point(364, 278);
             this.NewTeam.Name = "NewTeam";
             this.NewTeam.Size = new System.Drawing.Size(230, 186);
             this.NewTeam.TabIndex = 7;
@@ -119,7 +120,7 @@ namespace WinFormInfSys.Window
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(321, 252);
+            this.label5.Location = new System.Drawing.Point(362, 252);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(233, 23);
             this.label5.TabIndex = 9;
@@ -128,9 +129,9 @@ namespace WinFormInfSys.Window
             // 
             // ToRight
             // 
-            this.ToRight.Location = new System.Drawing.Point(252, 347);
+            this.ToRight.Location = new System.Drawing.Point(252, 379);
             this.ToRight.Name = "ToRight";
-            this.ToRight.Size = new System.Drawing.Size(65, 39);
+            this.ToRight.Size = new System.Drawing.Size(106, 22);
             this.ToRight.TabIndex = 10;
             this.ToRight.Text = "==>";
             this.ToRight.UseVisualStyleBackColor = true;
@@ -138,9 +139,9 @@ namespace WinFormInfSys.Window
             // 
             // ToLeft
             // 
-            this.ToLeft.Location = new System.Drawing.Point(252, 405);
+            this.ToLeft.Location = new System.Drawing.Point(252, 407);
             this.ToLeft.Name = "ToLeft";
-            this.ToLeft.Size = new System.Drawing.Size(65, 39);
+            this.ToLeft.Size = new System.Drawing.Size(106, 22);
             this.ToLeft.TabIndex = 11;
             this.ToLeft.Text = "<==";
             this.ToLeft.UseVisualStyleBackColor = true;
@@ -148,7 +149,7 @@ namespace WinFormInfSys.Window
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(477, 493);
+            this.button1.Location = new System.Drawing.Point(518, 493);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 13;
@@ -165,12 +166,12 @@ namespace WinFormInfSys.Window
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
-            this.Table.Location = new System.Drawing.Point(594, 52);
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.Table.Location = new System.Drawing.Point(608, 52);
             this.Table.Name = "Table";
             this.Table.RowCount = 1;
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.Table.Size = new System.Drawing.Size(556, 464);
+            this.Table.Size = new System.Drawing.Size(557, 464);
             this.Table.TabIndex = 14;
             // 
             // StudentsCount
@@ -183,7 +184,7 @@ namespace WinFormInfSys.Window
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(321, 467);
+            this.label6.Location = new System.Drawing.Point(362, 467);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(233, 23);
             this.label6.TabIndex = 16;
@@ -193,7 +194,7 @@ namespace WinFormInfSys.Window
             // Leader
             // 
             this.Leader.FormattingEnabled = true;
-            this.Leader.Location = new System.Drawing.Point(323, 493);
+            this.Leader.Location = new System.Drawing.Point(364, 493);
             this.Leader.Name = "Leader";
             this.Leader.Size = new System.Drawing.Size(148, 21);
             this.Leader.TabIndex = 17;
@@ -203,15 +204,26 @@ namespace WinFormInfSys.Window
             this.Recommendation.Location = new System.Drawing.Point(12, 106);
             this.Recommendation.Name = "Recommendation";
             this.Recommendation.ReadOnly = true;
-            this.Recommendation.Size = new System.Drawing.Size(540, 116);
+            this.Recommendation.Size = new System.Drawing.Size(590, 116);
             this.Recommendation.TabIndex = 18;
             this.Recommendation.Text = "";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(252, 278);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(106, 35);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "Сформировать группу";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // TeacherTeamAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1177, 563);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.Recommendation);
             this.Controls.Add(this.Leader);
             this.Controls.Add(this.label6);
@@ -256,5 +268,6 @@ namespace WinFormInfSys.Window
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox Leader;
         private System.Windows.Forms.RichTextBox Recommendation;
+        private System.Windows.Forms.Button button2;
     }
 }

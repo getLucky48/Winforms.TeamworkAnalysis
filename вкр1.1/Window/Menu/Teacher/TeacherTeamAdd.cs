@@ -1,8 +1,10 @@
 ﻿using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using WinFormInfSys.Class;
+using System.Linq;
 using static WinFormInfSys.Auth;
 
 namespace WinFormInfSys.Window
@@ -139,6 +141,7 @@ namespace WinFormInfSys.Window
         private void buildRecommend()
         {
 
+            Recommendation.Text = "";
             //name  role1   role2   role3
             List<Tuple<string, string, string, string>> list = new List<Tuple<string, string, string, string>>();
           
@@ -218,7 +221,18 @@ namespace WinFormInfSys.Window
             NewTeam.Items.Clear();
             Leader.Items.Clear();
 
+            Dictionary<string, int> roles = new Dictionary<string, int>() {
+                { "Координатор", 0 },
+                { "Творец", 0 },
+                { "Генератор идей", 0 },
+                { "Оценщик", 0 },
+                { "Исполнитель", 0 },
+                { "Исследователь", 0 },
+                { "Коллективист", 0 },
+                { "Реализатор", 0 }
+            };
 
+        
             string groupName = GroupList.SelectedItem.ToString();
 
             string query = $@"
@@ -227,7 +241,7 @@ namespace WinFormInfSys.Window
 
                 isu.id as id,
                 isu.name as name,
-                concat(istr.rolebybelbin, ', ', istr.rolebybelbin_s, ', ', istr.rolebybelbin_t ) as role,
+                istr.result as roles,
                 (select num from is_team where user_id = isu.id limit 1) as num,
                 (select leader from is_team where user_id = isu.id limit 1) as leader
       
@@ -239,7 +253,7 @@ namespace WinFormInfSys.Window
 
                 where isg.name = '{groupName}'
 
-                order by num, name, role
+                order by num, name, roles
 
             ";
 
@@ -255,12 +269,25 @@ namespace WinFormInfSys.Window
             while (reader.Read())
             {
 
+                roles = JsonConvert.DeserializeObject<Dictionary<string, int>>(reader["roles"].ToString());
+
                 string name = reader["name"].ToString();
-                string roleByBelbin = reader["role"].ToString();
                 string num = reader["num"].ToString();
                 string leader = reader["leader"].ToString();
 
-                if (string.IsNullOrEmpty(roleByBelbin)) { roleByBelbin = "*Тест не пройден*"; }
+                string roleByBelbin = string.Empty;
+
+                if (roles == null || roles.Count == 0) { roleByBelbin = "*Тест не пройден*"; }
+                else
+                {
+
+                    var sorted = from t in roles orderby t.Value descending select t;
+
+                    roleByBelbin = $"{sorted.ElementAt(0).Key},{sorted.ElementAt(1).Key},{sorted.ElementAt(2).Key}";
+
+                }
+
+
                 if (string.IsNullOrEmpty(leader)) { leader = " "; }
 
 
@@ -373,8 +400,6 @@ namespace WinFormInfSys.Window
                     * 
                     from is_project isp
 
-
-
                     where isp.discipline_id = (select id from is_discipline where name = '{DisciplinesList.SelectedItem}') and isp.fl_unique = 1
 
             ";
@@ -446,11 +471,104 @@ namespace WinFormInfSys.Window
 
             }
 
-            if (string.IsNullOrEmpty(query)) { return; }
+            if (string.IsNullOrEmpty(query)) {
+
+                MessageBox.Show("Не удалось добавить команду: отсутствуют проекты");
+
+                return;
+
+            }
 
             DBUtils.execQuery(query);
 
             buildLists();
+
+            buildRecommend();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            List<Tuple<string, string, string, string>> list = new List<Tuple<string, string, string, string>>();
+
+            for (int i = 0; i < studAll.Count; i++)
+            {
+
+                if (studAll[i].Item3.Contains("*Тест не пройден*")) { continue; }
+
+                string name = studAll[i].Item2;
+                string[] roles = studAll[i].Item3.Split(new char[] { ',' });
+
+                list.Add(new Tuple<string, string, string, string>(name, roles[0], roles[1], roles[2]));
+
+            }
+
+            if (list.Count < 3) { return; }
+
+            List<Tuple<string, string, string, string>> first = _getFirst(list);
+
+            if (first.Count == 0) { return; }
+
+            bool isFormed = false;
+
+            List<string> names = new List<string>();
+
+            for (int i = 0; i < first.Count; i++)
+            {
+
+                if (isFormed) { break; }
+
+                List<Tuple<string, string, string, string>> second = _getSecond(list, first[i]);
+
+                for (int j = 0; j < second.Count; j++)
+                {
+
+                    if (isFormed) { break; }
+
+                    List<Tuple<string, string, string, string>> third = _getSecond(list, second[j]);
+
+                    for (int k = 0; k < third.Count; k++)
+                    {
+
+                        if (first[i].Item2 == third[k].Item2 && first[i].Item3 == third[k].Item3 && first[i].Item4 == third[k].Item4) { continue; }
+
+                        names.Add(first[i].Item1);
+                        names.Add(second[j].Item1);
+                        names.Add(third[k].Item1);
+
+                        isFormed = true;
+
+                        break;
+
+                    }
+
+                }
+
+            }
+            
+
+            while(NewTeam.Items.Count != 0)
+            {
+
+                NewTeam.SelectedIndex = 0;
+                ToLeft_Click(sender, e);
+
+            }
+
+
+            for(int i = 0; i < names.Count; i++)
+            {
+
+                int indx = AllStudents.FindString(names[i]);
+
+                AllStudents.SelectedIndex = indx;
+
+                ToRight_Click(sender, e);
+
+            }
+
+            buildRecommend();
 
         }
 
