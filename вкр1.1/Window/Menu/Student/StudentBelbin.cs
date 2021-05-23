@@ -345,13 +345,23 @@ namespace WinFormInfSys
 
             string title = sorted.ElementAt(0).Key;
 
-            MessageBox.Show($"{rolesByBelbin[title]} \n\n1. {sorted.ElementAt(0).Key}\n2. {sorted.ElementAt(1).Key}\n3. {sorted.ElementAt(2).Key}", $"Ваша роль: {title}");
+            int sum = this.currentSum.Sum(t => t.Value);
+
+            string txt = string.Empty;
+            txt += $"{rolesByBelbin[title]}\n\n";
+
+            for(int i = 0; i < this.currentSum.Count; i++)
+            {
+                txt += $"{i+1}. {sorted.ElementAt(i).Key} [{Math.Round(double.Parse( this.currentSum[sorted.ElementAt(i).Key].ToString() ) / sum, 4) * 100}%]\n";
+            }
+            //$"";
+            MessageBox.Show(txt, $"Ваша ключевая роль: {title}");
 
             return sorted;
 
         }
 
-        private void setRoleByBelbin(string role, string role1, string role2)
+        private void setRoleByBelbin()
         {
 
             string query = $"select * from is_testresult where user_id = '{this.role.Item2}'";
@@ -452,7 +462,7 @@ namespace WinFormInfSys
 
                 var sorted = showResults();
 
-                setRoleByBelbin(sorted.ElementAt(0).Key, sorted.ElementAt(1).Key, sorted.ElementAt(2).Key);
+                setRoleByBelbin();
 
                 this.Close();
 
