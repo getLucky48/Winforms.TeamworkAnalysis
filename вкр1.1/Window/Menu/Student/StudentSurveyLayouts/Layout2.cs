@@ -90,12 +90,11 @@ namespace WinFormInfSys.Window
 
             string query = $@"
 
-                insert into is_survey(name, result, date, fl_array, group_id, discipline_id) values
+                insert into is_survey(name, result, date, group_id, discipline_id) values
                 (
                 '{name}',
                 '{values}',
                 CURRENT_TIMESTAMP,
-                1,
                 (select group_id from is_user where id = {this.role.Item2}),
                 (select id from is_discipline where name = '{discipline}')
                 )

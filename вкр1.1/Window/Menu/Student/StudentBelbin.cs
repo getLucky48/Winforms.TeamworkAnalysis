@@ -354,7 +354,7 @@ namespace WinFormInfSys
             {
                 txt += $"{i+1}. {sorted.ElementAt(i).Key} [{Math.Round(double.Parse( this.currentSum[sorted.ElementAt(i).Key].ToString() ) / sum, 4) * 100}%]\n";
             }
-            //$"";
+            
             MessageBox.Show(txt, $"Ваша ключевая роль: {title}");
 
             return sorted;

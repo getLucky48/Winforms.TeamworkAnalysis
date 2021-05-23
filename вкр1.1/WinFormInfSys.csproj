@@ -114,6 +114,7 @@
     <Compile Include="Class\Teacher\ObjProjectsEdit.cs" />
     <Compile Include="Class\Teacher\ObjSurveyDeadline.cs" />
     <Compile Include="Class\Teacher\ObjSurveyRes_Layout1.cs" />
+    <Compile Include="Class\Teacher\ObjSurveyRes_Layout2.cs" />
     <Compile Include="Class\Teacher\ObjSurveyRes_Layout3.cs" />
     <Compile Include="Class\Utils.cs" />
     <Compile Include="Window\Menu\About.cs">
@@ -205,6 +206,12 @@
     </Compile>
     <Compile Include="Window\Menu\Teacher\TeacherSurveyLayouts\Layout1.Designer.cs">
       <DependentUpon>Layout1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\Menu\Teacher\TeacherSurveyLayouts\Layout2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Menu\Teacher\TeacherSurveyLayouts\Layout2.Designer.cs">
+      <DependentUpon>Layout2.cs</DependentUpon>
     </Compile>
     <Compile Include="Window\Menu\Teacher\TeacherSurveyLayouts\Layout3.cs">
       <SubType>Form</SubType>
@@ -354,6 +361,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Window\Menu\Teacher\TeacherSurveyLayouts\Layout1.resx">
       <DependentUpon>Layout1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Menu\Teacher\TeacherSurveyLayouts\Layout2.resx">
+      <DependentUpon>Layout2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Window\Menu\Teacher\TeacherSurveyLayouts\Layout3.resx">
       <DependentUpon>Layout3.cs</DependentUpon>
