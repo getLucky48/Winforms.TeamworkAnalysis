@@ -25,72 +25,32 @@ namespace WinFormInfSys.Window
             this.projId = projId;
             this.currentStep = 0;
 
-            setTitle();
-            setFiles();
+            build(this.currentStep + 1);
 
-            buildStep();
+            S1.Click += S1_Click;
+            S2.Click += S2_Click;
+            S3.Click += S3_Click;
+            S4.Click += S4_Click;
+            S5.Click += S5_Click;
+            S6.Click += S6_Click;
 
+            int[] stepsId = getStepsId();
 
-            if(this.currentStep <= 6)
-            {
-
-                string query = $@"
-
-                select * from is_solution 
-
-                where id = (select step{this.currentStep} from is_project where id = {this.projId})
-
-                ";
-
-                MySqlConnection connection = DBUtils.getConnection();
-                connection.Open();
-
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-
-                MySqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-
-                    Solution.Text = reader["solution"].ToString();
-
-                    break;
-
-                }
-
-                connection.Close();
-
-                query = $@"
-
-                select * from is_attachedfile where token in (select token from is_solution 
-
-                where id = (select step{this.currentStep} from is_project where id = {this.projId}))
-
-                ";
-
-                connection.Open();
-
-                cmd = new MySqlCommand(query, connection);
-
-                reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-
-                    Button b = Utils.buildButton(reader["name"].ToString(), $"SaveFile_{reader["id"]}");
-                    b.Click += downloadFile;
-
-                    UserFiles.Controls.Add(b);
-
-                }
-
-                connection.Close();
-
-            }
-
-            buildLeaderSection();
+            colorSteps(stepsId);
 
         }
+
+        private void S6_Click(object sender, EventArgs e) { build(6); }
+
+        private void S5_Click(object sender, EventArgs e) { build(5); }
+
+        private void S4_Click(object sender, EventArgs e) { build(4); }
+
+        private void S3_Click(object sender, EventArgs e) { build(3); }
+
+        private void S2_Click(object sender, EventArgs e) { build(2); }
+
+        private void S1_Click(object sender, EventArgs e) { build(1); }
 
         private void downloadFile(object sender, EventArgs e)
         {
@@ -289,6 +249,8 @@ namespace WinFormInfSys.Window
         private void setFiles()
         {
 
+            FileContainer.Controls.Clear();
+
             string query = $@"
 
 
@@ -318,7 +280,6 @@ namespace WinFormInfSys.Window
             }
 
             connection.Close();
-
 
         }
 
@@ -355,14 +316,12 @@ namespace WinFormInfSys.Window
 
         }
 
-        private void buildStep()
+        private void buildStep(int step = -1)
         {
 
             int[] stepsId = getStepsId();
 
-            if(stepsId.Length < 6) { return; }
-
-            colorSteps(stepsId);
+            if (stepsId.Length < 6) { return; }
 
             if(stepsId.Length > 6) { return; }
 
@@ -380,12 +339,14 @@ namespace WinFormInfSys.Window
 
             }
 
+            if(step != -1) { indx = step; }
+
             this.currentStep = indx;
 
             if(indx > 6) { return; }
 
             StepTitle.Text = $"Этап {indx}: {(this.Controls.Find($"L{indx}", true).FirstOrDefault() as Label).Text}";
-            (this.Controls.Find($"S{indx}", true).FirstOrDefault() as Label).BackColor = Color.Yellow;
+            if(step == -1) (this.Controls.Find($"S{indx}", true).FirstOrDefault() as Label).BackColor = Color.Yellow;
 
             if (stepsId[this.currentStep - 1] == 1)
             {
@@ -414,6 +375,75 @@ namespace WinFormInfSys.Window
 
             }
 
+
+        }
+
+        private void build(int step)
+        {
+
+            LeaderContainer.Controls.Clear();
+            UserFiles.Controls.Clear();
+
+            setTitle();
+            setFiles();
+
+            buildStep(step == this.currentStep ? -1 : step);
+
+            if (step > 6) { return; }
+
+            string query = $@"
+
+                select * from is_solution 
+
+                where id = (select step{step} from is_project where id = {this.projId})
+
+                ";
+
+            MySqlConnection connection = DBUtils.getConnection();
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                Solution.Text = reader["solution"].ToString();
+
+                break;
+
+            }
+
+            connection.Close();
+
+            query = $@"
+
+                select * from is_attachedfile where token in (select token from is_solution 
+
+                where id = (select step{step} from is_project where id = {this.projId}))
+
+                ";
+
+            connection.Open();
+
+            cmd = new MySqlCommand(query, connection);
+
+            reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                Button b = Utils.buildButton(reader["name"].ToString(), $"SaveFile_{reader["id"]}");
+                b.Click += downloadFile;
+
+                UserFiles.Controls.Add(b);
+
+            }
+
+            connection.Close();
+
+            buildLeaderSection();
 
         }
 
