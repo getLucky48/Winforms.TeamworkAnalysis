@@ -90,7 +90,7 @@ namespace WinFormInfSys.Window
 
             DateTime date = Calendar.Value;
             bool ignore = IgnoreCalendar.Checked;
-            string preparedDate = $"CAST('{date.ToString("yyyyMMdd")}' as date)";
+            string preparedDate = $"CAST('{date:yyyyMMdd}' as date)";
 
             DateTime date1 = dateTimePicker1.Value;
             DateTime date2 = dateTimePicker2.Value;
@@ -106,12 +106,12 @@ namespace WinFormInfSys.Window
             bool ignore5 = checkBox5.Checked;
             bool ignore6 = checkBox6.Checked;
 
-            string preparedDate1 = $"CAST('{date1.ToString("yyyyMMdd")}' as date)";
-            string preparedDate2 = $"CAST('{date2.ToString("yyyyMMdd")}' as date)";
-            string preparedDate3 = $"CAST('{date3.ToString("yyyyMMdd")}' as date)";
-            string preparedDate4 = $"CAST('{date4.ToString("yyyyMMdd")}' as date)";
-            string preparedDate5 = $"CAST('{date5.ToString("yyyyMMdd")}' as date)";
-            string preparedDate6 = $"CAST('{date6.ToString("yyyyMMdd")}' as date)";
+            string preparedDate1 = $"CAST('{date1:yyyyMMdd}' as date)";
+            string preparedDate2 = $"CAST('{date2:yyyyMMdd}' as date)";
+            string preparedDate3 = $"CAST('{date3:yyyyMMdd}' as date)";
+            string preparedDate4 = $"CAST('{date4:yyyyMMdd}' as date)";
+            string preparedDate5 = $"CAST('{date5:yyyyMMdd}' as date)";
+            string preparedDate6 = $"CAST('{date6:yyyyMMdd}' as date)";
 
             Guid guid = Guid.NewGuid();
 

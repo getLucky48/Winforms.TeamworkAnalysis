@@ -70,13 +70,13 @@ namespace WinFormInfSys.Class.Teacher
                     name = reader["name"].ToString(),
                     discipline = reader["discipline"].ToString(),
                     descr = reader["descr"].ToString(),
-                    deadline = reader["deadline"].ToString(),
-                    deadline1 = reader["deadline1"].ToString(),
-                    deadline2 = reader["deadline2"].ToString(),
-                    deadline3 = reader["deadline3"].ToString(),
-                    deadline4 = reader["deadline4"].ToString(),
-                    deadline5 = reader["deadline5"].ToString(),
-                    deadline6 = reader["deadline6"].ToString()
+                    deadline = reader["deadline"].ToString().Replace("0:00:00", string.Empty),
+                    deadline1 = reader["deadline1"].ToString().Replace("0:00:00", string.Empty),
+                    deadline2 = reader["deadline2"].ToString().Replace("0:00:00", string.Empty),
+                    deadline3 = reader["deadline3"].ToString().Replace("0:00:00", string.Empty),
+                    deadline4 = reader["deadline4"].ToString().Replace("0:00:00", string.Empty),
+                    deadline5 = reader["deadline5"].ToString().Replace("0:00:00", string.Empty),
+                    deadline6 = reader["deadline6"].ToString().Replace("0:00:00", string.Empty)
 
                 };
 

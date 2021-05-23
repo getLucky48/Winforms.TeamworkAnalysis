@@ -159,7 +159,6 @@ namespace WinFormInfSys.Window.Menu.Teacher
 
             string user = Students.SelectedItem.ToString();
 
-            string group = Groups.SelectedItem.ToString();
             string discipline = Disciplines.SelectedItem.ToString();
             string project = Projects.SelectedItem.ToString();
 

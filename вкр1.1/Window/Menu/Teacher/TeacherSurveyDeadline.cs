@@ -37,7 +37,7 @@ namespace WinFormInfSys.Window
             bool ignore = checkBox1.Checked;
 
             DateTime date = dateTimePicker1.Value;
-            string preparedDate = $"CAST('{date.ToString("yyyyMMdd")}' as date)";
+            string preparedDate = $"CAST('{date:yyyyMMdd}' as date)";
 
             string group = Group.SelectedItem.ToString();
             string discipline = Discipline.SelectedItem.ToString();

@@ -113,7 +113,7 @@ namespace WinFormInfSys
                 string d = reader["discipline"].ToString();
                 string t = reader["teacher"].ToString();
                 string n = reader["name"].ToString();
-                string dl = reader["deadline"].ToString();
+                string dl = reader["deadline"].ToString().Replace("0:00:00", string.Empty);
                 string s1 = reader["step1"].ToString();
                 string s2 = reader["step2"].ToString();
                 string s3 = reader["step3"].ToString();

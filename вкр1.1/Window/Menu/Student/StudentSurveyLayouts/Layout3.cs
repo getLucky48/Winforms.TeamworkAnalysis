@@ -85,6 +85,7 @@ namespace WinFormInfSys.Window
             ");
 
             if (string.IsNullOrEmpty(Deadline.Text)) { Deadline.Text = "Срок сдачи не установлен"; }
+            else { Deadline.Text = Deadline.Text.Replace("0:00:00", string.Empty); }
 
         }
     }
