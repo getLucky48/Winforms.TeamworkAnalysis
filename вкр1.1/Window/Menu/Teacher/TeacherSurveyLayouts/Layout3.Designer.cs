@@ -164,12 +164,12 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 189F));
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 190F));
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 192F));
-            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 192F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 193F));
             this.Table.Location = new System.Drawing.Point(16, 129);
             this.Table.Name = "Table";
             this.Table.RowCount = 1;
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.Table.Size = new System.Drawing.Size(859, 393);
+            this.Table.Size = new System.Drawing.Size(860, 393);
             this.Table.TabIndex = 29;
             // 
             // label9
@@ -227,7 +227,7 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(236, 21);
             this.label10.TabIndex = 40;
-            this.label10.Text = "todo1";
+            this.label10.Text = "Характеристики";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Data
