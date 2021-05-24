@@ -44,24 +44,24 @@ namespace WinFormInfSys.Window
             this.ProjName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label6 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
-            this.label8 = new System.Windows.Forms.Label();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
-            this.label9 = new System.Windows.Forms.Label();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,7 +100,7 @@ namespace WinFormInfSys.Window
             // 
             // Create
             // 
-            this.Create.Location = new System.Drawing.Point(536, 527);
+            this.Create.Location = new System.Drawing.Point(545, 482);
             this.Create.Name = "Create";
             this.Create.Size = new System.Drawing.Size(75, 23);
             this.Create.TabIndex = 5;
@@ -110,9 +110,9 @@ namespace WinFormInfSys.Window
             // 
             // AttachFile
             // 
-            this.AttachFile.Location = new System.Drawing.Point(14, 499);
+            this.AttachFile.Location = new System.Drawing.Point(12, 482);
             this.AttachFile.Name = "AttachFile";
-            this.AttachFile.Size = new System.Drawing.Size(149, 44);
+            this.AttachFile.Size = new System.Drawing.Size(149, 23);
             this.AttachFile.TabIndex = 6;
             this.AttachFile.Text = "Прикрепить файлы";
             this.AttachFile.UseVisualStyleBackColor = true;
@@ -201,113 +201,32 @@ namespace WinFormInfSys.Window
             this.panel1.Size = new System.Drawing.Size(454, 597);
             this.panel1.TabIndex = 13;
             // 
-            // dateTimePicker1
+            // dateTimePicker6
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(17, 123);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 12;
+            this.dateTimePicker6.Location = new System.Drawing.Point(17, 479);
+            this.dateTimePicker6.Name = "dateTimePicker6";
+            this.dateTimePicker6.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker6.TabIndex = 27;
             // 
-            // label5
+            // label10
             // 
-            this.label5.Location = new System.Drawing.Point(14, 107);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(203, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Дата сдачи первого этапа";
+            this.label10.Location = new System.Drawing.Point(14, 463);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(203, 13);
+            this.label10.TabIndex = 26;
+            this.label10.Text = "Дата сдачи шестого этапа";
             // 
-            // checkBox1
+            // checkBox6
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(17, 149);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(156, 17);
-            this.checkBox1.TabIndex = 13;
-            this.checkBox1.Text = "Не указывать срок сдачи";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(17, 195);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 15;
-            // 
-            // label6
-            // 
-            this.label6.Location = new System.Drawing.Point(14, 179);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(203, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Дата сдачи второго этапа";
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Location = new System.Drawing.Point(17, 221);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(156, 17);
-            this.checkBox2.TabIndex = 16;
-            this.checkBox2.Text = "Не указывать срок сдачи";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker3
-            // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(17, 269);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker3.TabIndex = 18;
-            // 
-            // label7
-            // 
-            this.label7.Location = new System.Drawing.Point(14, 253);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(203, 13);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "Дата сдачи третьего этапа";
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Checked = true;
-            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox3.Location = new System.Drawing.Point(17, 295);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(156, 17);
-            this.checkBox3.TabIndex = 19;
-            this.checkBox3.Text = "Не указывать срок сдачи";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker4
-            // 
-            this.dateTimePicker4.Location = new System.Drawing.Point(17, 338);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker4.TabIndex = 21;
-            // 
-            // label8
-            // 
-            this.label8.Location = new System.Drawing.Point(14, 322);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(203, 13);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "Дата сдачи четвертого этапа";
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Checked = true;
-            this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox4.Location = new System.Drawing.Point(17, 364);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(156, 17);
-            this.checkBox4.TabIndex = 22;
-            this.checkBox4.Text = "Не указывать срок сдачи";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Checked = true;
+            this.checkBox6.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox6.Location = new System.Drawing.Point(17, 505);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(156, 17);
+            this.checkBox6.TabIndex = 28;
+            this.checkBox6.Text = "Не указывать срок сдачи";
+            this.checkBox6.UseVisualStyleBackColor = true;
             // 
             // dateTimePicker5
             // 
@@ -336,32 +255,113 @@ namespace WinFormInfSys.Window
             this.checkBox5.Text = "Не указывать срок сдачи";
             this.checkBox5.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker6
+            // dateTimePicker4
             // 
-            this.dateTimePicker6.Location = new System.Drawing.Point(17, 479);
-            this.dateTimePicker6.Name = "dateTimePicker6";
-            this.dateTimePicker6.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker6.TabIndex = 27;
+            this.dateTimePicker4.Location = new System.Drawing.Point(17, 338);
+            this.dateTimePicker4.Name = "dateTimePicker4";
+            this.dateTimePicker4.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker4.TabIndex = 21;
             // 
-            // label10
+            // label8
             // 
-            this.label10.Location = new System.Drawing.Point(14, 463);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(203, 13);
-            this.label10.TabIndex = 26;
-            this.label10.Text = "Дата сдачи шестого этапа";
+            this.label8.Location = new System.Drawing.Point(14, 322);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(203, 13);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Дата сдачи четвертого этапа";
             // 
-            // checkBox6
+            // checkBox4
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Checked = true;
-            this.checkBox6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox6.Location = new System.Drawing.Point(17, 505);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(156, 17);
-            this.checkBox6.TabIndex = 28;
-            this.checkBox6.Text = "Не указывать срок сдачи";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Checked = true;
+            this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox4.Location = new System.Drawing.Point(17, 364);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(156, 17);
+            this.checkBox4.TabIndex = 22;
+            this.checkBox4.Text = "Не указывать срок сдачи";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.Location = new System.Drawing.Point(17, 269);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker3.TabIndex = 18;
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(14, 253);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(203, 13);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Дата сдачи третьего этапа";
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Checked = true;
+            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox3.Location = new System.Drawing.Point(17, 295);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(156, 17);
+            this.checkBox3.TabIndex = 19;
+            this.checkBox3.Text = "Не указывать срок сдачи";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(17, 195);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker2.TabIndex = 15;
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(14, 179);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(203, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Дата сдачи второго этапа";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.Location = new System.Drawing.Point(17, 221);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(156, 17);
+            this.checkBox2.TabIndex = 16;
+            this.checkBox2.Text = "Не указывать срок сдачи";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(17, 123);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 12;
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(14, 107);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(203, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Дата сдачи первого этапа";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(17, 149);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(156, 17);
+            this.checkBox1.TabIndex = 13;
+            this.checkBox1.Text = "Не указывать срок сдачи";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // TeacherTaskAdd
             // 

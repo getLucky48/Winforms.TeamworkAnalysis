@@ -133,6 +133,7 @@ namespace WinFormInfSys.Window
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Survey);
             this.Name = "TeacherSurveyDeadline";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Установить сроки прохождения опросов";
             this.ResumeLayout(false);
             this.PerformLayout();

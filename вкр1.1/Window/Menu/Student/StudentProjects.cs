@@ -44,12 +44,19 @@ namespace WinFormInfSys
                 new Label(){ Text = "Задание", AutoSize = true},
                 new Label(){ Text = "Срок сдачи", AutoSize = true},
                 new Label(){ Text = "Этап 1\nпостановка задачи", AutoSize = true},
+                new Label(){ Text = "Этап 1\nсрок сдачи", AutoSize = true},
                 new Label(){ Text = "Этап 2\nтестовые данные", AutoSize = true},
+                new Label(){ Text = "Этап 2\nсрок сдачи", AutoSize = true},
                 new Label(){ Text = "Этап 3\nструктура и алгоритмы", AutoSize = true},
+                new Label(){ Text = "Этап 3\nсрок сдачи", AutoSize = true},
                 new Label(){ Text = "Этап 4\nинтерфейс", AutoSize = true},
+                new Label(){ Text = "Этап 4\nсрок сдачи", AutoSize = true},
                 new Label(){ Text = "Этап 5\nотладка", AutoSize = true},
+                new Label(){ Text = "Этап 5\nсрок сдачи", AutoSize = true},
                 new Label(){ Text = "Этап 6\nзащита", AutoSize = true},
-                new Label(){ Text = "Оценка", AutoSize = true },
+                new Label(){ Text = "Этап 6\nсрок сдачи", AutoSize = true},
+                new Label(){ Text = "Оценка (проект)", AutoSize = true },
+                new Label(){ Text = "Оценка (дисциплина)", AutoSize = true },
                 new Label(){ Text = " " }
             }, 0); ;
 
@@ -71,7 +78,14 @@ namespace WinFormInfSys
                 isstat4.name as step4, 
                 isstat5.name as step5, 
                 isstat6.name as step6,
-                isp.score
+                isp.score,
+                iss.score as scoredisc,
+                isp.deadline1,
+                isp.deadline2,
+                isp.deadline3,
+                isp.deadline4,
+                isp.deadline5,
+                isp.deadline6
 
                 from is_user isu
 
@@ -92,6 +106,8 @@ namespace WinFormInfSys
 				left join is_status isstat4 on isstat4.id = iss4.status_id
 				left join is_status isstat5 on isstat5.id = iss5.status_id
 				left join is_status isstat6 on isstat6.id = iss6.status_id
+
+                left join is_score iss on iss.student_id = isu.id
 
                 where isu.id = {this.role.Item2}
 
@@ -121,19 +137,34 @@ namespace WinFormInfSys
                 string s5 = reader["step5"].ToString();
                 string s6 = reader["step6"].ToString();
                 string s = reader["score"].ToString();
+                string sd = reader["scoredisc"].ToString();
+                string dd1 = reader["deadline1"].ToString();
+                string dd2 = reader["deadline2"].ToString();
+                string dd3 = reader["deadline3"].ToString();
+                string dd4 = reader["deadline4"].ToString();
+                string dd5 = reader["deadline5"].ToString();
+                string dd6 = reader["deadline6"].ToString();
 
                 Label discipline = Utils.buildLabel(d, Guid.NewGuid().ToString());
                 Label teacher = Utils.buildLabel(t, Guid.NewGuid().ToString());
                 Label name = Utils.buildLabel(n, Guid.NewGuid().ToString());
                 Label deadline = Utils.buildLabel(dl, Guid.NewGuid().ToString());
                 Label step1 = Utils.buildLabel(s1, Guid.NewGuid().ToString());
+                Label deadline1 = Utils.buildLabel(dd1, Guid.NewGuid().ToString());
                 Label step2 = Utils.buildLabel(s2, Guid.NewGuid().ToString());
+                Label deadline2 = Utils.buildLabel(dd2, Guid.NewGuid().ToString());
                 Label step3 = Utils.buildLabel(s3, Guid.NewGuid().ToString());
+                Label deadline3 = Utils.buildLabel(dd3, Guid.NewGuid().ToString());
                 Label step4 = Utils.buildLabel(s4, Guid.NewGuid().ToString());
+                Label deadline4 = Utils.buildLabel(dd4, Guid.NewGuid().ToString());
                 Label step5 = Utils.buildLabel(s5, Guid.NewGuid().ToString());
+                Label deadline5 = Utils.buildLabel(dd5, Guid.NewGuid().ToString());
                 Label step6 = Utils.buildLabel(s6, Guid.NewGuid().ToString());
+                Label deadline6 = Utils.buildLabel(dd6, Guid.NewGuid().ToString());
                 Label score = Utils.buildLabel(s, Guid.NewGuid().ToString());
+                Label scoredisc = Utils.buildLabel(sd, Guid.NewGuid().ToString());
                 Button open = Utils.buildButton("Открыть", $"OpenProjById_{reader["id"]}");
+
                 open.Width = 100;
                 open.Click += Open_Click;
 
@@ -143,12 +174,19 @@ namespace WinFormInfSys
                     name,
                     deadline,
                     step1,
+                    deadline1,
                     step2,
+                    deadline2,
                     step3,
+                    deadline3,
                     step4,
+                    deadline4,
                     step5,
+                    deadline5,
                     step6,
+                    deadline6,
                     score,
+                    scoredisc,
                     open
                 }, row);
 

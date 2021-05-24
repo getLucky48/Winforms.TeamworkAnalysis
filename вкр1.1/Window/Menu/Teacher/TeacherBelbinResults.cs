@@ -21,12 +21,25 @@ namespace WinFormInfSys.Window
 
         }
 
-        private Color getColor(IOrderedEnumerable<KeyValuePair<string, int>> sorted, string role)
-        {
+        private int lastColored = -1;
 
-            if (sorted.ElementAt(0).Key == role) { return Color.LightGreen; }
-            if (sorted.ElementAt(1).Key == role) { return Color.LightGreen; }
-            if (sorted.ElementAt(2).Key == role) { return Color.LightGreen; }
+        private Color getColor(int sec, int max, int section)
+        {
+            
+            if(sec == max) {
+
+                if (lastColored == section)
+                {
+                    return Color.LightGreen;
+                }
+                else if(lastColored == -1){
+
+                    lastColored = section;
+                    return Color.LightGreen;
+
+                }
+
+            }
 
             return Color.Transparent;
 
@@ -34,6 +47,8 @@ namespace WinFormInfSys.Window
 
         private void formLists(string groupName)
         {
+
+            this.lastColored = -1;
 
             Table.Controls.Clear();
 
@@ -55,7 +70,7 @@ namespace WinFormInfSys.Window
                 string role7 = string.Empty;
                 string role8 = string.Empty;
 
-                if(obj.roles != null)
+                if (obj.roles != null)
                 {
 
                     Dictionary<string, int> roles = obj.roles;
@@ -73,6 +88,12 @@ namespace WinFormInfSys.Window
 
                     var sorted = from t in roles orderby t.Value descending select t;
 
+                    int sec1 = roles["Реализатор"] + roles["Исполнитель"];
+                    int sec2 = roles["Координатор"] + roles["Исследователь"] + roles["Творец"];
+                    int sec3 = roles["Генератор идей"] + roles["Коллективист"] + roles["Оценщик"];
+
+                    int max = (new int[] { sec1, sec2, sec3 }).Max();
+
                     Utils.fillRow(
 
                         Table,
@@ -80,19 +101,21 @@ namespace WinFormInfSys.Window
                         {
 
                                             Utils.buildLabel(name),
-                                            Utils.buildLabel(role1, getColor(sorted, "Реализатор")),
-                                            Utils.buildLabel(role2, getColor(sorted, "Исполнитель")),
-                                            Utils.buildLabel(role3, getColor(sorted, "Координатор")),
-                                            Utils.buildLabel(role4, getColor(sorted, "Исследователь")),
-                                            Utils.buildLabel(role5, getColor(sorted, "Творец")),
-                                            Utils.buildLabel(role6, getColor(sorted, "Генератор идей")),
-                                            Utils.buildLabel(role7, getColor(sorted, "Коллективист")),
-                                            Utils.buildLabel(role8, getColor(sorted, "Оценщик"))
+                                            Utils.buildLabel(role1, getColor(sec1, max, 1)),
+                                            Utils.buildLabel(role2, getColor(sec1, max, 1)),
+                                            Utils.buildLabel(role3, getColor(sec2, max, 2)),
+                                            Utils.buildLabel(role4, getColor(sec2, max, 2)),
+                                            Utils.buildLabel(role5, getColor(sec2, max, 2)),
+                                            Utils.buildLabel(role6, getColor(sec3, max, 3)),
+                                            Utils.buildLabel(role7, getColor(sec3, max, 3)),
+                                            Utils.buildLabel(role8, getColor(sec3, max, 3))
 
                         },
                         i
 
                     );
+
+                    this.lastColored = -1;
 
                     continue;
 

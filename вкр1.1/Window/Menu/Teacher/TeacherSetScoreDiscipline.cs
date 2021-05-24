@@ -13,6 +13,8 @@ namespace WinFormInfSys.Window.Menu.Teacher
             InitializeComponent();
             Utils.bind(Disciplines, "is_discipline", "name");
             Utils.bind(Groups, "is_group", "name");
+            Groups.Items.Add("Все");
+            Groups.SelectedIndex = Groups.Items.Count - 1;
 
             Scores.Items.Add(2);
             Scores.Items.Add(3);
@@ -42,8 +44,11 @@ namespace WinFormInfSys.Window.Menu.Teacher
 
                 join is_score isc on isc.student_id = isu.id
 
-                where isu.group_id = (select id from is_group where name = '{group}')
-                and isc.discipline_id = (select id from is_discipline where name = '{discipline}')
+                where { (group.Contains("Все") ? "" : $"isu.group_id = (select id from is_group where name = '{group}') and ") }
+                
+                isc.discipline_id = (select id from is_discipline where name = '{discipline}')
+
+                order by isu.name
 
             ";
 
@@ -81,7 +86,10 @@ namespace WinFormInfSys.Window.Menu.Teacher
                                 and discipline_id = (select id from is_discipline where name = '{discipline}'))
 
 
-                and group_id = (select id from is_group where name = '{group}')
+                { (group.Contains("Все") ? "" : $"and group_id = (select id from is_group where name = '{group}') ") }         
+
+                order by isu.name
+
 
             ";
 

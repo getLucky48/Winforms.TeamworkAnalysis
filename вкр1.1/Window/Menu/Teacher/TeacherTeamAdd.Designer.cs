@@ -166,12 +166,12 @@ namespace WinFormInfSys.Window
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 103F));
             this.Table.Location = new System.Drawing.Point(608, 52);
             this.Table.Name = "Table";
             this.Table.RowCount = 1;
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.Table.Size = new System.Drawing.Size(557, 464);
+            this.Table.Size = new System.Drawing.Size(558, 464);
             this.Table.TabIndex = 14;
             // 
             // StudentsCount
@@ -243,7 +243,7 @@ namespace WinFormInfSys.Window
             this.Controls.Add(this.DisciplinesList);
             this.Name = "TeacherTeamAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Добавить бригаду";
+            this.Text = "Создать команды";
             this.ResumeLayout(false);
             this.PerformLayout();
 

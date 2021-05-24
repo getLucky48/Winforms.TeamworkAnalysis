@@ -256,7 +256,7 @@ namespace WinFormInfSys.Window
 
                 select isa.* from is_project isp
 
-                left join is_attachedfile isa on isa.token = isp.token
+                join is_attachedfile isa on isa.token = isp.token
 
                 where isp.Id = {this.projId}
 
@@ -387,6 +387,23 @@ namespace WinFormInfSys.Window
             setTitle();
             setFiles();
 
+            if(this.currentStep == step)
+            {
+
+                button1.Enabled = true;
+                button2.Enabled = true;
+                button3.Enabled = true;
+
+            }
+            else
+            {
+
+                button1.Enabled = false;
+                button2.Enabled = false;
+                button3.Enabled = false;
+
+            }
+
             buildStep(step == this.currentStep ? -1 : step);
 
             if (step > 6) { return; }
@@ -489,7 +506,7 @@ namespace WinFormInfSys.Window
         }
         private void buildLeaderSection(int step = -1)
         {
-
+            
             int stepIndx = step;
             if(stepIndx == -1) { stepIndx = this.currentStep; }
 
@@ -500,7 +517,7 @@ namespace WinFormInfSys.Window
                 join is_project isp on isp.student_Id = user_id
                 join is_solution iss on iss.id = isp.step{stepIndx}
 
-                where user_id = 
+                where user_id in
                     (select user_id from is_team 
 
                     where num = (

@@ -39,16 +39,16 @@ namespace WinFormInfSys
             this.таблицаПроектовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.опросыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.teacherPage = new System.Windows.Forms.ToolStripMenuItem();
+            this.результатыТестаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.создатьБригадыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.добавитьЗаданиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокЗаданийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.таблицаПроектовToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.результатыТестаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.создатьБригадыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.графикиУспеваемостиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.установитьСрокиПрохожденияТестовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.результатыОпросовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оценкипроектыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оценкидисциплинаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.установитьСрокиПрохожденияТестовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.графикиУспеваемостиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminPage = new System.Windows.Forms.ToolStripMenuItem();
             this.списокГруппToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокСтудентовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -143,8 +143,8 @@ namespace WinFormInfSys
             // 
             this.teacherPage.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.результатыТестаToolStripMenuItem,
-            this.создатьБригадыToolStripMenuItem,
             this.добавитьЗаданиеToolStripMenuItem,
+            this.создатьБригадыToolStripMenuItem,
             this.списокЗаданийToolStripMenuItem,
             this.таблицаПроектовToolStripMenuItem1,
             this.установитьСрокиПрохожденияТестовToolStripMenuItem,
@@ -156,6 +156,23 @@ namespace WinFormInfSys
             this.teacherPage.Name = "teacherPage";
             this.teacherPage.Size = new System.Drawing.Size(104, 20);
             this.teacherPage.Text = "Преподаватели";
+            // 
+            // результатыТестаToolStripMenuItem
+            // 
+            this.результатыТестаToolStripMenuItem.AutoToolTip = true;
+            this.результатыТестаToolStripMenuItem.Name = "результатыТестаToolStripMenuItem";
+            this.результатыТестаToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.результатыТестаToolStripMenuItem.Text = "Результаты теста Белбина";
+            this.результатыТестаToolStripMenuItem.ToolTipText = "Открыть результаты  теста Белбина";
+            this.результатыТестаToolStripMenuItem.Click += new System.EventHandler(this.результатыТестаToolStripMenuItem_Click_1);
+            // 
+            // создатьБригадыToolStripMenuItem
+            // 
+            this.создатьБригадыToolStripMenuItem.AutoToolTip = true;
+            this.создатьБригадыToolStripMenuItem.Name = "создатьБригадыToolStripMenuItem";
+            this.создатьБригадыToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.создатьБригадыToolStripMenuItem.Text = "Создать команды";
+            this.создатьБригадыToolStripMenuItem.Click += new System.EventHandler(this.создатьБригадыToolStripMenuItem_Click_1);
             // 
             // добавитьЗаданиеToolStripMenuItem
             // 
@@ -180,30 +197,12 @@ namespace WinFormInfSys
             this.таблицаПроектовToolStripMenuItem1.Text = "Выполнение заданий";
             this.таблицаПроектовToolStripMenuItem1.Click += new System.EventHandler(this.таблицаПроектовToolStripMenuItem1_Click);
             // 
-            // результатыТестаToolStripMenuItem
+            // установитьСрокиПрохожденияТестовToolStripMenuItem
             // 
-            this.результатыТестаToolStripMenuItem.AutoToolTip = true;
-            this.результатыТестаToolStripMenuItem.Name = "результатыТестаToolStripMenuItem";
-            this.результатыТестаToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.результатыТестаToolStripMenuItem.Text = "Результаты теста Белбина";
-            this.результатыТестаToolStripMenuItem.ToolTipText = "Открыть результаты  теста Белбина";
-            this.результатыТестаToolStripMenuItem.Click += new System.EventHandler(this.результатыТестаToolStripMenuItem_Click_1);
-            // 
-            // создатьБригадыToolStripMenuItem
-            // 
-            this.создатьБригадыToolStripMenuItem.AutoToolTip = true;
-            this.создатьБригадыToolStripMenuItem.Name = "создатьБригадыToolStripMenuItem";
-            this.создатьБригадыToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.создатьБригадыToolStripMenuItem.Text = "Создать команды";
-            this.создатьБригадыToolStripMenuItem.Click += new System.EventHandler(this.создатьБригадыToolStripMenuItem_Click_1);
-            // 
-            // графикиУспеваемостиToolStripMenuItem
-            // 
-            this.графикиУспеваемостиToolStripMenuItem.AutoToolTip = true;
-            this.графикиУспеваемостиToolStripMenuItem.Name = "графикиУспеваемостиToolStripMenuItem";
-            this.графикиУспеваемостиToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.графикиУспеваемостиToolStripMenuItem.Text = "Качество выполнения";
-            this.графикиУспеваемостиToolStripMenuItem.Click += new System.EventHandler(this.графикиУспеваемостиToolStripMenuItem_Click);
+            this.установитьСрокиПрохожденияТестовToolStripMenuItem.Name = "установитьСрокиПрохожденияТестовToolStripMenuItem";
+            this.установитьСрокиПрохожденияТестовToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.установитьСрокиПрохожденияТестовToolStripMenuItem.Text = "Сроки прохождения тестов";
+            this.установитьСрокиПрохожденияТестовToolStripMenuItem.Click += new System.EventHandler(this.установитьСрокиПрохожденияТестовToolStripMenuItem_Click);
             // 
             // результатыОпросовToolStripMenuItem
             // 
@@ -229,12 +228,13 @@ namespace WinFormInfSys
             this.оценкидисциплинаToolStripMenuItem.Text = "Оценки (дисциплина)";
             this.оценкидисциплинаToolStripMenuItem.Click += new System.EventHandler(this.оценкидисциплинаToolStripMenuItem_Click);
             // 
-            // установитьСрокиПрохожденияТестовToolStripMenuItem
+            // графикиУспеваемостиToolStripMenuItem
             // 
-            this.установитьСрокиПрохожденияТестовToolStripMenuItem.Name = "установитьСрокиПрохожденияТестовToolStripMenuItem";
-            this.установитьСрокиПрохожденияТестовToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.установитьСрокиПрохожденияТестовToolStripMenuItem.Text = "Сроки прохождения тестов";
-            this.установитьСрокиПрохожденияТестовToolStripMenuItem.Click += new System.EventHandler(this.установитьСрокиПрохожденияТестовToolStripMenuItem_Click);
+            this.графикиУспеваемостиToolStripMenuItem.AutoToolTip = true;
+            this.графикиУспеваемостиToolStripMenuItem.Name = "графикиУспеваемостиToolStripMenuItem";
+            this.графикиУспеваемостиToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.графикиУспеваемостиToolStripMenuItem.Text = "Качество выполнения";
+            this.графикиУспеваемостиToolStripMenuItem.Click += new System.EventHandler(this.графикиУспеваемостиToolStripMenuItem_Click);
             // 
             // adminPage
             // 

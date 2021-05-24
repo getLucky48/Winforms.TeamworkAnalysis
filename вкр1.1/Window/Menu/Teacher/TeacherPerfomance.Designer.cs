@@ -30,7 +30,6 @@ namespace WinFormInfSys.Window
         private void InitializeComponent()
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
@@ -50,9 +49,7 @@ namespace WinFormInfSys.Window
             // Chart1
             // 
             chartArea1.Name = "ChartArea1";
-            chartArea2.Name = "ChartArea2";
             this.Chart1.ChartAreas.Add(chartArea1);
-            this.Chart1.ChartAreas.Add(chartArea2);
             legend1.Name = "Legend1";
             this.Chart1.Legends.Add(legend1);
             this.Chart1.Location = new System.Drawing.Point(12, 161);

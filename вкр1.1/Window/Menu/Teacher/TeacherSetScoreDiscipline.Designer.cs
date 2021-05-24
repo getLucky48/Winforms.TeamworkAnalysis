@@ -53,7 +53,7 @@ namespace WinFormInfSys.Window.Menu.Teacher
             // Groups
             // 
             this.Groups.FormattingEnabled = true;
-            this.Groups.Location = new System.Drawing.Point(405, 33);
+            this.Groups.Location = new System.Drawing.Point(371, 33);
             this.Groups.Name = "Groups";
             this.Groups.Size = new System.Drawing.Size(199, 21);
             this.Groups.TabIndex = 1;
@@ -71,7 +71,7 @@ namespace WinFormInfSys.Window.Menu.Teacher
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(403, 17);
+            this.label2.Location = new System.Drawing.Point(369, 17);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 3;
@@ -84,20 +84,20 @@ namespace WinFormInfSys.Window.Menu.Teacher
             this.Table.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.Table.ColumnCount = 2;
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
-            this.Table.Location = new System.Drawing.Point(25, 112);
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.Table.Location = new System.Drawing.Point(265, 111);
             this.Table.Name = "Table";
             this.Table.RowCount = 1;
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.Table.Size = new System.Drawing.Size(304, 326);
+            this.Table.Size = new System.Drawing.Size(305, 326);
             this.Table.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Location = new System.Drawing.Point(25, 82);
+            this.label3.Location = new System.Drawing.Point(265, 81);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(303, 27);
+            this.label3.Size = new System.Drawing.Size(305, 27);
             this.label3.TabIndex = 6;
             this.label3.Text = "Выставленные оценки";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -105,7 +105,7 @@ namespace WinFormInfSys.Window.Menu.Teacher
             // Students
             // 
             this.Students.FormattingEnabled = true;
-            this.Students.Location = new System.Drawing.Point(406, 112);
+            this.Students.Location = new System.Drawing.Point(26, 111);
             this.Students.Margin = new System.Windows.Forms.Padding(0);
             this.Students.Name = "Students";
             this.Students.Size = new System.Drawing.Size(198, 290);
@@ -115,7 +115,7 @@ namespace WinFormInfSys.Window.Menu.Teacher
             // Scores
             // 
             this.Scores.FormattingEnabled = true;
-            this.Scores.Location = new System.Drawing.Point(405, 415);
+            this.Scores.Location = new System.Drawing.Point(25, 414);
             this.Scores.Name = "Scores";
             this.Scores.Size = new System.Drawing.Size(118, 21);
             this.Scores.TabIndex = 8;
@@ -123,7 +123,7 @@ namespace WinFormInfSys.Window.Menu.Teacher
             // label4
             // 
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Location = new System.Drawing.Point(405, 82);
+            this.label4.Location = new System.Drawing.Point(25, 81);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(199, 27);
             this.label4.TabIndex = 9;
@@ -132,7 +132,7 @@ namespace WinFormInfSys.Window.Menu.Teacher
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(529, 415);
+            this.button1.Location = new System.Drawing.Point(149, 414);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 10;
@@ -144,7 +144,7 @@ namespace WinFormInfSys.Window.Menu.Teacher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(622, 450);
+            this.ClientSize = new System.Drawing.Size(586, 450);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Scores);

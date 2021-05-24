@@ -21,7 +21,6 @@ namespace WinFormInfSys.Window.Menu.Teacher
 
             Utils.bind(Disciplines, "is_discipline", "name");
             Utils.bind(Groups, "is_group", "name");
-            Utils.bind(Projects, "is_project", "name", true, $"isp where isp.teacher_id = {this.userId} and isp.fl_unique = 1");
 
             Scores.Items.Add(2);
             Scores.Items.Add(3);
@@ -65,6 +64,8 @@ namespace WinFormInfSys.Window.Menu.Teacher
                 and isg.id = (select id from is_group where name = '{group}')
                 and isp.discipline_id = (select id from is_discipline where name = '{discipline}')
                 and isp.name = '{project}'
+
+                order by isu.name
 
             ";
 
@@ -114,6 +115,8 @@ namespace WinFormInfSys.Window.Menu.Teacher
                 and isp.discipline_id = (select id from is_discipline where name = '{discipline}')
                 and isp.name = '{project}'
 
+                order by isu.name
+
             ";
 
             connection = DBUtils.getConnection();
@@ -137,6 +140,15 @@ namespace WinFormInfSys.Window.Menu.Teacher
 
         private void Disciplines_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            Projects.Items.Clear();
+
+            if(Disciplines.SelectedIndex == -1) { return; }
+
+            string discipline = Disciplines.SelectedItem.ToString();
+
+            Utils.bind(Projects, "is_project", "name", true, $"isp where isp.teacher_id = {this.userId} and isp.fl_unique = 1 and discipline_id = (select id from is_discipline where name = '{discipline}')");
+
             buildTable();
         }
 

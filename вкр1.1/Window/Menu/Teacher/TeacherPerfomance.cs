@@ -18,7 +18,13 @@ namespace WinFormInfSys.Window
             comboBox1.Items.Add(2021);
 
             Utils.bind(Groups, "is_group", "name");
+            Groups.Items.Add("Не выбрано");
+            Groups.SelectedIndex = Groups.Items.Count - 1;
+
             Utils.bind(Groups2, "is_group", "name");
+            Groups2.Items.Add("Не выбрано");
+            Groups2.SelectedIndex = Groups2.Items.Count - 1;
+
             Utils.bind(Disciplines, "is_discipline", "name");
 
             Chart1.Series.Add("Не оценено");
@@ -44,6 +50,9 @@ namespace WinFormInfSys.Window
         {
 
             string group = groupBox.SelectedItem.ToString();
+
+            if(group.Contains("Не выбрано")) { return; }
+
             string discipline = Disciplines.SelectedItem.ToString();
 
             string query = $@"
@@ -110,6 +119,8 @@ namespace WinFormInfSys.Window
 
 
             if (Groups.SelectedIndex == -1  || Groups2.SelectedIndex == -1 || Disciplines.SelectedIndex == -1 || comboBox1.SelectedIndex == -1) { return; }
+
+
 
             Chart1.Series.Clear();
             Chart1.Series.Add("Не оценено ");

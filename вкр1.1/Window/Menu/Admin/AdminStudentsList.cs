@@ -29,7 +29,19 @@ namespace WinFormInfSys.Window
 
             Table.SuspendLayout();
 
-            Utils.initTable(Table, new string[] { "ФИО", "Факультет", "Группа", "Курс", "Логин", " ", " " });
+            Utils.fillRow(Table, new Control[] {
+
+                Utils.buildLabel("ФИО"),
+                Utils.buildLabel("Факультет"),
+                Utils.buildLabel("Группа"),
+                Utils.buildLabel("Курс"),
+                Utils.buildLabel("Логин"),
+                Utils.buildLabel(" "),
+                Utils.buildLabel(" ")
+
+            }, 0);;
+
+            //Utils.initTable(Table, new string[] { "ФИО", "Факультет", "Группа", "Курс", "Логин", " ", " " });
 
             string query = $@"
 
@@ -71,6 +83,11 @@ namespace WinFormInfSys.Window
 
                 Button edit = Utils.buildButton("Редактировать", $"ButtonEdit_{id}");
                 Button remove = Utils.buildButton("Удалить", $"ButtonDelete_{id}");
+
+                edit.AutoSize = false;
+                remove.AutoSize = false;
+                edit.Width = 100;
+                remove.Width = 100;
 
                 edit.Click += Edit_Click;
                 remove.Click += Delete_Click;

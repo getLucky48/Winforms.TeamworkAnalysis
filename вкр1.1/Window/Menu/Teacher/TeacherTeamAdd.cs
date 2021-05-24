@@ -141,21 +141,99 @@ namespace WinFormInfSys.Window
         private void buildRecommend()
         {
 
+            Dictionary<string, int> roles = new Dictionary<string, int>() {
+                { "Координатор", 0 },
+                { "Творец", 0 },
+                { "Генератор идей", 0 },
+                { "Оценщик", 0 },
+                { "Исполнитель", 0 },
+                { "Исследователь", 0 },
+                { "Коллективист", 0 },
+                { "Реализатор", 0 }
+            };
+
+            string groupName = GroupList.SelectedItem.ToString();
+
+            string query = $@"
+
+                select 
+
+                isu.id as id,
+                isu.name as name,
+                istr.result as roles,
+                (select num from is_team where user_id = isu.id limit 1) as num,
+                (select leader from is_team where user_id = isu.id limit 1) as leader
+      
+                from is_user isu
+
+                join is_group isg on isg.id = isu.group_id
+                left join is_testresult istr on istr.user_Id = isu.id
+    
+
+                where isg.name = '{groupName}'
+
+                order by num, name, roles
+
+            ";
+
+            MySqlConnection connection = DBUtils.getConnection();
+
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            List<Tuple<int, string, string>> students = new List<Tuple<int, string, string>>();
+
+            int row = 0;
+            while (reader.Read())
+            {
+
+                roles = JsonConvert.DeserializeObject<Dictionary<string, int>>(reader["roles"].ToString());
+
+                string name = reader["name"].ToString();
+                string num = reader["num"].ToString();
+                string leader = reader["leader"].ToString();
+
+                string roleByBelbin = string.Empty;
+
+                if (roles == null || roles.Count == 0) { roleByBelbin = "*Тест не пройден*"; }
+                else
+                {
+
+                    var sorted = from t in roles orderby t.Value descending select t;
+
+                    roleByBelbin = $"{sorted.ElementAt(0).Key},{sorted.ElementAt(1).Key},{sorted.ElementAt(2).Key}";
+
+                }
+
+                students.Add(new Tuple<int, string, string>(int.Parse(reader["id"].ToString()), name, roleByBelbin));
+
+            }
+
+            connection.Close();
+
+
+
             Recommendation.Text = "";
             //name  role1   role2   role3
             List<Tuple<string, string, string, string>> list = new List<Tuple<string, string, string, string>>();
           
-            for(int i = 0; i < studAll.Count; i++)
+            for(int i = 0; i < students.Count; i++)
             {
 
-                if(studAll[i].Item3.Contains("*Тест не пройден*")) { continue; }
+                if(students[i].Item3.Contains("*Тест не пройден*")) { continue; }
 
-                string name = studAll[i].Item2;
-                string[] roles = studAll[i].Item3.Split(new char[] { ',' });
+                string name = students[i].Item2;
+                string[] rols = students[i].Item3.Split(new char[] { ',' });
 
-                list.Add(new Tuple<string, string, string, string>(name, roles[0], roles[1], roles[2]));
+                list.Add(new Tuple<string, string, string, string>(name, rols[0], rols[1], rols[2]));
 
             }
+
+
+
 
             if(list.Count < 3) { return; }
 
@@ -565,6 +643,13 @@ namespace WinFormInfSys.Window
                 AllStudents.SelectedIndex = indx;
 
                 ToRight_Click(sender, e);
+
+                if(i == 0)
+                {
+
+                    Leader.SelectedIndex = 0;
+
+                }
 
             }
 
