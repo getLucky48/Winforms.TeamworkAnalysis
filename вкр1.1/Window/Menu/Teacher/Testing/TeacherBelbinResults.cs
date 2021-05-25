@@ -77,20 +77,20 @@ namespace WinFormInfSys.Window
 
                     int sum = roles.Sum(t => t.Value);
 
-                    role1 = $"{Math.Round(double.Parse(roles["Реализатор"].ToString()) / sum, 4) * 100}%";
-                    role2 = $"{Math.Round(double.Parse(roles["Исполнитель"].ToString()) / sum, 4) * 100}%";
-                    role3 = $"{Math.Round(double.Parse(roles["Координатор"].ToString()) / sum, 4) * 100}%";
-                    role4 = $"{Math.Round(double.Parse(roles["Исследователь"].ToString()) / sum, 4) * 100}%";
-                    role5 = $"{Math.Round(double.Parse(roles["Творец"].ToString()) / sum, 4) * 100}%";
-                    role6 = $"{Math.Round(double.Parse(roles["Генератор идей"].ToString()) / sum, 4) * 100}%";
-                    role7 = $"{Math.Round(double.Parse(roles["Коллективист"].ToString()) / sum, 4) * 100}%";
-                    role8 = $"{Math.Round(double.Parse(roles["Оценщик"].ToString()) / sum, 4) * 100}%";
+                    role1 = $"{Math.Round(double.Parse(roles["Генератор идей"].ToString()) / sum, 4) * 100}%";
+                    role2 = $"{Math.Round(double.Parse(roles["Коллективист"].ToString()) / sum, 4) * 100}%";
+                    role3 = $"{Math.Round(double.Parse(roles["Оценщик"].ToString()) / sum, 4) * 100}%";
+                    role4 = $"{Math.Round(double.Parse(roles["Реализатор"].ToString()) / sum, 4) * 100}%";
+                    role5 = $"{Math.Round(double.Parse(roles["Исполнитель"].ToString()) / sum, 4) * 100}%";
+                    role6 = $"{Math.Round(double.Parse(roles["Координатор"].ToString()) / sum, 4) * 100}%";
+                    role7 = $"{Math.Round(double.Parse(roles["Исследователь"].ToString()) / sum, 4) * 100}%";
+                    role8 = $"{Math.Round(double.Parse(roles["Творец"].ToString()) / sum, 4) * 100}%";
 
                     var sorted = from t in roles orderby t.Value descending select t;
 
-                    int sec1 = roles["Реализатор"] + roles["Исполнитель"];
-                    int sec2 = roles["Координатор"] + roles["Исследователь"] + roles["Творец"];
-                    int sec3 = roles["Генератор идей"] + roles["Коллективист"] + roles["Оценщик"];
+                    int sec1 = roles["Генератор идей"] + roles["Коллективист"] + roles["Оценщик"];
+                    int sec2 = roles["Реализатор"] + roles["Исполнитель"];
+                    int sec3 = roles["Координатор"] + roles["Исследователь"] + roles["Творец"];
 
                     int max = (new int[] { sec1, sec2, sec3 }).Max();
 
@@ -103,7 +103,7 @@ namespace WinFormInfSys.Window
                                             Utils.buildLabel(name),
                                             Utils.buildLabel(role1, getColor(sec1, max, 1)),
                                             Utils.buildLabel(role2, getColor(sec1, max, 1)),
-                                            Utils.buildLabel(role3, getColor(sec2, max, 2)),
+                                            Utils.buildLabel(role3, getColor(sec1, max, 1)),
                                             Utils.buildLabel(role4, getColor(sec2, max, 2)),
                                             Utils.buildLabel(role5, getColor(sec2, max, 2)),
                                             Utils.buildLabel(role6, getColor(sec3, max, 3)),

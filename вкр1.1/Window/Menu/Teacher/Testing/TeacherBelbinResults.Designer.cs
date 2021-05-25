@@ -78,13 +78,13 @@ namespace WinFormInfSys.Window
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 59F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.Table.Location = new System.Drawing.Point(15, 135);
             this.Table.Margin = new System.Windows.Forms.Padding(0);
             this.Table.Name = "Table";
             this.Table.RowCount = 1;
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.Table.Size = new System.Drawing.Size(958, 384);
+            this.Table.Size = new System.Drawing.Size(959, 384);
             this.Table.TabIndex = 4;
             // 
             // label1
@@ -101,7 +101,7 @@ namespace WinFormInfSys.Window
             // label3
             // 
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Location = new System.Drawing.Point(165, 109);
+            this.label3.Location = new System.Drawing.Point(468, 108);
             this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(101, 26);
@@ -112,7 +112,7 @@ namespace WinFormInfSys.Window
             // label4
             // 
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Location = new System.Drawing.Point(266, 109);
+            this.label4.Location = new System.Drawing.Point(569, 108);
             this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(101, 26);
@@ -123,7 +123,7 @@ namespace WinFormInfSys.Window
             // label5
             // 
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label5.Location = new System.Drawing.Point(367, 109);
+            this.label5.Location = new System.Drawing.Point(670, 108);
             this.label5.Margin = new System.Windows.Forms.Padding(0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(101, 26);
@@ -134,7 +134,7 @@ namespace WinFormInfSys.Window
             // label6
             // 
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Location = new System.Drawing.Point(468, 109);
+            this.label6.Location = new System.Drawing.Point(771, 108);
             this.label6.Margin = new System.Windows.Forms.Padding(0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(101, 26);
@@ -145,7 +145,7 @@ namespace WinFormInfSys.Window
             // label7
             // 
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label7.Location = new System.Drawing.Point(569, 109);
+            this.label7.Location = new System.Drawing.Point(872, 108);
             this.label7.Margin = new System.Windows.Forms.Padding(0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(101, 26);
@@ -156,7 +156,7 @@ namespace WinFormInfSys.Window
             // label8
             // 
             this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label8.Location = new System.Drawing.Point(670, 109);
+            this.label8.Location = new System.Drawing.Point(165, 108);
             this.label8.Margin = new System.Windows.Forms.Padding(0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(101, 26);
@@ -167,7 +167,7 @@ namespace WinFormInfSys.Window
             // label9
             // 
             this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label9.Location = new System.Drawing.Point(771, 109);
+            this.label9.Location = new System.Drawing.Point(266, 108);
             this.label9.Margin = new System.Windows.Forms.Padding(0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(101, 26);
@@ -178,7 +178,7 @@ namespace WinFormInfSys.Window
             // label10
             // 
             this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label10.Location = new System.Drawing.Point(872, 109);
+            this.label10.Location = new System.Drawing.Point(367, 108);
             this.label10.Margin = new System.Windows.Forms.Padding(0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(101, 26);
@@ -189,7 +189,7 @@ namespace WinFormInfSys.Window
             // label11
             // 
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label11.Location = new System.Drawing.Point(165, 83);
+            this.label11.Location = new System.Drawing.Point(468, 82);
             this.label11.Margin = new System.Windows.Forms.Padding(0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(202, 26);
@@ -200,7 +200,7 @@ namespace WinFormInfSys.Window
             // label12
             // 
             this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label12.Location = new System.Drawing.Point(367, 83);
+            this.label12.Location = new System.Drawing.Point(670, 82);
             this.label12.Margin = new System.Windows.Forms.Padding(0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(303, 26);
@@ -211,7 +211,7 @@ namespace WinFormInfSys.Window
             // label13
             // 
             this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label13.Location = new System.Drawing.Point(670, 83);
+            this.label13.Location = new System.Drawing.Point(165, 82);
             this.label13.Margin = new System.Windows.Forms.Padding(0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(303, 26);

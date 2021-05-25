@@ -107,21 +107,31 @@ namespace WinFormInfSys
         private void тестБелбинаToolStripMenuItem_Click(object sender, EventArgs e)                 { Utils.switchWindow(this, new StudentBelbin(role)); }
         private void таблицаПроектовToolStripMenuItem_Click(object sender, EventArgs e)             { Utils.switchWindow(this, new StudentProjects(role)); }
         private void опросыToolStripMenuItem_Click(object sender, EventArgs e)                      { Utils.switchWindow(this, new StudentSurveys(role)); }
-        private void добавитьЗаданиеToolStripMenuItem_Click(object sender, EventArgs e)             { Utils.switchWindow(this, new TeacherTaskAdd(role)); }
-        private void таблицаПроектовToolStripMenuItem1_Click(object sender, EventArgs e)            { Utils.switchWindow(this, new TeacherProjects(role)); }
-        private void результатыТестаToolStripMenuItem_Click_1(object sender, EventArgs e)           { Utils.switchWindow(this, new TeacherBelbinResults()); }
-        private void создатьБригадыToolStripMenuItem_Click_1(object sender, EventArgs e)            { Utils.switchWindow(this, new TeacherTeamAdd(role)); }
-        private void графикиУспеваемостиToolStripMenuItem_Click(object sender, EventArgs e)         { Utils.switchWindow(this, new TeacherPerfomance()); }
-        private void результатыОпросовToolStripMenuItem_Click(object sender, EventArgs e)           { Utils.switchWindow(this, new TeacherSurveyResults()); }
         private void списокПреподавателейToolStripMenuItem_Click(object sender, EventArgs e)        { Utils.switchWindow(this, new AdminTeachersList()); }
         private void списокГруппToolStripMenuItem_Click(object sender, EventArgs e)                 { Utils.switchWindow(this, new AdminGroupsList()); }
         private void списокСтудентовToolStripMenuItem_Click(object sender, EventArgs e)             { Utils.switchWindow(this, new AdminStudentsList()); }
         private void списокДисциплинToolStripMenuItem_Click(object sender, EventArgs e)             { Utils.switchWindow(this, new AdminDisciplinesList()); }
-        private void оценкипроектыToolStripMenuItem_Click(object sender, EventArgs e)               { Utils.switchWindow(this, new TeacherSetScoreProject(this.role.Item2)); }
-        private void оценкидисциплинаToolStripMenuItem_Click(object sender, EventArgs e)            { Utils.switchWindow(this, new TeacherSetScoreDiscipline()); }
         private void справкаToolStripMenuItem_Click(object sender, EventArgs e)                     { Utils.switchWindow(this, new About()); }
-        private void списокЗаданийToolStripMenuItem_Click(object sender, EventArgs e)               { Utils.switchWindow(this, new TeacherProjectsEdit(role)); }
-        private void установитьСрокиПрохожденияТестовToolStripMenuItem_Click(object sender, EventArgs e) { Utils.switchWindow(this, new TeacherSurveyDeadline()); }
+
+
+
+        private void срокиПрохожденияТестированияToolStripMenuItem_Click(object sender, EventArgs e)    { Utils.switchWindow(this, new TeacherBelbinDeadline()); }            
+        private void результатыТестаБелбинаToolStripMenuItem_Click(object sender, EventArgs e)          { Utils.switchWindow(this, new TeacherBelbinResults()); }
+        private void создатьКомандыToolStripMenuItem_Click(object sender, EventArgs e)                  { Utils.switchWindow(this, new TeacherTeamAdd(role)); }
+
+
+
+        private void добавитьзаданиеToolStripMenuItem1_Click(object sender, EventArgs e)                { Utils.switchWindow(this, new TeacherTaskAdd(role)); }
+        private void списокЗаданийToolStripMenuItem1_Click(object sender, EventArgs e)                  { Utils.switchWindow(this, new TeacherProjectsEdit(role)); }
+        private void выполнениеЗаданийToolStripMenuItem_Click(object sender, EventArgs e)               { Utils.switchWindow(this, new TeacherProjects(role)); }
+        private void оценкизаданияToolStripMenuItem_Click(object sender, EventArgs e)                   { Utils.switchWindow(this, new TeacherSetScoreProject(this.role.Item2)); }
+        private void оценкидисциплиныToolStripMenuItem_Click(object sender, EventArgs e)                { Utils.switchWindow(this, new TeacherSetScoreDiscipline()); }
+        private void качествоВыполненияToolStripMenuItem_Click(object sender, EventArgs e)              { Utils.switchWindow(this, new TeacherPerfomance()); }
+        
+        
+
+        private void результатыАнкетированияToolStripMenuItem_Click(object sender, EventArgs e)         { Utils.switchWindow(this, new TeacherSurveyResults()); }
+        private void определениеСроковАнкетированияToolStripMenuItem_Click(object sender, EventArgs e)  { Utils.switchWindow(this, new TeacherSurveyDeadline()); }
 
     }
 

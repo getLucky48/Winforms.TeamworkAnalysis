@@ -43,6 +43,7 @@ namespace WinFormInfSys.Window
             this.fourth.Size = new System.Drawing.Size(331, 23);
             this.fourth.TabIndex = 9;
             this.fourth.Text = "Я в команде: сильные и слабые стороны";
+            this.fourth.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.fourth.UseVisualStyleBackColor = true;
             this.fourth.Click += new System.EventHandler(this.fourth_Click);
             // 
@@ -54,6 +55,7 @@ namespace WinFormInfSys.Window
             this.third.TabIndex = 8;
             this.third.Text = "Анкета для оценки качества взаимодействия членов команды в завершении разработки " +
     "программного продукта";
+            this.third.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.third.UseVisualStyleBackColor = true;
             this.third.Click += new System.EventHandler(this.third_Click);
             // 
@@ -65,6 +67,7 @@ namespace WinFormInfSys.Window
             this.second.TabIndex = 7;
             this.second.Text = "Анкета для оценки качества взаимодействия членов команды в процессе разработки пр" +
     "ограммного продукта";
+            this.second.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.second.UseVisualStyleBackColor = true;
             this.second.Click += new System.EventHandler(this.second_Click);
             // 
@@ -74,7 +77,7 @@ namespace WinFormInfSys.Window
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(331, 23);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Опросы";
+            this.label1.Text = "Анкетирование";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // first
@@ -84,6 +87,7 @@ namespace WinFormInfSys.Window
             this.first.Size = new System.Drawing.Size(331, 23);
             this.first.TabIndex = 5;
             this.first.Text = "Мои ожидания от командной работы";
+            this.first.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.first.UseVisualStyleBackColor = true;
             this.first.Click += new System.EventHandler(this.first_Click);
             // 
@@ -99,7 +103,7 @@ namespace WinFormInfSys.Window
             this.Controls.Add(this.first);
             this.Name = "TeacherSurveyResults";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Результаты опросов";
+            this.Text = "Результаты анкетирования";
             this.ResumeLayout(false);
 
         }

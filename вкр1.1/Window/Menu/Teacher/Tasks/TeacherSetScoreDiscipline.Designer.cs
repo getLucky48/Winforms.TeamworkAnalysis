@@ -84,12 +84,12 @@ namespace WinFormInfSys.Window.Menu.Teacher
             this.Table.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.Table.ColumnCount = 2;
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 103F));
             this.Table.Location = new System.Drawing.Point(265, 111);
             this.Table.Name = "Table";
             this.Table.RowCount = 1;
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.Table.Size = new System.Drawing.Size(305, 326);
+            this.Table.Size = new System.Drawing.Size(306, 326);
             this.Table.TabIndex = 5;
             // 
             // label3
@@ -156,7 +156,8 @@ namespace WinFormInfSys.Window.Menu.Teacher
             this.Controls.Add(this.Groups);
             this.Controls.Add(this.Disciplines);
             this.Name = "TeacherSetScoreDiscipline";
-            this.Text = "Оценки за предметы";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Оценки за дисциплины";
             this.ResumeLayout(false);
             this.PerformLayout();
 

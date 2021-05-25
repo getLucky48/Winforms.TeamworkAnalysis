@@ -112,6 +112,7 @@
     <Compile Include="Class\Teacher\ObjBelbinResults.cs" />
     <Compile Include="Class\Admin\ObjGroupsList.cs" />
     <Compile Include="Class\Teacher\ObjProjectsEdit.cs" />
+    <Compile Include="Class\Teacher\ObjBelbinDeadline.cs" />
     <Compile Include="Class\Teacher\ObjSurveyDeadline.cs" />
     <Compile Include="Class\Teacher\ObjSurveyRes_Layout1.cs" />
     <Compile Include="Class\Teacher\ObjSurveyRes_Layout3.cs" />
@@ -164,88 +165,94 @@
     <Compile Include="Window\Menu\Student\StudentSurveys.Designer.cs">
       <DependentUpon>StudentSurveys.cs</DependentUpon>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherSetScoreProject.cs">
+    <Compile Include="Window\Menu\Teacher\Tasks\TeacherSetScoreProject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherSetScoreProject.Designer.cs">
+    <Compile Include="Window\Menu\Teacher\Tasks\TeacherSetScoreProject.Designer.cs">
       <DependentUpon>TeacherSetScoreProject.cs</DependentUpon>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherProjectsEdit.cs">
+    <Compile Include="Window\Menu\Teacher\Tasks\TeacherProjectsEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherProjectsEdit.Designer.cs">
+    <Compile Include="Window\Menu\Teacher\Tasks\TeacherProjectsEdit.Designer.cs">
       <DependentUpon>TeacherProjectsEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherOpenProject.cs">
+    <Compile Include="Window\Menu\Teacher\Tasks\TeacherOpenProject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherOpenProject.Designer.cs">
+    <Compile Include="Window\Menu\Teacher\Tasks\TeacherOpenProject.Designer.cs">
       <DependentUpon>TeacherOpenProject.cs</DependentUpon>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherPerfomance.cs">
+    <Compile Include="Window\Menu\Teacher\Tasks\TeacherPerfomance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherPerfomance.Designer.cs">
+    <Compile Include="Window\Menu\Teacher\Tasks\TeacherPerfomance.Designer.cs">
       <DependentUpon>TeacherPerfomance.cs</DependentUpon>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherSetScoreDiscipline.cs">
+    <Compile Include="Window\Menu\Teacher\Tasks\TeacherSetScoreDiscipline.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherSetScoreDiscipline.Designer.cs">
+    <Compile Include="Window\Menu\Teacher\Tasks\TeacherSetScoreDiscipline.Designer.cs">
       <DependentUpon>TeacherSetScoreDiscipline.cs</DependentUpon>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherSurveyDeadline.cs">
+    <Compile Include="Window\Menu\Teacher\QuestionnaireSurvey\TeacherBelbinDeadline.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherSurveyDeadline.Designer.cs">
+    <Compile Include="Window\Menu\Teacher\QuestionnaireSurvey\TeacherBelbinDeadline.Designer.cs">
+      <DependentUpon>TeacherBelbinDeadline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\Menu\Teacher\Testing\TeacherSurveyDeadline.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Menu\Teacher\Testing\TeacherSurveyDeadline.Designer.cs">
       <DependentUpon>TeacherSurveyDeadline.cs</DependentUpon>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherSurveyLayouts\Layout1.cs">
+    <Compile Include="Window\Menu\Teacher\QuestionnaireSurvey\TeacherSurveyLayouts\Layout1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherSurveyLayouts\Layout1.Designer.cs">
+    <Compile Include="Window\Menu\Teacher\QuestionnaireSurvey\TeacherSurveyLayouts\Layout1.Designer.cs">
       <DependentUpon>Layout1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherSurveyLayouts\Layout2.cs">
+    <Compile Include="Window\Menu\Teacher\QuestionnaireSurvey\TeacherSurveyLayouts\Layout2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherSurveyLayouts\Layout2.Designer.cs">
+    <Compile Include="Window\Menu\Teacher\QuestionnaireSurvey\TeacherSurveyLayouts\Layout2.Designer.cs">
       <DependentUpon>Layout2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherSurveyLayouts\Layout3.cs">
+    <Compile Include="Window\Menu\Teacher\QuestionnaireSurvey\TeacherSurveyLayouts\Layout3.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherSurveyLayouts\Layout3.Designer.cs">
+    <Compile Include="Window\Menu\Teacher\QuestionnaireSurvey\TeacherSurveyLayouts\Layout3.Designer.cs">
       <DependentUpon>Layout3.cs</DependentUpon>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherSurveyResults.cs">
+    <Compile Include="Window\Menu\Teacher\QuestionnaireSurvey\TeacherSurveyResults.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherSurveyResults.Designer.cs">
+    <Compile Include="Window\Menu\Teacher\QuestionnaireSurvey\TeacherSurveyResults.Designer.cs">
       <DependentUpon>TeacherSurveyResults.cs</DependentUpon>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\_edit_TeacherProjectsEdit.cs">
+    <Compile Include="Window\Menu\Teacher\Tasks\_edit_TeacherProjectsEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\_edit_TeacherProjectsEdit.Designer.cs">
+    <Compile Include="Window\Menu\Teacher\Tasks\_edit_TeacherProjectsEdit.Designer.cs">
       <DependentUpon>_edit_TeacherProjectsEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherTeamAdd.cs">
+    <Compile Include="Window\Menu\Teacher\Testing\TeacherTeamAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherTeamAdd.Designer.cs">
+    <Compile Include="Window\Menu\Teacher\Testing\TeacherTeamAdd.Designer.cs">
       <DependentUpon>TeacherTeamAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherBelbinResults.cs">
+    <Compile Include="Window\Menu\Teacher\Testing\TeacherBelbinResults.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherBelbinResults.Designer.cs">
+    <Compile Include="Window\Menu\Teacher\Testing\TeacherBelbinResults.Designer.cs">
       <DependentUpon>TeacherBelbinResults.cs</DependentUpon>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherTaskAdd.cs">
+    <Compile Include="Window\Menu\Teacher\Tasks\TeacherTaskAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherTaskAdd.Designer.cs">
+    <Compile Include="Window\Menu\Teacher\Tasks\TeacherTaskAdd.Designer.cs">
       <DependentUpon>TeacherTaskAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Window\Menu\Admin\AdminDisciplinesList.cs">
@@ -260,10 +267,10 @@
     <Compile Include="Window\Menu\Admin\_edit_AdminDisciplinesList.Designer.cs">
       <DependentUpon>_edit_AdminDisciplinesList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherProjects.cs">
+    <Compile Include="Window\Menu\Teacher\Tasks\TeacherProjects.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Window\Menu\Teacher\TeacherProjects.Designer.cs">
+    <Compile Include="Window\Menu\Teacher\Tasks\TeacherProjects.Designer.cs">
       <DependentUpon>TeacherProjects.cs</DependentUpon>
     </Compile>
     <Compile Include="Window\Menu\Admin\AdminGroupsList.cs">
@@ -340,46 +347,49 @@
     <EmbeddedResource Include="Window\Menu\Student\StudentSurveys.resx">
       <DependentUpon>StudentSurveys.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Window\Menu\Teacher\TeacherSetScoreProject.resx">
+    <EmbeddedResource Include="Window\Menu\Teacher\Tasks\TeacherSetScoreProject.resx">
       <DependentUpon>TeacherSetScoreProject.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Window\Menu\Teacher\TeacherProjectsEdit.resx">
+    <EmbeddedResource Include="Window\Menu\Teacher\Tasks\TeacherProjectsEdit.resx">
       <DependentUpon>TeacherProjectsEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Window\Menu\Teacher\TeacherOpenProject.resx">
+    <EmbeddedResource Include="Window\Menu\Teacher\Tasks\TeacherOpenProject.resx">
       <DependentUpon>TeacherOpenProject.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Window\Menu\Teacher\TeacherPerfomance.resx">
+    <EmbeddedResource Include="Window\Menu\Teacher\Tasks\TeacherPerfomance.resx">
       <DependentUpon>TeacherPerfomance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Window\Menu\Teacher\TeacherSetScoreDiscipline.resx">
+    <EmbeddedResource Include="Window\Menu\Teacher\Tasks\TeacherSetScoreDiscipline.resx">
       <DependentUpon>TeacherSetScoreDiscipline.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Window\Menu\Teacher\TeacherSurveyDeadline.resx">
+    <EmbeddedResource Include="Window\Menu\Teacher\QuestionnaireSurvey\TeacherBelbinDeadline.resx">
+      <DependentUpon>TeacherBelbinDeadline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Menu\Teacher\Testing\TeacherSurveyDeadline.resx">
       <DependentUpon>TeacherSurveyDeadline.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Window\Menu\Teacher\TeacherSurveyLayouts\Layout1.resx">
+    <EmbeddedResource Include="Window\Menu\Teacher\QuestionnaireSurvey\TeacherSurveyLayouts\Layout1.resx">
       <DependentUpon>Layout1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Window\Menu\Teacher\TeacherSurveyLayouts\Layout2.resx">
+    <EmbeddedResource Include="Window\Menu\Teacher\QuestionnaireSurvey\TeacherSurveyLayouts\Layout2.resx">
       <DependentUpon>Layout2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Window\Menu\Teacher\TeacherSurveyLayouts\Layout3.resx">
+    <EmbeddedResource Include="Window\Menu\Teacher\QuestionnaireSurvey\TeacherSurveyLayouts\Layout3.resx">
       <DependentUpon>Layout3.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Window\Menu\Teacher\TeacherSurveyResults.resx">
+    <EmbeddedResource Include="Window\Menu\Teacher\QuestionnaireSurvey\TeacherSurveyResults.resx">
       <DependentUpon>TeacherSurveyResults.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Window\Menu\Teacher\_edit_TeacherProjectsEdit.resx">
+    <EmbeddedResource Include="Window\Menu\Teacher\Tasks\_edit_TeacherProjectsEdit.resx">
       <DependentUpon>_edit_TeacherProjectsEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Window\Menu\Teacher\TeacherTeamAdd.resx">
+    <EmbeddedResource Include="Window\Menu\Teacher\Testing\TeacherTeamAdd.resx">
       <DependentUpon>TeacherTeamAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Window\Menu\Teacher\TeacherBelbinResults.resx">
+    <EmbeddedResource Include="Window\Menu\Teacher\Testing\TeacherBelbinResults.resx">
       <DependentUpon>TeacherBelbinResults.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Window\Menu\Teacher\TeacherTaskAdd.resx">
+    <EmbeddedResource Include="Window\Menu\Teacher\Tasks\TeacherTaskAdd.resx">
       <DependentUpon>TeacherTaskAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Window\Menu\Admin\AdminDisciplinesList.resx">
@@ -388,7 +398,7 @@
     <EmbeddedResource Include="Window\Menu\Admin\_edit_AdminDisciplinesList.resx">
       <DependentUpon>_edit_AdminDisciplinesList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Window\Menu\Teacher\TeacherProjects.resx">
+    <EmbeddedResource Include="Window\Menu\Teacher\Tasks\TeacherProjects.resx">
       <DependentUpon>TeacherProjects.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Window\Menu\Admin\AdminGroupsList.resx">

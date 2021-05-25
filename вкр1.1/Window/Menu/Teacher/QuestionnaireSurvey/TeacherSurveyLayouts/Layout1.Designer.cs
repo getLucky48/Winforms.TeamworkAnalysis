@@ -91,12 +91,12 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
             this.Table.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.Table.ColumnCount = 2;
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 501F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 502F));
             this.Table.Location = new System.Drawing.Point(12, 93);
             this.Table.Name = "Table";
             this.Table.RowCount = 1;
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.Table.Size = new System.Drawing.Size(604, 367);
+            this.Table.Size = new System.Drawing.Size(605, 367);
             this.Table.TabIndex = 4;
             // 
             // label3
@@ -104,9 +104,9 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(9, 77);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(106, 13);
+            this.label3.Size = new System.Drawing.Size(147, 13);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Результаты опроса";
+            this.label3.Text = "Результаты анкетирования";
             // 
             // textBox1
             // 
@@ -168,7 +168,7 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(236, 23);
             this.label4.TabIndex = 13;
-            this.label4.Text = "Положительные отклики";
+            this.label4.Text = "Положительные мнения";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
@@ -179,7 +179,7 @@ namespace WinFormInfSys.Window.Menu.Teacher.TeacherSurveyLayouts
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(236, 23);
             this.label5.TabIndex = 14;
-            this.label5.Text = "Отрицательные отклики";
+            this.label5.Text = "Отрицательные мнения";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // count1

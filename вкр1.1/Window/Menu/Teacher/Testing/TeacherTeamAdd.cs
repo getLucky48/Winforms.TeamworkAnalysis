@@ -582,11 +582,70 @@ namespace WinFormInfSys.Window
 
             }
 
-            if (list.Count < 3) { return; }
+            if (list.Count < 3) {
+
+                while (NewTeam.Items.Count != 0)
+                {
+
+                    NewTeam.SelectedIndex = 0;
+                    ToLeft_Click(sender, e);
+
+                }
+
+                for (int i = 0; i < 3 && i < AllStudents.Items.Count; i++)
+                {
+
+                    AllStudents.SelectedIndex = 0;
+
+                    ToRight_Click(sender, e);
+
+                    if (i == 0)
+                    {
+
+                        Leader.SelectedIndex = 0;
+
+                    }
+
+                }
+
+                buildRecommend();
+                
+                return;
+            }
 
             List<Tuple<string, string, string, string>> first = _getFirst(list);
 
-            if (first.Count == 0) { return; }
+            if (first.Count == 0) {
+
+                while (NewTeam.Items.Count != 0)
+                {
+
+                    NewTeam.SelectedIndex = 0;
+                    ToLeft_Click(sender, e);
+
+                }
+
+                for (int i = 0; i < 3 && i < AllStudents.Items.Count; i++)
+                {
+
+                    AllStudents.SelectedIndex = 0;
+
+                    ToRight_Click(sender, e);
+
+                    if (i == 0)
+                    {
+
+                        Leader.SelectedIndex = 0;
+
+                    }
+
+                }
+
+                buildRecommend();
+
+                return;
+
+            }
 
             bool isFormed = false;
 
@@ -634,23 +693,26 @@ namespace WinFormInfSys.Window
 
             }
 
-
-            for(int i = 0; i < names.Count; i++)
+            if(names.Count == 3)
             {
 
-                int indx = AllStudents.FindString(names[i]);
-
-                AllStudents.SelectedIndex = indx;
-
-                ToRight_Click(sender, e);
-
-                if(i == 0)
+                for (int i = 0; i < names.Count; i++)
                 {
 
-                    Leader.SelectedIndex = 0;
+                    int indx = AllStudents.FindString(names[i]);
+
+                    AllStudents.SelectedIndex = indx;
+
+                    ToRight_Click(sender, e);
+
+                    if (i == 0)
+                    {
+
+                        Leader.SelectedIndex = 0;
+
+                    }
 
                 }
-
             }
 
             buildRecommend();

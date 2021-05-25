@@ -124,7 +124,7 @@ namespace WinFormInfSys.Window
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(233, 23);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Новая бригада";
+            this.label5.Text = "Новая команда";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ToRight
@@ -165,13 +165,13 @@ namespace WinFormInfSys.Window
             this.Table.ColumnCount = 4;
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 103F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
             this.Table.Location = new System.Drawing.Point(608, 52);
             this.Table.Name = "Table";
             this.Table.RowCount = 1;
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.Table.Size = new System.Drawing.Size(558, 464);
+            this.Table.Size = new System.Drawing.Size(459, 464);
             this.Table.TabIndex = 14;
             // 
             // StudentsCount
@@ -214,7 +214,7 @@ namespace WinFormInfSys.Window
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(106, 35);
             this.button2.TabIndex = 19;
-            this.button2.Text = "Сформировать группу";
+            this.button2.Text = "Сформировать команду";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -222,7 +222,7 @@ namespace WinFormInfSys.Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1177, 563);
+            this.ClientSize = new System.Drawing.Size(1079, 563);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.Recommendation);
             this.Controls.Add(this.Leader);
