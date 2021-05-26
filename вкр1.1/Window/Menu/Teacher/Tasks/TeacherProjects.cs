@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using WinFormInfSys.Class;
 using WinFormInfSys.Window;
@@ -27,7 +28,8 @@ namespace WinFormInfSys
 
             Utils.fillRow(Table, new Control[] {
                 new Label(){Text = "Название", AutoSize = true },
-                new Label(){Text = "Номер \nбригады", AutoSize = true},
+                new Label(){Text = "Номер \nкоманды", AutoSize = true},
+                new Label(){Text = "Лидер", AutoSize = true},
                 new Label(){Text = "Студент", AutoSize = true},
                 new Label(){Text = "Этап 1\nпостановка задачи" , AutoSize = true},
                 new Label(){Text = "Этап 2\nтестовые данные", AutoSize = true},
@@ -35,7 +37,7 @@ namespace WinFormInfSys
                 new Label(){Text = "Этап 4\nинтерфейс", AutoSize = true},
                 new Label(){Text = "Этап 5\nотладка", AutoSize = true},
                 new Label(){Text = "Этап 6\nзащита", AutoSize = true},
-                new Label(){Text = "Оценка (работа)", AutoSize = true},
+                new Label(){Text = "Оценка (задание)", AutoSize = true},
                 new Label(){Text = "Оценка (дисциплина)", AutoSize = true},
                 new Label(){Text = " "}
             }, 0);
@@ -51,7 +53,8 @@ namespace WinFormInfSys
             Table.Controls.Clear();
             Utils.fillRow(Table, new Control[] {
                 new Label(){Text = "Название", AutoSize = true },
-                new Label(){Text = "Номер \nбригады", AutoSize = true},
+                new Label(){Text = "Номер \nкоманды", AutoSize = true},
+                new Label(){Text = "Лидер", AutoSize = true},
                 new Label(){Text = "Студент", AutoSize = true},
                 new Label(){Text = "Этап 1\nпостановка задачи" , AutoSize = true},
                 new Label(){Text = "Этап 2\nтестовые данные", AutoSize = true},
@@ -59,7 +62,7 @@ namespace WinFormInfSys
                 new Label(){Text = "Этап 4\nинтерфейс", AutoSize = true},
                 new Label(){Text = "Этап 5\nотладка", AutoSize = true},
                 new Label(){Text = "Этап 6\nзащита", AutoSize = true},
-                new Label(){Text = "Оценка (работа)", AutoSize = true},
+                new Label(){Text = "Оценка (задание)", AutoSize = true},
                 new Label(){Text = "Оценка (дисциплина)", AutoSize = true},
                 new Label(){Text = " "}
             }, 0);
@@ -86,7 +89,8 @@ namespace WinFormInfSys
                 isstat3.name as step3, 
                 isstat4.name as step4, 
                 isstat5.name as step5, 
-                isstat6.name as step6
+                isstat6.name as step6,
+                ist.leader as leader
                 
                 from is_project isp 
 
@@ -134,6 +138,7 @@ namespace WinFormInfSys
             {
 
                 string t = reader["teamnum"].ToString();
+                string lead = reader["leader"].ToString();
                 string p = reader["name"].ToString();
                 string u = reader["student"].ToString();
                 string s1 = reader["step1"].ToString();
@@ -146,6 +151,7 @@ namespace WinFormInfSys
                 string ds = reader["disciplinescore"].ToString();
 
                 Label team = Utils.buildLabel(t, row.ToString());
+                Label leader = Utils.buildLabel(lead == "1" ? "Лидер" : " ", row.ToString());
                 Label proj = Utils.buildLabel(p, row.ToString());
                 Label student = Utils.buildLabel(u, row.ToString());
                 Label step1 = Utils.buildLabel(s1, Guid.NewGuid().ToString());
@@ -154,7 +160,9 @@ namespace WinFormInfSys
                 Label step4 = Utils.buildLabel(s4, Guid.NewGuid().ToString());
                 Label step5 = Utils.buildLabel(s5, Guid.NewGuid().ToString());
                 Label step6 = Utils.buildLabel(s6, Guid.NewGuid().ToString());
-                Label score = Utils.buildLabel(s, Guid.NewGuid().ToString());
+
+                TextBox score = new TextBox() { Text = s, Name = $"ScoreProjById_{reader["id"]}" };
+
                 Label disciplinescore = Utils.buildLabel(ds, Guid.NewGuid().ToString());
                 Button open = Utils.buildButton("Открыть", $"OpenProjById_{reader["id"]}");
                 open.Width = 100;
@@ -162,6 +170,7 @@ namespace WinFormInfSys
 
                 Utils.fillRow(Table, new Control[] {
                     proj,
+                    leader,
                     team,
                     student,
                     step1,
@@ -211,6 +220,59 @@ namespace WinFormInfSys
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            if (CurrentDiscipline.SelectedIndex == -1 || CurrentGroup.SelectedIndex == -1) { Table.ResumeLayout(); return; }
+
+            string discipline = CurrentDiscipline.SelectedItem.ToString();
+            string gr = CurrentGroup.SelectedItem.ToString();
+
+            List<TextBox> textBoxes = new List<TextBox>();
+
+            foreach(var target in Table.Controls)
+            {
+
+                if(target.GetType() == typeof(TextBox)) { textBoxes.Add(target as TextBox); }
+
+            }
+
+            string query = "";
+
+            for(int i = 0; i < textBoxes.Count; i++)
+            {
+
+                string scr = textBoxes[i].Name.Replace("ScoreProjById_", string.Empty);
+
+                if(int.TryParse(scr, out int projId))
+                {
+
+                    if(int.TryParse(textBoxes[i].Text, out int curScore) || string.IsNullOrEmpty(textBoxes[i].Text))
+                    {
+
+                        string strQuery = $@"
+
+                            update is_project set score = {(string.IsNullOrEmpty(textBoxes[i].Text) ? "null" : curScore.ToString())}
+                                
+                            where id = '{projId}'; 
+
+                        ";
+
+                        query += strQuery;
+
+                    }
+
+                }               
+
+            }
+
+            DBUtils.execQuery(query);
+
+            MessageBox.Show("Сохранено");
+
+            fillTable();
+
+        }
     }
 
 }

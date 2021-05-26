@@ -36,9 +36,9 @@ namespace WinFormInfSys.Window.Menu.Teacher
             this.Table = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.Students = new System.Windows.Forms.ListBox();
-            this.Scores = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.Scores = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Disciplines
@@ -82,14 +82,15 @@ namespace WinFormInfSys.Window.Menu.Teacher
             this.Table.AutoScroll = true;
             this.Table.AutoSize = true;
             this.Table.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.Table.ColumnCount = 2;
+            this.Table.ColumnCount = 3;
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 103F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.Table.Location = new System.Drawing.Point(265, 111);
             this.Table.Name = "Table";
             this.Table.RowCount = 1;
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.Table.Size = new System.Drawing.Size(306, 326);
+            this.Table.Size = new System.Drawing.Size(404, 326);
             this.Table.TabIndex = 5;
             // 
             // label3
@@ -97,7 +98,7 @@ namespace WinFormInfSys.Window.Menu.Teacher
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.Location = new System.Drawing.Point(265, 81);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(305, 27);
+            this.label3.Size = new System.Drawing.Size(404, 27);
             this.label3.TabIndex = 6;
             this.label3.Text = "Выставленные оценки";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -111,14 +112,6 @@ namespace WinFormInfSys.Window.Menu.Teacher
             this.Students.Size = new System.Drawing.Size(198, 290);
             this.Students.TabIndex = 7;
             this.Students.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            // 
-            // Scores
-            // 
-            this.Scores.FormattingEnabled = true;
-            this.Scores.Location = new System.Drawing.Point(25, 414);
-            this.Scores.Name = "Scores";
-            this.Scores.Size = new System.Drawing.Size(118, 21);
-            this.Scores.TabIndex = 8;
             // 
             // label4
             // 
@@ -140,14 +133,21 @@ namespace WinFormInfSys.Window.Menu.Teacher
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // Scores
+            // 
+            this.Scores.Location = new System.Drawing.Point(26, 418);
+            this.Scores.Name = "Scores";
+            this.Scores.Size = new System.Drawing.Size(117, 20);
+            this.Scores.TabIndex = 11;
+            // 
             // TeacherSetScoreDiscipline
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(586, 450);
+            this.ClientSize = new System.Drawing.Size(674, 451);
+            this.Controls.Add(this.Scores);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.Scores);
             this.Controls.Add(this.Students);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Table);
@@ -172,8 +172,8 @@ namespace WinFormInfSys.Window.Menu.Teacher
         private System.Windows.Forms.TableLayoutPanel Table;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox Students;
-        private System.Windows.Forms.ComboBox Scores;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox Scores;
     }
 }

@@ -34,10 +34,14 @@ namespace WinFormInfSys.Window
 
             if(Discipline.SelectedIndex == -1 || Group.SelectedIndex == -1 || Survey.SelectedIndex == -1) { MessageBox.Show("Проверьте правильность ввода"); return; }
 
-            bool ignore = checkBox1.Checked;
+            bool ignore1 = checkBox1.Checked;
+            bool ignore2 = checkBox2.Checked;
 
-            DateTime date = dateTimePicker1.Value;
-            string preparedDate = $"CAST('{date:yyyyMMdd}' as date)";
+            DateTime date1 = dateTimePicker1.Value;
+            DateTime date2 = dateTimePicker2.Value;
+
+            string preparedDate1 = $"CAST('{date1:yyyyMMdd}' as date)";
+            string preparedDate2 = $"CAST('{date2:yyyyMMdd}' as date)";
 
             string group = Group.SelectedItem.ToString();
             string discipline = Discipline.SelectedItem.ToString();
@@ -48,12 +52,41 @@ namespace WinFormInfSys.Window
                 group = group,
                 discipline = discipline,
                 name = survey,
-                deadline = ignore ? "null" : preparedDate
-            
+                dt_begin = ignore1 ? "null" : preparedDate1,
+                dt_end = ignore2 ? "null" : preparedDate2
+
             };
 
             if (ObjSurveyDeadline.isExists(obj)) { ObjSurveyDeadline.update(obj); }
             else { ObjSurveyDeadline.insert(obj); }
+
+            ComboBox temp = new ComboBox();
+            Utils.bind(temp, "is_user", "id", false, "where role_id = 2");
+
+            string query = "";
+
+            for(int i = 0; i < temp.Items.Count; i++)
+            {
+
+                int userId = int.Parse(temp.Items[i].ToString());
+
+                string log = $@"
+
+                    insert into is_alert(user_id, alert, date)
+
+                    values (
+                    {userId},
+                    'Срок сдачи анкеты ""{survey}"" \n {(obj.dt_begin.Contains("null") ? "Не установлено" : date1.ToString("yyyyMMdd"))} - {(obj.dt_end.Contains("null") ? "Не установлено" : date2.ToString("yyyyMMdd"))}',
+                    CURRENT_DATE
+                    )
+
+                ;";
+
+                query += log;
+
+            }
+
+            DBUtils.execQuery(query);
 
             MessageBox.Show("Сохранено");
 

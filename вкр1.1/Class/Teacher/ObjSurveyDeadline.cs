@@ -9,7 +9,8 @@ namespace WinFormInfSys.Class.Teacher
         public ObjSurveyDeadline() { }
 
         public string name { get; set; }
-        public string deadline { get; set; }
+        public string dt_begin { get; set; }
+        public string dt_end { get; set; }
         public string group { get; set; }
         public string discipline { get; set; }
 
@@ -18,12 +19,13 @@ namespace WinFormInfSys.Class.Teacher
 
             string query = $@"
 
-                insert into is_survey_deadline(name, deadline, group_id, discipline_id)
+                insert into is_survey_deadline(name, dt_begin, dt_end, group_id, discipline_id)
 
                 values(
 
                 '{obj.name}',
-                {obj.deadline},
+                {obj.dt_begin},
+                {obj.dt_end},
                 (select id from is_group where name = '{obj.group}'),
                 (select id from is_discipline where name = '{obj.discipline}')
 
@@ -41,7 +43,8 @@ namespace WinFormInfSys.Class.Teacher
 
                 update is_survey_deadline set
 
-                deadline = {obj.deadline}
+                dt_begin = {obj.dt_begin},
+                dt_end = {obj.dt_end}
 
                 where group_id = (select id from is_group where name = '{obj.group}')
                 and discipline_id = (select id from is_discipline where name = '{obj.discipline}')

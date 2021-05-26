@@ -69,7 +69,7 @@ namespace WinFormInfSys.Window
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            Utils.bind(Deadline, "deadline", $@"select * from is_survey_deadline 
+            Utils.bind(Deadline, "concat(dt_begin, '-', dt_end)", $@"select * from is_survey_deadline 
 
                 where 
                 group_id = (select group_id from is_user where id = {role.Item2}) 
@@ -78,7 +78,7 @@ namespace WinFormInfSys.Window
 
             ");
 
-            if (string.IsNullOrEmpty(Deadline.Text)) { Deadline.Text = "Срок сдачи не установлен"; }
+            if (Deadline.Text.Length < 5) { Deadline.Text = "Срок сдачи не установлен"; }
             else { Deadline.Text = Deadline.Text.Replace("0:00:00", string.Empty); }
 
         }

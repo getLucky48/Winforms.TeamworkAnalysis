@@ -32,12 +32,16 @@ namespace WinFormInfSys.Window
             this.Survey = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.Discipline = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.Group = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // Survey
@@ -59,30 +63,13 @@ namespace WinFormInfSys.Window
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(316, 204);
+            this.button1.Location = new System.Drawing.Point(316, 233);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
             this.button1.Text = "Сохранить";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(269, 157);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(122, 17);
-            this.checkBox1.TabIndex = 4;
-            this.checkBox1.Text = "Не указывать дату";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(12, 157);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(251, 20);
-            this.dateTimePicker1.TabIndex = 5;
             // 
             // label2
             // 
@@ -118,17 +105,73 @@ namespace WinFormInfSys.Window
             this.Group.Size = new System.Drawing.Size(379, 21);
             this.Group.TabIndex = 8;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 187);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(89, 13);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Дата окончания";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 140);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(71, 13);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Дата начала";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(12, 203);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(251, 20);
+            this.dateTimePicker2.TabIndex = 17;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(269, 203);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(122, 17);
+            this.checkBox2.TabIndex = 16;
+            this.checkBox2.Text = "Не указывать дату";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(12, 156);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(251, 20);
+            this.dateTimePicker1.TabIndex = 15;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(269, 156);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(122, 17);
+            this.checkBox1.TabIndex = 14;
+            this.checkBox1.Text = "Не указывать дату";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // TeacherSurveyDeadline
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(403, 240);
+            this.ClientSize = new System.Drawing.Size(403, 268);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Group);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Discipline);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Survey);
@@ -145,11 +188,15 @@ namespace WinFormInfSys.Window
         private System.Windows.Forms.ComboBox Survey;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox Discipline;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox Group;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

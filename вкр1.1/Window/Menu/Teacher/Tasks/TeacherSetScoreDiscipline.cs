@@ -16,10 +16,44 @@ namespace WinFormInfSys.Window.Menu.Teacher
             Groups.Items.Add("Все");
             Groups.SelectedIndex = Groups.Items.Count - 1;
 
-            Scores.Items.Add(2);
-            Scores.Items.Add(3);
-            Scores.Items.Add(4);
-            Scores.Items.Add(5);
+        }
+
+        private int translateToTrad(int score)
+        {
+
+            if(score < 0) { return 0; }
+
+            if (score < 50) { return 2; }
+            if (score < 73) { return 3; }
+            if (score < 87) { return 4; }
+            if (score <= 100) { return 5; }
+
+            return 0;
+
+        }
+
+        private string translateToECTS(int score)
+        {
+
+            if (score < 0) { return "none"; }
+
+            if(score < 25) { return "F"; }
+            if(score < 50) { return "FX"; }
+            if(score < 60) { return "E"; }
+            if(score < 63) { return "D-"; }
+            if(score < 67) { return "D"; }
+            if(score < 70) { return "D+"; }
+            if(score < 73) { return "C-"; }
+            if(score < 77) { return "C"; }
+            if(score < 80) { return "C+"; }
+            if(score < 83) { return "B-"; }
+            if(score < 87) { return "B"; }
+            if(score < 90) { return "B+"; }
+            if(score < 93) { return "A-"; }
+            if(score < 98) { return "A"; }
+            if(score <= 100) { return "A+"; }
+
+            return "none";
 
         }
 
@@ -29,6 +63,14 @@ namespace WinFormInfSys.Window.Menu.Teacher
             if(Groups.SelectedIndex == -1 || Disciplines.SelectedIndex == -1) { return; }
 
             Table.SuspendLayout();
+
+            Utils.fillRow(Table, new Control[] {
+
+                Utils.buildLabel("ФИО"),
+                Utils.buildLabel("Оценка (традиционная)"),
+                Utils.buildLabel("Оценка (ECTS)")
+
+            }, 0);
 
             Table.Controls.Clear();
 
@@ -59,7 +101,7 @@ namespace WinFormInfSys.Window.Menu.Teacher
 
             MySqlDataReader reader = cmd.ExecuteReader();
 
-            int row = 0;
+            int row = 1;
 
             while (reader.Read())
             {
@@ -67,7 +109,8 @@ namespace WinFormInfSys.Window.Menu.Teacher
                 Utils.fillRow(Table, new Control[] {
 
                     Utils.buildLabel(reader["name"].ToString()),
-                    Utils.buildLabel(reader["score"].ToString())
+                    Utils.buildLabel(translateToTrad(int.Parse(reader["score"].ToString())).ToString()),
+                    Utils.buildLabel(translateToECTS(int.Parse(reader["score"].ToString())))
 
                 }, row);
 
@@ -117,7 +160,7 @@ namespace WinFormInfSys.Window.Menu.Teacher
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if (Scores.SelectedIndex == -1) { return; }
+            if (!int.TryParse(Scores.Text, out int temp)) { return; }
             if (Groups.SelectedIndex == -1 || Disciplines.SelectedIndex == -1) { return; }
             if (Students.SelectedIndex == -1) { return; }
 
@@ -129,7 +172,7 @@ namespace WinFormInfSys.Window.Menu.Teacher
                 insert into is_score(student_id, discipline_id, score) values(
                 (select id from is_user where name = '{user}'),
                 (select id from is_discipline where name = '{discipline}'),
-                {Scores.SelectedItem}
+                {Scores.Text}
                 )
 
             ";
