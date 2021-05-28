@@ -93,7 +93,7 @@ namespace WinFormInfSys
             while (reader.Read())
             {
 
-                Alerts.Items.Add($"{reader["date"]} {reader["alert"]}");
+                Alerts.Items.Add($"{reader["date"].ToString().Replace("0:00:00", string.Empty)} {reader["alert"]}");
 
             }
 

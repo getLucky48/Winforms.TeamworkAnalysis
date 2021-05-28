@@ -39,6 +39,7 @@ namespace WinFormInfSys.Window.Menu.Teacher
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.Scores = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Disciplines
@@ -85,12 +86,12 @@ namespace WinFormInfSys.Window.Menu.Teacher
             this.Table.ColumnCount = 3;
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.Table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
             this.Table.Location = new System.Drawing.Point(265, 111);
             this.Table.Name = "Table";
             this.Table.RowCount = 1;
             this.Table.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.Table.Size = new System.Drawing.Size(404, 326);
+            this.Table.Size = new System.Drawing.Size(405, 290);
             this.Table.TabIndex = 5;
             // 
             // label3
@@ -140,11 +141,22 @@ namespace WinFormInfSys.Window.Menu.Teacher
             this.Scores.Size = new System.Drawing.Size(117, 20);
             this.Scores.TabIndex = 11;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(501, 416);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(169, 23);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "Экспорт в excel";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // TeacherSetScoreDiscipline
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(674, 451);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.Scores);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
@@ -175,5 +187,6 @@ namespace WinFormInfSys.Window.Menu.Teacher
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox Scores;
+        private System.Windows.Forms.Button button2;
     }
 }

@@ -2,6 +2,10 @@
 using System;
 using System.Windows.Forms;
 using WinFormInfSys.Class;
+using Excel = Microsoft.Office.Interop.Excel;
+using Application = Microsoft.Office.Interop.Excel.Application;
+using Microsoft.Office.Interop.Excel;
+using System.IO;
 
 namespace WinFormInfSys.Window.Menu.Teacher
 {
@@ -180,6 +184,69 @@ namespace WinFormInfSys.Window.Menu.Teacher
             DBUtils.execQuery(query);
 
             buildTable();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            const string path = "table.xlsx";
+
+            Application application = new Application
+            {
+                DisplayAlerts = false
+            };
+
+            Workbook workbook = application.Workbooks.Open(Path.Combine(Environment.CurrentDirectory, path));
+
+            Worksheet worksheet = workbook.ActiveSheet as Worksheet;
+
+            worksheet.Range["A1"].Value = "ФИО";
+            worksheet.Range["B1"].Value = "Оценка (традиционная)";
+            worksheet.Range["C1"].Value = "Оценка (ECTS)";
+
+            string group = Groups.SelectedItem.ToString();
+            string discipline = Disciplines.SelectedItem.ToString();
+
+            string query = $@"
+
+                select * from is_user isu
+
+                join is_score isc on isc.student_id = isu.id
+
+                where { (group.Contains("Все") ? "" : $"isu.group_id = (select id from is_group where name = '{group}') and ") }
+                
+                isc.discipline_id = (select id from is_discipline where name = '{discipline}')
+
+                order by isu.name
+
+            ";
+
+            MySqlConnection connection = DBUtils.getConnection();
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            int row = 2;
+
+            while (reader.Read())
+            {
+
+                worksheet.Cells[row, 1] = reader["name"].ToString();
+                worksheet.Cells[row, 2] = translateToTrad(int.Parse(reader["score"].ToString())).ToString();
+                worksheet.Cells[row, 3] = translateToECTS(int.Parse(reader["score"].ToString()));
+
+                row++;
+
+            }
+
+            connection.Close();
+
+            MessageBox.Show("Успешно!");
+
+            application.Visible = true;
 
         }
 

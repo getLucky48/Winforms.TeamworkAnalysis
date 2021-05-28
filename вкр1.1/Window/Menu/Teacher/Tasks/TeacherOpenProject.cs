@@ -100,6 +100,7 @@ namespace WinFormInfSys.Window
 
         private int projId { get; set; }
         private int currentStep { get; set; }
+        
         private void setTitle()
         {
 

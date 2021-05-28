@@ -1,13 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormInfSys.Class;
 using static WinFormInfSys.Auth;
@@ -29,6 +24,22 @@ namespace WinFormInfSys.Window
             this.projId = projId;
             this.currentStep = 0;
             this.role = role;
+
+            build(this.currentStep + 1);
+
+            S1.Click += S1_Click;
+            S2.Click += S2_Click;
+            S3.Click += S3_Click;
+            S4.Click += S4_Click;
+            S5.Click += S5_Click;
+            S6.Click += S6_Click;
+
+            int[] stepsId = getStepsId();
+
+            colorSteps(stepsId);
+
+
+            return;
 
             setTitle();
             setFiles();
@@ -83,6 +94,47 @@ namespace WinFormInfSys.Window
         private int projId { get; set; }
         private int currentStep { get; set; }
         private bool isLeader { get; set; }
+        
+        private void build(int step)
+        {
+
+            LeaderContainer.Controls.Clear();
+            UserFiles.Controls.Clear();
+
+            setTitle();
+            setFiles();
+
+            if (this.currentStep == step)
+            {
+
+                button1.Enabled = true;
+                button2.Enabled = true;
+
+            }
+            else
+            {
+
+                button1.Enabled = false;
+                button2.Enabled = false;
+
+            }
+
+            buildStep(step == this.currentStep ? -1 : step);
+
+        }
+
+        private void S6_Click(object sender, EventArgs e) { build(6); }
+
+        private void S5_Click(object sender, EventArgs e) { build(5); }
+
+        private void S4_Click(object sender, EventArgs e) { build(4); }
+
+        private void S3_Click(object sender, EventArgs e) { build(3); }
+
+        private void S2_Click(object sender, EventArgs e) { build(2); }
+
+        private void S1_Click(object sender, EventArgs e) { build(1); }
+
         private void setTitle()
         {
 
@@ -231,6 +283,8 @@ namespace WinFormInfSys.Window
 
         private void setFiles()
         {
+
+            FileContainer.Controls.Clear();
 
             string query = $@"
 
@@ -463,7 +517,9 @@ namespace WinFormInfSys.Window
 
         }
 
-        private void buildStep()
+        
+
+        private void buildStep(int step = -1)
         {
 
             int[] stepsId = getStepsId();
@@ -476,7 +532,7 @@ namespace WinFormInfSys.Window
             }
 
 
-            colorSteps(stepsId);
+            //colorSteps(stepsId);
 
             int indx = 1;
 
@@ -492,12 +548,14 @@ namespace WinFormInfSys.Window
 
             }
 
+            if (step != -1) { indx = step; }
+
             this.currentStep = indx;
 
-            if(this.currentStep > 6) { return; }
+            if(indx > 6) { return; }
 
             StepTitle.Text = $"Этап {indx}: {(this.Controls.Find($"L{indx}", true).FirstOrDefault() as Label).Text}";
-            (this.Controls.Find($"S{indx}", true).FirstOrDefault() as Label).BackColor = Color.Yellow;
+            if (step == -1) (this.Controls.Find($"S{indx}", true).FirstOrDefault() as Label).BackColor = Color.Yellow;
 
             if (stepsId[this.currentStep - 1] == 4)
             {
