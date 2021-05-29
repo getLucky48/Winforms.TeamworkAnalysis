@@ -532,8 +532,6 @@ namespace WinFormInfSys.Window
             }
 
 
-            //colorSteps(stepsId);
-
             int indx = 1;
 
             for(int i = 0; i < stepsId.Length; i++)

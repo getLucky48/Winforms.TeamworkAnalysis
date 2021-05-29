@@ -43,6 +43,7 @@ namespace WinFormInfSys.Window
             this.first.Size = new System.Drawing.Size(331, 23);
             this.first.TabIndex = 0;
             this.first.Text = "Мои ожидания от командной работы";
+            this.first.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.first.UseVisualStyleBackColor = true;
             this.first.Click += new System.EventHandler(this.first_Click);
             // 
@@ -63,6 +64,7 @@ namespace WinFormInfSys.Window
             this.second.TabIndex = 2;
             this.second.Text = "Анкета для оценки качества взаимодействия членов команды в процессе разработки пр" +
     "ограммного продукта";
+            this.second.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.second.UseVisualStyleBackColor = true;
             this.second.Click += new System.EventHandler(this.second_Click);
             // 
@@ -74,6 +76,7 @@ namespace WinFormInfSys.Window
             this.third.TabIndex = 3;
             this.third.Text = "Анкета для оценки качества взаимодействия членов команды в завершении разработки " +
     "программного продукта";
+            this.third.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.third.UseVisualStyleBackColor = true;
             this.third.Click += new System.EventHandler(this.third_Click);
             // 
@@ -84,6 +87,7 @@ namespace WinFormInfSys.Window
             this.fourth.Size = new System.Drawing.Size(331, 23);
             this.fourth.TabIndex = 4;
             this.fourth.Text = "Я в команде: сильные и слабые стороны";
+            this.fourth.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.fourth.UseVisualStyleBackColor = true;
             this.fourth.Click += new System.EventHandler(this.fourth_Click);
             // 

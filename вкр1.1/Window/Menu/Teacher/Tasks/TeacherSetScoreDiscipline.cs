@@ -72,7 +72,8 @@ namespace WinFormInfSys.Window.Menu.Teacher
 
                 Utils.buildLabel("ФИО"),
                 Utils.buildLabel("Оценка (традиционная)"),
-                Utils.buildLabel("Оценка (ECTS)")
+                Utils.buildLabel("Оценка (ECTS)"),
+                Utils.buildLabel("Баллы")
 
             }, 0);
 
@@ -114,7 +115,8 @@ namespace WinFormInfSys.Window.Menu.Teacher
 
                     Utils.buildLabel(reader["name"].ToString()),
                     Utils.buildLabel(translateToTrad(int.Parse(reader["score"].ToString())).ToString()),
-                    Utils.buildLabel(translateToECTS(int.Parse(reader["score"].ToString())))
+                    Utils.buildLabel(translateToECTS(int.Parse(reader["score"].ToString()))),
+                    Utils.buildLabel(reader["score"].ToString())
 
                 }, row);
 
@@ -143,6 +145,72 @@ namespace WinFormInfSys.Window.Menu.Teacher
             Utils.bind(Students, "is_user", "name", true, customWhere);
 
             Table.ResumeLayout();
+
+            buildTableScoresProject();
+
+
+        }
+
+        private void buildTableScoresProject()
+        {
+
+            if (Groups.SelectedIndex == -1 || Disciplines.SelectedIndex == -1) { return; }
+
+            ScoresProject.SuspendLayout();
+
+            ScoresProject.Controls.Clear();
+
+            string group = Groups.SelectedItem.ToString();
+            string discipline = Disciplines.SelectedItem.ToString();
+
+            string query = $@"
+
+                    select
+
+                    isu.name as student,
+                    isp.name as project,
+                    isp.score as score
+
+                    from is_project isp 
+
+                    join is_user isu on isu.id = isp.student_Id
+
+
+                    where isp.discipline_id = (select id from is_discipline where name = '{discipline}')
+                    and isu.group_id = (select id from is_group where name = '{group}')
+
+            ";
+
+            MySqlConnection connection = DBUtils.getConnection();
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            int row = 0;
+
+            while (reader.Read())
+            {
+
+                Utils.fillRow(ScoresProject, new Control[] {
+
+                    Utils.buildLabel(reader["student"].ToString()),
+                    Utils.buildLabel(reader["project"].ToString()),
+                    Utils.buildLabel(reader["score"].ToString()),
+                    Utils.buildLabel(translateToTrad(int.Parse(reader["score"].ToString())).ToString())
+
+
+                }, row);
+
+                row++;
+
+            }
+
+
+            connection.Close();
+
+            ScoresProject.ResumeLayout();
 
         }
 
@@ -204,6 +272,7 @@ namespace WinFormInfSys.Window.Menu.Teacher
             worksheet.Range["A1"].Value = "ФИО";
             worksheet.Range["B1"].Value = "Оценка (традиционная)";
             worksheet.Range["C1"].Value = "Оценка (ECTS)";
+            worksheet.Range["D1"].Value = "Баллы";
 
             string group = Groups.SelectedItem.ToString();
             string discipline = Disciplines.SelectedItem.ToString();
@@ -237,6 +306,7 @@ namespace WinFormInfSys.Window.Menu.Teacher
                 worksheet.Cells[row, 1] = reader["name"].ToString();
                 worksheet.Cells[row, 2] = translateToTrad(int.Parse(reader["score"].ToString())).ToString();
                 worksheet.Cells[row, 3] = translateToECTS(int.Parse(reader["score"].ToString()));
+                worksheet.Cells[row, 4] = int.Parse(reader["score"].ToString());
 
                 row++;
 
